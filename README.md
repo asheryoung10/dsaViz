@@ -1,5 +1,5 @@
 # dsaViz
-A graphical program for visualizing common datastructures and cooresponding algorithms.
+A graphical program for visualizing common data structures and cooresponding algorithms.
 
 ## Project Summary
 **dsaViz** is a work-in-progress graphical application intended to visualize common data structures and their corresponding algorithms. The long-term goal is to provide an interactive and intuitive way to explore how data structures behave and how algorithms operate in real time.
