@@ -24,5 +24,5 @@ target_link_libraries(dsaViz PRIVATE
 )
 
 if(WIN32)
-    target_link_libraries(yourproject PRIVATE Ws2_32)
+    target_link_libraries(dsaViz PRIVATE Ws2_32)
 endif()
