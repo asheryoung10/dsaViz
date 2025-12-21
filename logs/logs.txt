@@ -1,0 +1,14 @@
+[2025-12-21 11:39:28.318] [info] [:] Logging initialized.
+[2025-12-21 11:39:28.318] [info] [:] Setting glfw error callback.
+[2025-12-21 11:39:28.319] [info] [:] Initializing GLFW.
+[2025-12-21 11:39:28.351] [info] [:] Creating GLFW window with size 800x800.
+[2025-12-21 11:39:28.479] [info] [:] GLFW window created with size 800x800.
+[2025-12-21 11:39:28.480] [info] [:] Making OpenGL context current.
+[2025-12-21 11:39:28.480] [info] [:] Setting swap interval to 1.
+[2025-12-21 11:39:28.480] [info] [:] Initializing opengl functions with glad.
+[2025-12-21 11:39:28.481] [info] [:] OpenGL initialized: 4.6 (Core Profile) Mesa 25.3.0-devel (git-c8fa4e643e).
+[2025-12-21 11:39:28.481] [info] [:] GLM projection matrix created.
+[2025-12-21 11:39:28.481] [info] [:] Starting main loop
+[2025-12-21 11:39:36.823] [info] [:] Exited main loop.
+[2025-12-21 11:39:36.823] [info] [:] Destroying GLFW window and terminating.
+[2025-12-21 11:39:36.908] [info] [:] Clean shutdown complete.
