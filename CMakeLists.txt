@@ -1,22 +1,25 @@
 cmake_minimum_required(VERSION 3.20)
-project(project LANGUAGES CXX)
-
+project(dsaViz LANGUAGES CXX C)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 add_executable(dsaViz
     dsaViz/main.cpp
+    external/src/gl.c
 )
+
+# Fetch all dependencies.
 include(cmake/FetchDeps.cmake)
 
-
-
+# Put ./dsaViz in the include path.
 target_include_directories(dsaViz PRIVATE
     ./
+    ./external/include
 )
 
+# Link all dependencies.
 target_link_libraries(dsaViz PRIVATE
     glfw
-    glad
     freetype
     glm
     asio_lib
@@ -26,6 +29,7 @@ target_link_libraries(dsaViz PRIVATE
     stb_lib
 )
 
+# Platform-specific settings.
 if(WIN32)
     target_link_libraries(dsaViz PRIVATE Ws2_32)
 endif()

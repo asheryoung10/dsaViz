@@ -1,4 +1,4 @@
-#include <glad/glad.h>
+#include <glad/gl.h>
 #include <GLFW/glfw3.h>
 
 #include <dsaViz/logSetup.hpp>
@@ -134,8 +134,9 @@ int main()
     glfwSwapInterval(1);
 
     spdlog::info("Initializing opengl functions with glad.");
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        spdlog::critical("Failed to initialize glad.");
+     int version = gladLoadGL(glfwGetProcAddress);
+    if (version == 0) {
+        printf("Failed to initialize OpenGL context\n");
         return -1;
     }
     spdlog::info("OpenGL initialized: {}.", reinterpret_cast<const char*>(glGetString(GL_VERSION)));
