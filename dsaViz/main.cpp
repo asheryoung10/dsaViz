@@ -7,6 +7,8 @@
 #include <msdf-atlas-gen/AtlasGenerator.h>
 #include <msdfgen/core/BitmapRef.hpp>
 
+#include <dsaViz/renderTriangle.hpp>
+
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb_image_write.h>
@@ -96,6 +98,12 @@ void glfw_error_callback(int error, const char* description)
     spdlog::error("GLFW error {}: {}", error, description);
 }
 
+void glfw_resize_callback(GLFWwindow* window, int width, int height)
+{
+    spdlog::info("GLFW window resized to {}x{}", width, height);
+    glViewport(0, 0, width, height);
+}
+
 int main()
 {
     dsaViz::setupLogging(spdlog::level::trace);
@@ -140,7 +148,12 @@ int main()
         return -1;
     }
     spdlog::info("OpenGL initialized: {}.", reinterpret_cast<const char*>(glGetString(GL_VERSION)));
-    spdlog::info("GLM projection matrix created.");
+
+    spdlog::info("Setting GLFW framebuffer resize callback.");
+    glfwSetFramebufferSizeCallback(window, glfw_resize_callback);
+
+    dsaViz::RenderState* renderState = new dsaViz::RenderTriangle();
+    renderState->setup();
 
     spdlog::info("Starting main loop");
     while (!glfwWindowShouldClose(window)) {
@@ -148,6 +161,7 @@ int main()
 
         glClearColor(0.1f, 0.15f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        renderState->render();
 
         glfwSwapBuffers(window);
     }
