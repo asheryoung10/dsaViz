@@ -24,8 +24,10 @@ bool generateAtlas(const char *fontFilename) {
     bool success = false;
     // Initialize instance of FreeType library
     if (msdfgen::FreetypeHandle *ft = msdfgen::initializeFreetype()) {
+        spdlog::info("FreeType library initialized");
         // Load font file
         if (msdfgen::FontHandle *font = msdfgen::loadFont(ft, fontFilename)) {
+            spdlog::info("Font '{}' loaded", fontFilename);
             // Storage for glyph geometry and their coordinates in the atlas
             std::vector<GlyphGeometry> glyphs;
             // FontGeometry is a helper class that loads a set of glyphs from a single font.
@@ -72,10 +74,15 @@ bool generateAtlas(const char *fontFilename) {
             // The atlas bitmap can now be retrieved via atlasStorage as a BitmapConstRef.
             // The glyphs array (or fontGeometry) contains positioning data for typesetting text.
             //success = my_project::submitAtlasBitmapAndLayout(generator.atlasStorage(), glyphs);
+            success = true;
             // Cleanup
             msdfgen::destroyFont(font);
+        }else {
+            spdlog::error("Failed to load font '{}'", fontFilename);
         }
         msdfgen::deinitializeFreetype(ft);
+    }else {
+        spdlog::error("Failed to initialize FreeType library");
     }
     return success;
 }
@@ -117,9 +124,9 @@ int main()
     spdlog::set_pattern("[%H:%M:%S] [%^%l%$] %v");
     spdlog::info("Starting application");
 
-    if (!generateAtlas("path/to/font.ttf"))  {
+    if (!generateAtlas("../CascadiaCode.ttf"))  {
         spdlog::critical("msdf-atlas-gen test FAILED");
-        //return -1;
+        return -1;
     }
 
     spdlog::info("msdf-atlas-gen test PASSED");
