@@ -17,6 +17,12 @@
 #include <cmath>
 
 #include <msdf-atlas-gen/msdf-atlas-gen.h>
+#include <msdf-atlas-gen/AtlasGenerator.h>
+#include <msdfgen/core/BitmapRef.hpp>
+
+
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include <stb_image_write.h>
 
 using namespace msdf_atlas;
 
@@ -58,22 +64,33 @@ bool generateAtlas(const char *fontFilename) {
             int width = 0, height = 0;
             packer.getDimensions(width, height);
             // The ImmediateAtlasGenerator class facilitates the generation of the atlas bitmap.
-            ImmediateAtlasGenerator<
-                float, // pixel type of buffer for individual glyphs depends on generator function
-                3, // number of atlas color channels
-                msdfGenerator, // function to generate bitmaps for individual glyphs
-                BitmapAtlasStorage<byte, 3> // class that stores the atlas bitmap
-                // For example, a custom atlas storage class that stores it in VRAM can be used.
-            > generator(width, height);
-            // GeneratorAttributes can be modified to change the generator's default settings.
+            ImmediateAtlasGenerator<float, 3, msdfGenerator, msdf_atlas::BitmapAtlasStorage<msdf_atlas::byte, 3>>
+            generator(width, height);
+
+            // set attributes, thread count, etc.
             GeneratorAttributes attributes;
             generator.setAttributes(attributes);
             generator.setThreadCount(4);
-            // Generate atlas bitmap
+
+            // generate the atlas
             generator.generate(glyphs.data(), glyphs.size());
-            // The atlas bitmap can now be retrieved via atlasStorage as a BitmapConstRef.
-            // The glyphs array (or fontGeometry) contains positioning data for typesetting text.
-            //success = my_project::submitAtlasBitmapAndLayout(generator.atlasStorage(), glyphs);
+
+            const auto &bitmap = generator.atlasStorage(); // AtlasStorage reference
+
+            // convert to BitmapConstRef
+            msdfgen::BitmapConstRef<msdf_atlas::byte, 3> bitmapRef = bitmap;
+
+            // now you can access width, height, pixels
+            stbi_write_png(
+                "atlas.png",
+                bitmapRef.width,
+                bitmapRef.height,
+                3,
+                bitmapRef.pixels,
+                bitmapRef.width * 3
+            );
+
+
             success = true;
             // Cleanup
             msdfgen::destroyFont(font);

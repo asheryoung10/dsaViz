@@ -23,7 +23,7 @@ target_link_libraries(dsaViz PRIVATE
     miniaudio_lib
     msdf-atlas-gen::msdf-atlas-gen
     spdlog::spdlog
-
+    stb_lib
 )
 
 if(WIN32)
