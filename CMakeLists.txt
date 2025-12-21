@@ -19,8 +19,11 @@ target_link_libraries(dsaViz PRIVATE
     glad
     freetype
     glm
-    asio
-    miniaudio
+    asio_lib
+    miniaudio_lib
+    msdf-atlas-gen::msdf-atlas-gen
+    spdlog::spdlog
+
 )
 
 if(WIN32)

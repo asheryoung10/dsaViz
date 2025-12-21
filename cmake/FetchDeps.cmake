@@ -1,94 +1,130 @@
+# cmake/FetchDeps.cmake
 include(FetchContent)
 
+# =========================
 # GLFW
+# =========================
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
+
 FetchContent_Declare(
-  glfw
-  GIT_REPOSITORY https://github.com/glfw/glfw.git
-  GIT_TAG 3.3.9
+    glfw
+    GIT_REPOSITORY https://github.com/glfw/glfw.git
+    GIT_TAG 3.3.9
 )
 FetchContent_MakeAvailable(glfw)
 
-# glad
+# =========================
+# Glad
+# =========================
 FetchContent_Declare(
-  glad
-  GIT_REPOSITORY https://github.com/Dav1dde/glad.git
-  GIT_TAG v0.1.36
+    glad
+    GIT_REPOSITORY https://github.com/Dav1dde/glad.git
+    GIT_TAG v0.1.36
 )
 FetchContent_MakeAvailable(glad)
 
-# glm
+# =========================
+# GLM
+# =========================
 FetchContent_Declare(
-  glm
-  GIT_REPOSITORY https://github.com/g-truc/glm.git
+    glm
+    GIT_REPOSITORY https://github.com/g-truc/glm.git
 )
 FetchContent_MakeAvailable(glm)
 
+# ------------------ FreeType options ------------------
+set(FT_DISABLE_BROTLI ON CACHE BOOL "" FORCE)
+set(FT_DISABLE_PNG ON CACHE BOOL "" FORCE)
+set(FT_DISABLE_ZLIB ON CACHE BOOL "" FORCE)
+set(FT_DISABLE_BZIP2 ON CACHE BOOL "" FORCE)
+set(FT_DISABLE_HARFBUZZ ON CACHE BOOL "" FORCE)
 
-# freetype
 FetchContent_Declare(
-  freetype
-  GIT_REPOSITORY https://gitlab.freedesktop.org/freetype/freetype.git
+    freetype
+    GIT_REPOSITORY https://github.com/freetype/freetype.git
+    GIT_TAG VER-2-13-2
 )
+
 FetchContent_MakeAvailable(freetype)
 
+# -----------------------------------------------------
+# Provide what FindFreetype.cmake is looking for
+# -----------------------------------------------------
 
+if (NOT TARGET Freetype::Freetype)
+    add_library(Freetype::Freetype INTERFACE IMPORTED)
+
+    target_link_libraries(Freetype::Freetype
+        INTERFACE freetype
+    )
+
+    target_include_directories(Freetype::Freetype
+        INTERFACE
+            $<TARGET_PROPERTY:freetype,INTERFACE_INCLUDE_DIRECTORIES>
+    )
+endif()
+
+# Mark package as found so FindPackageHandleStandardArgs passes
+set(FREETYPE_FOUND TRUE CACHE BOOL "" FORCE)
+
+# =========================
+# spdlog
+# =========================
 FetchContent_Declare(
     spdlog
     GIT_REPOSITORY https://github.com/gabime/spdlog.git
-    GIT_TAG        v1.16.0  # or a specific version you prefer
+    GIT_TAG v1.16.0
 )
-
-# Only populate the source — do NOT add_subdirectory or build
-FetchContent_Populate(spdlog)
-
-# Now add the include directory only
-target_include_directories(dsaViz
-    PRIVATE
-        ${spdlog_SOURCE_DIR}/include
-)
-
+FetchContent_MakeAvailable(spdlog)
 
 # =========================
 # Asio (standalone)
 # =========================
 FetchContent_Declare(
-  asio
-  GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
-  GIT_TAG asio-1-30-2  # pick a stable tag
+    asio
+    GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
+    GIT_TAG asio-1-30-2
 )
-
 FetchContent_MakeAvailable(asio)
 
-# Asio does not define a CMake target, so we create one
-add_library(asio INTERFACE)
-
-target_include_directories(asio INTERFACE
-  ${asio_SOURCE_DIR}/asio/include
+add_library(asio_lib INTERFACE)
+target_include_directories(asio_lib INTERFACE
+    ${asio_SOURCE_DIR}/asio/include
 )
-
-target_compile_definitions(asio INTERFACE
-  ASIO_STANDALONE
-)
+target_compile_definitions(asio_lib INTERFACE ASIO_STANDALONE)
 
 # =========================
 # miniaudio
 # =========================
 FetchContent_Declare(
-  miniaudio
-  GIT_REPOSITORY https://github.com/mackron/miniaudio.git
-  GIT_TAG 0.11.21   # stable release
+    miniaudio
+    GIT_REPOSITORY https://github.com/mackron/miniaudio.git
+    GIT_TAG 0.11.21
 )
-
 FetchContent_MakeAvailable(miniaudio)
 
-# miniaudio is a single-header library
-add_library(miniaudio INTERFACE)
+add_library(miniaudio_lib INTERFACE)
+target_include_directories(miniaudio_lib INTERFACE ${miniaudio_SOURCE_DIR})
+target_compile_definitions(miniaudio_lib INTERFACE MINIAUDIO_IMPLEMENTATION)
 
-target_include_directories(miniaudio INTERFACE
-  ${miniaudio_SOURCE_DIR}
+# =========================
+# msdf-atlas-gen
+# =========================
+set(MSDF_ATLAS_BUILD_STANDALONE OFF CACHE BOOL "" FORCE)
+set(MSDF_ATLAS_USE_SKIA OFF CACHE BOOL "" FORCE)
+set(MSDF_ATLAS_USE_VCPKG OFF CACHE BOOL "" FORCE)
+set(MSDFGEN_DISABLE_PNG ON CACHE BOOL "" FORCE)
+# Before fetching msdf-atlas-gen
+set(MSDFGEN_USE_FREETYPE OFF CACHE BOOL "" FORCE)
+FetchContent_Declare(
+    msdf_atlas_gen
+    GIT_REPOSITORY https://github.com/Chlumsky/msdf-atlas-gen.git
 )
+FetchContent_MakeAvailable(msdf_atlas_gen)
 
-# Needed for implementations in exactly one TU
-target_compile_definitions(miniaudio INTERFACE
-  MINIAUDIO_IMPLEMENTATION
-)
+
+
+
