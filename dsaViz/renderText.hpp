@@ -18,7 +18,10 @@ public:
     void setup() override;
 
     /// @brief Renders the text using the generated atlas.
-    void render() override;
+    void render() override {
+        render(textToRender, -0.9f, 0.8f, 0.0015f);
+    }
+    void render(const std::string& text, float startX = -0.9f, float startY = 0.8f, float scale = 0.0015f);
 
     /// @brief Loads a font and generates an MSDF atlas.
     bool generateAtlas(const char* fontFilename);
@@ -74,7 +77,7 @@ const char* fragmentShaderSource = R"(
     };
 
     std::vector<GlyphInfo> glyphs;
-    std::string textToRender = "Hello MSDF!";
+    std::string textToRender = "This is dsaViz rendering MSDF text!\n!@#$%^&*()_+1234567890";
 };
 
 } // namespace dsaViz

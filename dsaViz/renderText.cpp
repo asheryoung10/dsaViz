@@ -22,24 +22,15 @@ void RenderText::setup() {
     }
 
     msdfShaderProgram.createFromSource(vertexShaderSource, fragmentShaderSource);
-    // Setup a simple quad for rendering a single glyph (can be instanced later)
-    float quadVertices[] = {
-        // positions  // UVs
-        0.0f, 1.0f,   0.0f, 1.0f,
-        0.0f, 0.0f,   0.0f, 0.0f,
-        1.0f, 0.0f,   1.0f, 0.0f,
-
-        0.0f, 1.0f,   0.0f, 1.0f,
-        1.0f, 0.0f,   1.0f, 0.0f,
-        1.0f, 1.0f,   1.0f, 1.0f
-    };
 
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
 
     glBindVertexArray(vao);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), quadVertices, GL_STATIC_DRAW);
+
+    // We will update VBO dynamically per glyph during render
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 6 * 4, nullptr, GL_DYNAMIC_DRAW);
 
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0); // pos
     glEnableVertexAttribArray(0);
@@ -49,7 +40,7 @@ void RenderText::setup() {
     glBindVertexArray(0);
 }
 
-void RenderText::render() {
+void RenderText::render(const std::string& text, float startX, float startY, float scale) {
     msdfShaderProgram.use();
     textureAtlas.bind(GL_TEXTURE0);
     glEnable(GL_BLEND);
@@ -60,25 +51,59 @@ void RenderText::render() {
 
     glBindVertexArray(vao);
 
-    // For simplicity, render single quad at origin
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    float x = startX;
+    float y = startY;
+
+    for (char c : text) {
+        if(c == ' ') {
+            x += 20.0f * scale; // simple space handling
+            continue;
+        }
+        if(c == '\n') {
+            x = startX;
+            y -= 50.0f * scale; // simple newline handling
+            continue;
+        }
+        if (c < 32 || c > 126)  {
+            spdlog::warn("Skipping unsupported character code: {}", static_cast<int>(c));
+            continue; // skip unsupported ASCII
+        }
+    
+
+        const GlyphInfo& g = glyphs[c - 32];
+
+        float xpos = x + g.offsetX * scale;
+        float ypos = y - g.offsetY * scale; // y-down
+        float w = (g.u1 - g.u0) * textureAtlas.width() * scale;
+        float h = (g.v1 - g.v0) * textureAtlas.height() * scale;
+
+        float vertices[6][4] = {
+            { xpos,     ypos + h,  g.u0, g.v1 },
+            { xpos,     ypos,      g.u0, g.v0 },
+            { xpos + w, ypos,      g.u1, g.v0 },
+
+            { xpos,     ypos + h,  g.u0, g.v1 },
+            { xpos + w, ypos,      g.u1, g.v0 },
+            { xpos + w, ypos + h,  g.u1, g.v1 }
+        };
+
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+
+        x += w + g.advance * scale;
+    }
 
     glBindVertexArray(0);
 }
 
 bool RenderText::generateAtlas(const char* fontFilename) {
+    // Initialize FreeType
     FreetypeHandle* ft = initializeFreetype();
-    if (!ft) {
-        spdlog::error("Failed to initialize FreeType");
-        return false;
-    }
+    if (!ft) return false;
 
     FontHandle* font = loadFont(ft, fontFilename);
-    if (!font) {
-        spdlog::error("Failed to load font '{}'", fontFilename);
-        deinitializeFreetype(ft);
-        return false;
-    }
+    if (!font) { deinitializeFreetype(ft); return false; }
 
     std::vector<GlyphGeometry> glyphsGeometry;
     FontGeometry fontGeometry(&glyphsGeometry);
@@ -88,33 +113,58 @@ bool RenderText::generateAtlas(const char* fontFilename) {
     for (auto& g : glyphsGeometry)
         g.edgeColoring(&edgeColoringInkTrap, 3.0, 0);
 
+    // Pack glyphs
     TightAtlasPacker packer;
     packer.setDimensionsConstraint(DimensionsConstraint::SQUARE);
-    packer.setMinimumScale(32.0);
+    packer.setMinimumScale(64.0);
     packer.setPixelRange(2.0);
     packer.setMiterLimit(1.0);
     packer.pack(glyphsGeometry.data(), glyphsGeometry.size());
 
-    int width = 0, height = 0;
-    packer.getDimensions(width, height);
+    int atlasWidth = 0, atlasHeight = 0;
+    packer.getDimensions(atlasWidth, atlasHeight);
 
-    ImmediateAtlasGenerator<float, 3, msdfGenerator, msdf_atlas::BitmapAtlasStorage<msdf_atlas::byte, 3>>
-        generator(width, height);
-
+    // Generate atlas bitmap
+    ImmediateAtlasGenerator<float, 3, msdfGenerator, BitmapAtlasStorage<byte, 3>> generator(atlasWidth, atlasHeight);
+    GeneratorAttributes attributes;
+    generator.setAttributes(attributes);
+    generator.setThreadCount(4);
     generator.generate(glyphsGeometry.data(), glyphsGeometry.size());
 
     const auto& bitmap = generator.atlasStorage();
-    BitmapConstRef<msdf_atlas::byte, 3> bitmapRef = bitmap;
+    BitmapConstRef<byte, 3> bitmapRef = bitmap;
 
+    // Save atlas for debugging
     stbi_flip_vertically_on_write(true);
     stbi_write_png("atlas.png", bitmapRef.width, bitmapRef.height, 3, bitmapRef.pixels, bitmapRef.width * 3);
 
     textureAtlas.createFromData(bitmapRef.width, bitmapRef.height, bitmapRef.pixels);
 
+    // Compute UVs and glyph offsets manually
+    glyphs.resize(glyphsGeometry.size());
+    for (size_t i = 0; i < glyphsGeometry.size(); ++i) {
+        const auto& g = glyphsGeometry[i];
+        GlyphInfo& info = glyphs[i];
+
+        // Get glyph rectangle in atlas (pixel coordinates)
+        double l, b, r, t;
+        g.getQuadAtlasBounds(l, b, r, t);
+        info.u0 = float(l) / float(atlasWidth);
+        info.v0 = float(b) / float(atlasHeight);
+        info.u1 = float(r) / float(atlasWidth);
+        info.v1 = float(t) / float(atlasHeight);
+
+        // Get glyph quad for placement offsets (relative to baseline)
+        g.getQuadPlaneBounds(l, b, r, t);
+        info.offsetX = float(l);
+        info.offsetY = float(t); // top
+        info.advance = float(g.getAdvance());
+    }
+
     destroyFont(font);
     deinitializeFreetype(ft);
 
-    spdlog::info("MSDF atlas generated: {}x{}", width, height);
+    spdlog::info("MSDF atlas generated: {}x{}", atlasWidth, atlasHeight);
     return true;
 }
 

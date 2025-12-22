@@ -82,6 +82,20 @@ namespace dsaViz {
             return textureID;
         }
 
+        int width() const {
+            int width = 0;
+            glBindTexture(GL_TEXTURE_2D, textureID);
+            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &width);
+            return width;
+        }
+
+        int height() const {
+            int height = 0;
+            glBindTexture(GL_TEXTURE_2D, textureID);
+            glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &height);
+            return height;
+        }
+
     private:
         // OpenGL texture ID.
         GLuint textureID;

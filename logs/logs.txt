@@ -1,16 +1,16 @@
-[2025-12-21 18:01:40.656] [info] [:] Logging initialized.
-[2025-12-21 18:01:40.656] [info] [:] Setting glfw error callback.
-[2025-12-21 18:01:40.657] [info] [:] Initializing GLFW.
-[2025-12-21 18:01:40.662] [info] [:] Creating GLFW window with size 2208x1380.
-[2025-12-21 18:01:40.787] [info] [:] GLFW window created with size 2208x1380.
-[2025-12-21 18:01:40.787] [info] [:] Making OpenGL context current.
-[2025-12-21 18:01:40.788] [info] [:] Setting swap interval to 1.
-[2025-12-21 18:01:40.788] [info] [:] Initializing opengl functions with glad.
-[2025-12-21 18:01:40.789] [info] [:] OpenGL initialized: 4.6 (Core Profile) Mesa 25.3.0-devel (git-c8fa4e643e).
-[2025-12-21 18:01:40.789] [info] [:] Setting GLFW framebuffer resize callback.
-[2025-12-21 18:01:40.789] [info] [:] Setting up RenderTriangle state.
-[2025-12-21 18:01:40.851] [info] [:] MSDF atlas generated: 210x210
-[2025-12-21 18:01:40.853] [info] [:] Starting main loop
-[2025-12-21 18:02:13.960] [info] [:] Exited main loop.
-[2025-12-21 18:02:13.960] [info] [:] Destroying GLFW window and terminating.
-[2025-12-21 18:02:14.047] [info] [:] Clean shutdown complete.
+[2025-12-21 19:31:12.440] [info] [:] Logging initialized.
+[2025-12-21 19:31:12.440] [info] [:] Setting glfw error callback.
+[2025-12-21 19:31:12.440] [info] [:] Initializing GLFW.
+[2025-12-21 19:31:12.446] [info] [:] Creating GLFW window with size 2208x1380.
+[2025-12-21 19:31:12.580] [info] [:] GLFW window created with size 2208x1380.
+[2025-12-21 19:31:12.580] [info] [:] Making OpenGL context current.
+[2025-12-21 19:31:12.580] [info] [:] Setting swap interval to 1.
+[2025-12-21 19:31:12.580] [info] [:] Initializing opengl functions with glad.
+[2025-12-21 19:31:12.580] [info] [:] OpenGL initialized: 4.6 (Core Profile) Mesa 25.3.0-devel (git-c8fa4e643e).
+[2025-12-21 19:31:12.580] [info] [:] Setting GLFW framebuffer resize callback.
+[2025-12-21 19:31:12.581] [info] [:] Setting up RenderTriangle state.
+[2025-12-21 19:31:12.632] [info] [:] MSDF atlas generated: 388x388
+[2025-12-21 19:31:12.633] [info] [:] Starting main loop
+[2025-12-21 19:32:31.077] [info] [:] Exited main loop.
+[2025-12-21 19:32:31.077] [info] [:] Destroying GLFW window and terminating.
+[2025-12-21 19:32:31.170] [info] [:] Clean shutdown complete.
