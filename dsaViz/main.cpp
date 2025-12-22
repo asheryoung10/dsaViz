@@ -1,5 +1,6 @@
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
+#include <dsaViz/glfw_dark_mode.hpp>
 
 #include <dsaViz/logSetup.hpp>
 
@@ -70,6 +71,7 @@ bool generateAtlas(const char *fontFilename) {
             msdfgen::BitmapConstRef<msdf_atlas::byte, 3> bitmapRef = bitmap;
 
             // now you can access width, height, pixels
+            stbi_flip_vertically_on_write(true);
             stbi_write_png(
                 "atlas.png",
                 bitmapRef.width,
@@ -102,12 +104,20 @@ void glfw_resize_callback(GLFWwindow* window, int width, int height)
 {
     spdlog::info("GLFW window resized to {}x{}", width, height);
     glViewport(0, 0, width, height);
+    dsaViz::RenderState* renderState = static_cast<dsaViz::RenderState*>(glfwGetWindowUserPointer(window));
+    if (renderState) {
+        spdlog::info("Re-setup render state due to window resize.");
+        glClear(GL_COLOR_BUFFER_BIT);
+        renderState->render();
+        glfwSwapBuffers(window);
+    }
 }
 
 int main()
 {
-    dsaViz::setupLogging(spdlog::level::trace);
+    dsaViz::setupLogging(spdlog::level::info);
     spdlog::info("Logging initialized.");
+    generateAtlas("../assets/CascadiaCode.ttf");
 
     spdlog::info("Setting glfw error callback.");
     glfwSetErrorCallback(glfw_error_callback);
@@ -122,8 +132,9 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    int windowWidth = 800;
-    int windowHeight = 800;
+    const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+    int windowWidth = mode->width * 3 / 4;
+    int windowHeight = mode->height * 3 / 4;
     spdlog::info("Creating GLFW window with size {}x{}.", windowWidth, windowHeight);
     GLFWwindow* window = glfwCreateWindow(windowWidth, windowHeight, "dsaViz", nullptr, nullptr);
     if (!window) {
@@ -133,6 +144,11 @@ int main()
     }
     int windowWidthActual, windowHeightActual;
     glfwGetFramebufferSize(window, &windowWidthActual, &windowHeightActual);
+    glfwSetWindowPos(window,
+        (mode->width - windowWidthActual) / 2,
+        (mode->height - windowHeightActual) / 2
+    );
+    dsaViz::enableGLFWDarkMode(window); 
     spdlog::info("GLFW window created with size {}x{}.", windowWidthActual, windowHeightActual);
 
     spdlog::info("Making OpenGL context current.");
@@ -152,8 +168,9 @@ int main()
     spdlog::info("Setting GLFW framebuffer resize callback.");
     glfwSetFramebufferSizeCallback(window, glfw_resize_callback);
 
-    dsaViz::RenderState* renderState = new dsaViz::RenderTriangle();
+    dsaViz::RenderState* renderState = new dsaViz::RenderTriangle(window);
     renderState->setup();
+    glfwSetWindowUserPointer(window, renderState);
 
     spdlog::info("Starting main loop");
     while (!glfwWindowShouldClose(window)) {

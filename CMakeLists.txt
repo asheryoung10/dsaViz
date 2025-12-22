@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(dsaViz
     dsaViz/main.cpp
+    dsaViz/glfw_dark_mode.cpp
     external/src/gl.c
 )
 
@@ -32,4 +33,5 @@ target_link_libraries(dsaViz PRIVATE
 # Platform-specific settings.
 if(WIN32)
     target_link_libraries(dsaViz PRIVATE Ws2_32)
+    target_link_libraries(dsaViz PRIVATE dwmapi)
 endif()

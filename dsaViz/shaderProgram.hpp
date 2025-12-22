@@ -1,5 +1,7 @@
 #pragma once
 #include <glad/gl.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <spdlog/spdlog.h>
 
 namespace dsaViz {
@@ -58,6 +60,25 @@ namespace dsaViz {
         /// @brief Uses the shader program for rendering.
         void use() const {
             glUseProgram(programID);
+        }
+
+        void uploadGLMMatrix(const char* name, const glm::mat4& matrix) const {
+            GLint location = glGetUniformLocation(programID, name);
+            if (location != -1) {
+                glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
+            } else {
+                spdlog::warn("Uniform '{}' not found in shader program.", name);
+            }
+        }
+        /// @brief Uploads a 4x4 matrix uniform to the shader program.
+        /// @param name The name of the uniform variable in the shader.
+        void uploadMatrix(const char* name, const float* matrix) const {
+            GLint location = glGetUniformLocation(programID, name);
+            if (location != -1) {
+                glUniformMatrix4fv(location, 1, GL_FALSE, matrix);
+            } else {
+                spdlog::warn("Uniform '{}' not found in shader program.", name);
+            }
         }
 
         /// @brief Gets the OpenGL program ID.
