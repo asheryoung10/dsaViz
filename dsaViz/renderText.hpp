@@ -11,7 +11,7 @@ namespace dsaViz {
 
 class RenderText : public RenderState {
 public:
-    RenderText() = default;
+    RenderText(GLFWwindow* windowHandle) : vao(0), vbo(0), windowHandle(windowHandle) {};
     ~RenderText() override = default;
 
     /// @brief Sets up the render state by generating an MSDF atlas.
@@ -19,7 +19,7 @@ public:
 
     /// @brief Renders the text using the generated atlas.
     void render() override {
-        render(textToRender, -0.9f, 0.8f, 0.0015f);
+        render(textToRender, 0.0f, 0.0f, 0.0015f);
     }
     void render(const std::string& text, float startX = -0.9f, float startY = 0.8f, float scale = 0.0015f);
 
@@ -27,6 +27,7 @@ public:
     bool generateAtlas(const char* fontFilename);
 
 private:
+    GLFWwindow* windowHandle;
     Texture textureAtlas;
     ShaderProgram msdfShaderProgram;
 
@@ -37,11 +38,12 @@ const char* vertexShaderSource = R"(
     #version 330 core
     layout(location = 0) in vec2 aPos;
     layout(location = 1) in vec2 aTexCoord;
+    uniform mat4 uTransform;
     out vec2 vTexCoord;
 
     void main()
     {
-        gl_Position = vec4(aPos, 0.0, 1.0);
+        gl_Position = uTransform * vec4(aPos, 0.0, 1.0);
         vTexCoord = aTexCoord;
     }
 )";

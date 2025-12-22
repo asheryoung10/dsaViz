@@ -16,7 +16,7 @@ using namespace msdfgen;
 namespace dsaViz {
 
 void RenderText::setup() {
-    if (!generateAtlas("../assets/CascadiaCode.ttf")) {
+    if (!generateAtlas("../assets/palatinolinotype_roman.ttf")) {
         spdlog::error("Failed to generate MSDF atlas");
         return;
     }
@@ -48,6 +48,18 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
 
     msdfShaderProgram.uploadInt("uTexture", 0);
     msdfShaderProgram.uploadColor("textColor", 1.0f, 1.0f, 1.0f, 1.0f);
+    int framebufferWidth, framebufferHeight;
+    glfwGetFramebufferSize(windowHandle, &framebufferWidth, &framebufferHeight);
+    float aspectRatio = 1.0f;
+    glm::mat4 projection;
+    if(framebufferWidth > framebufferHeight) {
+        aspectRatio = static_cast<float>(framebufferWidth) / static_cast<float>(framebufferHeight);
+        projection = glm::ortho(-aspectRatio, aspectRatio, -1.0f, 1.0f, -1.0f, 1.0f);
+    }else {
+        aspectRatio = static_cast<float>(framebufferHeight) / static_cast<float>(framebufferWidth);
+        projection = glm::ortho(-1.0f, 1.0f, -aspectRatio, aspectRatio, -1.0f, 1.0f);
+    }
+    msdfShaderProgram.uploadGLMMatrix("uTransform", projection);
 
     glBindVertexArray(vao);
 
@@ -61,7 +73,7 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
         }
         if(c == '\n') {
             x = startX;
-            y -= 50.0f * scale; // simple newline handling
+            y -= 64.0f * scale; // simple newline handling
             continue;
         }
         if (c < 32 || c > 126)  {
@@ -74,6 +86,7 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
 
         float xpos = x + g.offsetX * scale;
         float ypos = y - g.offsetY * scale; // y-down
+        spdlog::info("Offsets for char '{}': offsetX = {}, offsetY = {}", c, g.offsetX, g.offsetY);
         float w = (g.u1 - g.u0) * textureAtlas.width() * scale;
         float h = (g.v1 - g.v0) * textureAtlas.height() * scale;
 
@@ -116,7 +129,8 @@ bool RenderText::generateAtlas(const char* fontFilename) {
     // Pack glyphs
     TightAtlasPacker packer;
     packer.setDimensionsConstraint(DimensionsConstraint::SQUARE);
-    packer.setMinimumScale(64.0);
+    double scale = 64;
+    packer.setMinimumScale(scale);
     packer.setPixelRange(2.0);
     packer.setMiterLimit(1.0);
     packer.pack(glyphsGeometry.data(), glyphsGeometry.size());
@@ -156,8 +170,8 @@ bool RenderText::generateAtlas(const char* fontFilename) {
 
         // Get glyph quad for placement offsets (relative to baseline)
         g.getQuadPlaneBounds(l, b, r, t);
-        info.offsetX = float(l);
-        info.offsetY = float(t); // top
+        info.offsetX = l * scale;
+        info.offsetY = b * -scale;
         info.advance = float(g.getAdvance());
     }
 

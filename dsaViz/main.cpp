@@ -80,14 +80,13 @@ int main()
 
     dsaViz::RenderState* renderState = new dsaViz::RenderTriangle(window);
     renderState->setup();
-    dsaViz::RenderState* renderTextState = new dsaViz::RenderText();
+    dsaViz::RenderState* renderTextState = new dsaViz::RenderText(window);
     renderTextState->setup();
-    glfwSetWindowUserPointer(window, renderState);
+    glfwSetWindowUserPointer(window, renderTextState);
 
     spdlog::info("Starting main loop");
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
-
         glClearColor(0.1f, 0.15f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         renderState->render();
