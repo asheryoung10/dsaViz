@@ -24,6 +24,17 @@ public:
     void render() override {
         render(textToRender, 0.0f, 0.0f, 1.0f);
     }
+    #include <format>
+
+    template<typename... Args>
+    void renderFmt(float x, float y, float scale,
+                std::format_string<Args...> fmt,
+                Args&&... args)
+    {
+        std::string s = std::format(fmt, std::forward<Args>(args)...);
+        render(s.c_str(), x, y, scale);
+    }
+
     void render(const std::string& text, float startX = -0.9f, float startY = 0.8f, float scale = 1.0f);
 
     /// @brief Loads a font and generates an MSDF atlas.

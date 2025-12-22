@@ -92,7 +92,7 @@ int main()
         glClearColor(0.1f, 0.15f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         renderState->render();
-        renderTextState->render("Hello there, dsaViz!\nRendering MSDF text is better!", -0.9f, 0.9f, 0.2f );
+        renderTextState->renderFmt(-0.9f, 0.9f, 0.2f, "Time {}", glfwGetTime());
 
         glfwSwapBuffers(window);
     }
