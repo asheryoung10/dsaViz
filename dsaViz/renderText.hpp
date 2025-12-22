@@ -22,7 +22,7 @@ public:
     void setup(float size);
     /// @brief Renders the text using the generated atlas.
     void render() override {
-        render(textToRender, 0.0f, 0.0f, 1.0f);
+        render(textToRender, 0.0f, 0.0f, 0.1f);
     }
     #include <format>
 
@@ -35,7 +35,7 @@ public:
         render(s.c_str(), x, y, scale);
     }
 
-    void render(const std::string& text, float startX = -0.9f, float startY = 0.8f, float scale = 1.0f);
+    void render(const std::string& text, float startX, float startY, float scale);
 
     /// @brief Loads a font and generates an MSDF atlas.
     bool generateAtlas(const char* fontFilename, float size);
@@ -92,6 +92,15 @@ const char* fragmentShaderSource = R"(
         float advance;
         float offsetX, offsetY;
     };
+
+    struct GlyphMetric {
+        float u0, v0, u1, v1;
+        float offsetX, offsetY;
+        float width, height;
+        float advance;
+    };
+    std::vector<GlyphMetric> glyphMetrics;
+    float newLineVerticalShift;
 
     std::vector<GlyphInfo> glyphs;
     std::string textToRender = "This is dsaViz rendering MSDF text!\n!@#$%^&*()_+1234567890";

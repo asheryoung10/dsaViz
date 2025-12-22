@@ -21,14 +21,14 @@ void glfw_resize_callback(GLFWwindow* window, int width, int height)
     if (renderState) {
         spdlog::info("Re-setup render state due to window resize.");
         glClear(GL_COLOR_BUFFER_BIT);
-        renderState->render();
+        renderState->render("Test Text\nNew Line?", -1, 0, 1.0);
         glfwSwapBuffers(window);
     }
 }
 
 int main()
 {
-    dsaViz::setupLogging(spdlog::level::warn);
+    dsaViz::setupLogging(spdlog::level::info);
     spdlog::info("Logging initialized.");
 
     spdlog::info("Setting glfw error callback.");
@@ -91,8 +91,8 @@ int main()
         glfwPollEvents();
         glClearColor(0.1f, 0.15f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        renderState->render();
-        renderTextState->renderFmt(-0.9f, 0.9f, 0.2f, "Time {}", glfwGetTime());
+        renderTextState->setup(glfwGetTime());
+        renderTextState->renderFmt(-1.0f, 1.0f, 0.1f, "Time {}", glfwGetTime());
 
         glfwSwapBuffers(window);
     }

@@ -40,6 +40,7 @@ void RenderText::setup(float size) {
     glBindVertexArray(0);
 }
 
+
 void RenderText::render(const std::string& text, float startX, float startY, float scale) {
     msdfShaderProgram.use();
     textureAtlas.bind(GL_TEXTURE0);
@@ -64,16 +65,12 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
     glBindVertexArray(vao);
 
     float x = startX;
-    float y = startY - scale;;
+    float y = startY - scale;
 
     for (char c : text) {
-        if(c == ' ') {
-            x += scale/3; // simple space handling
-            continue;
-        }
         if(c == '\n') {
             x = startX;
-            y -= scale;
+            y -= newLineVerticalShift * scale;
             continue;
         }
         if (c < 32 || c > 126)  {
@@ -81,104 +78,119 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
             continue; // skip unsupported ASCII
         }
     
+        const GlyphMetric& g = glyphMetrics[c - 32];
+        if(g.width > 0 && g.height > 0) {
+            float xpos = x + g.offsetX * scale;
+            float ypos = y + g.offsetY * scale;
+            float w = g.width * scale;
+            float h = g.height * scale;
 
-        const GlyphInfo& g = glyphs[c - 32];
+            float vertices[6][4] = {
+                { xpos,     ypos + h,  g.u0, g.v1 },
+                { xpos,     ypos,      g.u0, g.v0 },
+                { xpos + w, ypos,      g.u1, g.v0 },
 
-        float xpos = x + g.offsetX * scale / textRenderScale;
-        float ypos = y - g.offsetY * scale / textRenderScale; // y-down
-        spdlog::info("Offsets for char '{}': offsetX = {}, offsetY = {}", c, g.offsetX, g.offsetY);
-        float w = (g.u1 - g.u0) * textureAtlas.width() * scale / textRenderScale;
-        float h = (g.v1 - g.v0) * textureAtlas.height() * scale / textRenderScale;
+                { xpos,     ypos + h,  g.u0, g.v1 },
+                { xpos + w, ypos,      g.u1, g.v0 },
+                { xpos + w, ypos + h,  g.u1, g.v1 }
+            };
 
-        float vertices[6][4] = {
-            { xpos,     ypos + h,  g.u0, g.v1 },
-            { xpos,     ypos,      g.u0, g.v0 },
-            { xpos + w, ypos,      g.u1, g.v0 },
-
-            { xpos,     ypos + h,  g.u0, g.v1 },
-            { xpos + w, ypos,      g.u1, g.v0 },
-            { xpos + w, ypos + h,  g.u1, g.v1 }
-        };
-
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-
-        x += w + g.advance * scale / textRenderScale;
+            glBindBuffer(GL_ARRAY_BUFFER, vbo);
+            glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+            glDrawArrays(GL_TRIANGLES, 0, 6);
+        }
+        x += g.advance * scale;
     }
-
     glBindVertexArray(0);
 }
 
-bool RenderText::generateAtlas(const char* fontFilename, float size) {
-    // Initialize FreeType
-    FreetypeHandle* ft = initializeFreetype();
-    if (!ft) return false;
 
-    FontHandle* font = loadFont(ft, fontFilename);
-    if (!font) { deinitializeFreetype(ft); return false; }
+bool RenderText::generateAtlas(const char *fontFilename, float size) {
+    bool success = false;
+    // Initialize instance of FreeType library
+    if (msdfgen::FreetypeHandle *ft = msdfgen::initializeFreetype()) {
+        // Load font file
+        if (msdfgen::FontHandle *font = msdfgen::loadFont(ft, fontFilename)) {
+            // Storage for glyph geometry and their coordinates in the atlas
+            std::vector<GlyphGeometry> glyphs;
+            // FontGeometry is a helper class that loads a set of glyphs from a single font.
+            // It can also be used to get additional font metrics, kerning information, etc.
+            FontGeometry fontGeometry(&glyphs);
+            FontMetrics metrics;
+            getFontMetrics(metrics, font);
+            float normalizationFactor = metrics.emSize;
+            newLineVerticalShift = metrics.lineHeight;
+            // Load a set of character glyphs:
+            // The second argument can be ignored unless you mix different font sizes in one atlas.
+            // In the last argument, you can specify a charset other than ASCII.
+            // To load specific glyph indices, use loadGlyphs instead.
+            fontGeometry.loadCharset(font, 1.0, Charset::ASCII);
+            // Apply MSDF edge coloring. See edge-coloring.h for other coloring strategies.
+            const double maxCornerAngle = 3.0;
+            for (GlyphGeometry &glyph : glyphs)
+                glyph.edgeColoring(&msdfgen::edgeColoringInkTrap, maxCornerAngle, 0);
+            // TightAtlasPacker class computes the layout of the atlas.
+            TightAtlasPacker packer;
+            // Set atlas parameters:
+            // setDimensions or setDimensionsConstraint to find the best value
+            packer.setDimensionsConstraint(DimensionsConstraint::SQUARE);
+            // setScale for a fixed size or setMinimumScale to use the largest that fits
+            packer.setMinimumScale(size);
+            // setPixelRange or setUnitRange
+            packer.setPixelRange(2.0);
+            packer.setMiterLimit(1.0);
+            // Compute atlas layout - pack glyphs
+            packer.pack(glyphs.data(), glyphs.size());
+            // Get final atlas dimensions
+            int atlasWidth = 0, atlasHeight = 0;
+            packer.getDimensions(atlasWidth, atlasHeight);
+            // The ImmediateAtlasGenerator class facilitates the generation of the atlas bitmap.
+            ImmediateAtlasGenerator<
+                float, // pixel type of buffer for individual glyphs depends on generator function
+                3, // number of atlas color channels
+                msdfGenerator, // function to generate bitmaps for individual glyphs
+                BitmapAtlasStorage<byte, 3> // class that stores the atlas bitmap
+                // For example, a custom atlas storage class that stores it in VRAM can be used.
+            > generator(atlasWidth, atlasHeight);
+            // GeneratorAttributes can be modified to change the generator's default settings.
+            GeneratorAttributes attributes;
+            generator.setAttributes(attributes);
+            generator.setThreadCount(4);
+            // Generate atlas bitmap
+            generator.generate(glyphs.data(), glyphs.size());
+            // The atlas bitmap can now be retrieved via atlasStorage as a BitmapConstRef.
+            // The glyphs array (or fontGeometry) contains positioning data for typesetting text.
+            BitmapConstRef<byte, 3> bitmapRef = generator.atlasStorage();
+            textureAtlas.createFromData(bitmapRef.width, bitmapRef.height, bitmapRef.pixels);
 
-    std::vector<GlyphGeometry> glyphsGeometry;
-    FontGeometry fontGeometry(&glyphsGeometry);
-    fontGeometry.loadCharset(font, 1.0, Charset::ASCII);
+            glyphMetrics.resize(glyphs.size());
+            for (size_t i = 0; i < glyphs.size(); ++i) {
+                const auto& g = glyphs[i];
+                GlyphMetric& metric = glyphMetrics[i];
 
-    // Edge coloring
-    for (auto& g : glyphsGeometry)
-        g.edgeColoring(&edgeColoringInkTrap, 3.0, 0);
+                // Get glyph rectangle in atlas (pixel coordinates)
+                double l, b, r, t;
+                g.getQuadAtlasBounds(l, b, r, t);
+                metric.u0 = float(l) / float(atlasWidth);
+                metric.v0 = float(b) / float(atlasHeight);
+                metric.u1 = float(r) / float(atlasWidth);
+                metric.v1 = float(t) / float(atlasHeight);
 
-    // Pack glyphs
-    TightAtlasPacker packer;
-    packer.setDimensionsConstraint(DimensionsConstraint::SQUARE);
-    packer.setMinimumScale(size);
-    packer.setPixelRange(2.0);
-    packer.setMiterLimit(1.0);
-    packer.pack(glyphsGeometry.data(), glyphsGeometry.size());
+                // Get glyph quad for placement offsets (relative to baseline)
+                g.getQuadPlaneBounds(l, b, r, t);
+                metric.offsetX = l;
+                metric.offsetY = b;
+                metric.width = r - l;
+                metric.height = t - b;
+                metric.advance = float(g.getAdvance());
+            }
 
-    int atlasWidth = 0, atlasHeight = 0;
-    packer.getDimensions(atlasWidth, atlasHeight);
 
-    // Generate atlas bitmap
-    ImmediateAtlasGenerator<float, 3, msdfGenerator, BitmapAtlasStorage<byte, 3>> generator(atlasWidth, atlasHeight);
-    GeneratorAttributes attributes;
-    generator.setAttributes(attributes);
-    generator.setThreadCount(4);
-    generator.generate(glyphsGeometry.data(), glyphsGeometry.size());
-
-    const auto& bitmap = generator.atlasStorage();
-    BitmapConstRef<byte, 3> bitmapRef = bitmap;
-
-    // Save atlas for debugging
-    stbi_flip_vertically_on_write(true);
-    stbi_write_png("atlas.png", bitmapRef.width, bitmapRef.height, 3, bitmapRef.pixels, bitmapRef.width * 3);
-
-    textureAtlas.createFromData(bitmapRef.width, bitmapRef.height, bitmapRef.pixels);
-
-    // Compute UVs and glyph offsets manually
-    glyphs.resize(glyphsGeometry.size());
-    for (size_t i = 0; i < glyphsGeometry.size(); ++i) {
-        const auto& g = glyphsGeometry[i];
-        GlyphInfo& info = glyphs[i];
-
-        // Get glyph rectangle in atlas (pixel coordinates)
-        double l, b, r, t;
-        g.getQuadAtlasBounds(l, b, r, t);
-        info.u0 = float(l) / float(atlasWidth);
-        info.v0 = float(b) / float(atlasHeight);
-        info.u1 = float(r) / float(atlasWidth);
-        info.v1 = float(t) / float(atlasHeight);
-
-        // Get glyph quad for placement offsets (relative to baseline)
-        g.getQuadPlaneBounds(l, b, r, t);
-        info.offsetX = l * size;
-        info.offsetY = b * -size;
-        info.advance = float(g.getAdvance());
+            // Cleanup
+            msdfgen::destroyFont(font);
+        }
+        msdfgen::deinitializeFreetype(ft);
     }
-
-    destroyFont(font);
-    deinitializeFreetype(ft);
-    textRenderScale = size;
-
-    spdlog::info("MSDF atlas generated: {}x{}", atlasWidth, atlasHeight);
     return true;
 }
 
