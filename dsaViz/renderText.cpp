@@ -15,8 +15,8 @@ using namespace msdfgen;
 
 namespace dsaViz {
 
-void RenderText::setup() {
-    if (!generateAtlas("../assets/palatinolinotype_roman.ttf")) {
+void RenderText::setup(float size) {
+    if (!generateAtlas("../assets/palatinolinotype_roman.ttf", size)) {
         spdlog::error("Failed to generate MSDF atlas");
         return;
     }
@@ -64,16 +64,16 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
     glBindVertexArray(vao);
 
     float x = startX;
-    float y = startY;
+    float y = startY - scale;;
 
     for (char c : text) {
         if(c == ' ') {
-            x += 20.0f * scale; // simple space handling
+            x += scale/3; // simple space handling
             continue;
         }
         if(c == '\n') {
             x = startX;
-            y -= 64.0f * scale; // simple newline handling
+            y -= scale;
             continue;
         }
         if (c < 32 || c > 126)  {
@@ -84,11 +84,11 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
 
         const GlyphInfo& g = glyphs[c - 32];
 
-        float xpos = x + g.offsetX * scale;
-        float ypos = y - g.offsetY * scale; // y-down
+        float xpos = x + g.offsetX * scale / textRenderScale;
+        float ypos = y - g.offsetY * scale / textRenderScale; // y-down
         spdlog::info("Offsets for char '{}': offsetX = {}, offsetY = {}", c, g.offsetX, g.offsetY);
-        float w = (g.u1 - g.u0) * textureAtlas.width() * scale;
-        float h = (g.v1 - g.v0) * textureAtlas.height() * scale;
+        float w = (g.u1 - g.u0) * textureAtlas.width() * scale / textRenderScale;
+        float h = (g.v1 - g.v0) * textureAtlas.height() * scale / textRenderScale;
 
         float vertices[6][4] = {
             { xpos,     ypos + h,  g.u0, g.v1 },
@@ -104,13 +104,13 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
         glDrawArrays(GL_TRIANGLES, 0, 6);
 
-        x += w + g.advance * scale;
+        x += w + g.advance * scale / textRenderScale;
     }
 
     glBindVertexArray(0);
 }
 
-bool RenderText::generateAtlas(const char* fontFilename) {
+bool RenderText::generateAtlas(const char* fontFilename, float size) {
     // Initialize FreeType
     FreetypeHandle* ft = initializeFreetype();
     if (!ft) return false;
@@ -129,8 +129,7 @@ bool RenderText::generateAtlas(const char* fontFilename) {
     // Pack glyphs
     TightAtlasPacker packer;
     packer.setDimensionsConstraint(DimensionsConstraint::SQUARE);
-    double scale = 64;
-    packer.setMinimumScale(scale);
+    packer.setMinimumScale(size);
     packer.setPixelRange(2.0);
     packer.setMiterLimit(1.0);
     packer.pack(glyphsGeometry.data(), glyphsGeometry.size());
@@ -170,13 +169,14 @@ bool RenderText::generateAtlas(const char* fontFilename) {
 
         // Get glyph quad for placement offsets (relative to baseline)
         g.getQuadPlaneBounds(l, b, r, t);
-        info.offsetX = l * scale;
-        info.offsetY = b * -scale;
+        info.offsetX = l * size;
+        info.offsetY = b * -size;
         info.advance = float(g.getAdvance());
     }
 
     destroyFont(font);
     deinitializeFreetype(ft);
+    textRenderScale = size;
 
     spdlog::info("MSDF atlas generated: {}x{}", atlasWidth, atlasHeight);
     return true;

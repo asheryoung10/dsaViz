@@ -6,6 +6,8 @@
 #include <dsaViz/renderTriangle.hpp>
 #include <dsaViz/renderText.hpp>
 
+#include <math.h>
+
 void glfw_error_callback(int error, const char* description)
 {
     spdlog::error("GLFW error {}: {}", error, description);
@@ -15,7 +17,7 @@ void glfw_resize_callback(GLFWwindow* window, int width, int height)
 {
     spdlog::info("GLFW window resized to {}x{}", width, height);
     glViewport(0, 0, width, height);
-    dsaViz::RenderState* renderState = static_cast<dsaViz::RenderState*>(glfwGetWindowUserPointer(window));
+    dsaViz::RenderText* renderState = static_cast<dsaViz::RenderText*>(glfwGetWindowUserPointer(window));
     if (renderState) {
         spdlog::info("Re-setup render state due to window resize.");
         glClear(GL_COLOR_BUFFER_BIT);
@@ -26,7 +28,7 @@ void glfw_resize_callback(GLFWwindow* window, int width, int height)
 
 int main()
 {
-    dsaViz::setupLogging(spdlog::level::info);
+    dsaViz::setupLogging(spdlog::level::warn);
     spdlog::info("Logging initialized.");
 
     spdlog::info("Setting glfw error callback.");
@@ -80,8 +82,8 @@ int main()
 
     dsaViz::RenderState* renderState = new dsaViz::RenderTriangle(window);
     renderState->setup();
-    dsaViz::RenderState* renderTextState = new dsaViz::RenderText(window);
-    renderTextState->setup();
+    dsaViz::RenderText* renderTextState = new dsaViz::RenderText(window);
+    renderTextState->setup(256.0f);
     glfwSetWindowUserPointer(window, renderTextState);
 
     spdlog::info("Starting main loop");
@@ -90,7 +92,7 @@ int main()
         glClearColor(0.1f, 0.15f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         renderState->render();
-        renderTextState->render();
+        renderTextState->render("Hello there, dsaViz!\nRendering MSDF text is better!", -0.9f, 0.9f, 0.2f );
 
         glfwSwapBuffers(window);
     }

@@ -15,18 +15,22 @@ public:
     ~RenderText() override = default;
 
     /// @brief Sets up the render state by generating an MSDF atlas.
-    void setup() override;
+    void setup() override {
+        setup(64.0f);
+    };
 
+    void setup(float size);
     /// @brief Renders the text using the generated atlas.
     void render() override {
-        render(textToRender, 0.0f, 0.0f, 0.0015f);
+        render(textToRender, 0.0f, 0.0f, 1.0f);
     }
-    void render(const std::string& text, float startX = -0.9f, float startY = 0.8f, float scale = 0.0015f);
+    void render(const std::string& text, float startX = -0.9f, float startY = 0.8f, float scale = 1.0f);
 
     /// @brief Loads a font and generates an MSDF atlas.
-    bool generateAtlas(const char* fontFilename);
+    bool generateAtlas(const char* fontFilename, float size);
 
 private:
+    float textRenderScale;
     GLFWwindow* windowHandle;
     Texture textureAtlas;
     ShaderProgram msdfShaderProgram;
