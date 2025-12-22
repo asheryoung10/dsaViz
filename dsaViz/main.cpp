@@ -3,97 +3,8 @@
 #include <dsaViz/glfw_dark_mode.hpp>
 
 #include <dsaViz/logSetup.hpp>
-
-#include <msdf-atlas-gen/msdf-atlas-gen.h>
-#include <msdf-atlas-gen/AtlasGenerator.h>
-#include <msdfgen/core/BitmapRef.hpp>
-
 #include <dsaViz/renderTriangle.hpp>
-
-
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#include <stb_image_write.h>
-
-using namespace msdf_atlas;
-
-bool generateAtlas(const char *fontFilename) {
-    bool success = false;
-    // Initialize instance of FreeType library
-    if (msdfgen::FreetypeHandle *ft = msdfgen::initializeFreetype()) {
-        spdlog::info("FreeType library initialized");
-        // Load font file
-        if (msdfgen::FontHandle *font = msdfgen::loadFont(ft, fontFilename)) {
-            spdlog::info("Font '{}' loaded", fontFilename);
-            // Storage for glyph geometry and their coordinates in the atlas
-            std::vector<GlyphGeometry> glyphs;
-            // FontGeometry is a helper class that loads a set of glyphs from a single font.
-            // It can also be used to get additional font metrics, kerning information, etc.
-            FontGeometry fontGeometry(&glyphs);
-            // Load a set of character glyphs:
-            // The second argument can be ignored unless you mix different font sizes in one atlas.
-            // In the last argument, you can specify a charset other than ASCII.
-            // To load specific glyph indices, use loadGlyphs instead.
-            fontGeometry.loadCharset(font, 1.0, Charset::ASCII);
-            // Apply MSDF edge coloring. See edge-coloring.h for other coloring strategies.
-            const double maxCornerAngle = 3.0;
-            for (GlyphGeometry &glyph : glyphs)
-                glyph.edgeColoring(&msdfgen::edgeColoringInkTrap, maxCornerAngle, 0);
-            // TightAtlasPacker class computes the layout of the atlas.
-            TightAtlasPacker packer;
-            // Set atlas parameters:
-            // setDimensions or setDimensionsConstraint to find the best value
-            packer.setDimensionsConstraint(DimensionsConstraint::SQUARE);
-            // setScale for a fixed size or setMinimumScale to use the largest that fits
-            packer.setMinimumScale(24.0);
-            // setPixelRange or setUnitRange
-            packer.setPixelRange(2.0);
-            packer.setMiterLimit(1.0);
-            // Compute atlas layout - pack glyphs
-            packer.pack(glyphs.data(), glyphs.size());
-            // Get final atlas dimensions
-            int width = 0, height = 0;
-            packer.getDimensions(width, height);
-            // The ImmediateAtlasGenerator class facilitates the generation of the atlas bitmap.
-            ImmediateAtlasGenerator<float, 3, msdfGenerator, msdf_atlas::BitmapAtlasStorage<msdf_atlas::byte, 3>>
-            generator(width, height);
-
-            // set attributes, thread count, etc.
-            GeneratorAttributes attributes;
-            generator.setAttributes(attributes);
-            generator.setThreadCount(4);
-
-            // generate the atlas
-            generator.generate(glyphs.data(), glyphs.size());
-
-            const auto &bitmap = generator.atlasStorage(); // AtlasStorage reference
-
-            // convert to BitmapConstRef
-            msdfgen::BitmapConstRef<msdf_atlas::byte, 3> bitmapRef = bitmap;
-
-            // now you can access width, height, pixels
-            stbi_flip_vertically_on_write(true);
-            stbi_write_png(
-                "atlas.png",
-                bitmapRef.width,
-                bitmapRef.height,
-                3,
-                bitmapRef.pixels,
-                bitmapRef.width * 3
-            );
-
-
-            success = true;
-            // Cleanup
-            msdfgen::destroyFont(font);
-        }else {
-            spdlog::error("Failed to load font '{}'", fontFilename);
-        }
-        msdfgen::deinitializeFreetype(ft);
-    }else {
-        spdlog::error("Failed to initialize FreeType library");
-    }
-    return success;
-}
+#include <dsaViz/renderText.hpp>
 
 void glfw_error_callback(int error, const char* description)
 {
@@ -117,7 +28,6 @@ int main()
 {
     dsaViz::setupLogging(spdlog::level::info);
     spdlog::info("Logging initialized.");
-    generateAtlas("../assets/CascadiaCode.ttf");
 
     spdlog::info("Setting glfw error callback.");
     glfwSetErrorCallback(glfw_error_callback);
@@ -170,6 +80,8 @@ int main()
 
     dsaViz::RenderState* renderState = new dsaViz::RenderTriangle(window);
     renderState->setup();
+    dsaViz::RenderState* renderTextState = new dsaViz::RenderText();
+    renderTextState->setup();
     glfwSetWindowUserPointer(window, renderState);
 
     spdlog::info("Starting main loop");
@@ -179,6 +91,7 @@ int main()
         glClearColor(0.1f, 0.15f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         renderState->render();
+        renderTextState->render();
 
         glfwSwapBuffers(window);
     }

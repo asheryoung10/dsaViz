@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(dsaViz
     dsaViz/main.cpp
+    dsaViz/renderText.cpp
     dsaViz/glfw_dark_mode.cpp
     external/src/gl.c
 )

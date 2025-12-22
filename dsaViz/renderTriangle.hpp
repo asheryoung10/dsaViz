@@ -9,8 +9,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-
-
 namespace dsaViz {
 
 /// @brief Render state for rendering a triangle.

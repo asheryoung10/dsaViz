@@ -62,6 +62,36 @@ namespace dsaViz {
             glUseProgram(programID);
         }
 
+        /// @brief  Uploads a color uniform to the shader program.
+        /// @param name 
+        /// @param r 
+        /// @param g 
+        /// @param b 
+        /// @param a 
+        void uploadColor(const char* name, float r, float g, float b, float a) const {
+            GLint location = glGetUniformLocation(programID, name);
+            if (location != -1) {
+                glUniform4f(location, r, g, b, a);
+            } else {
+                spdlog::warn("Uniform '{}' not found in shader program.", name);
+            }
+        }
+
+        /// @brief Uploads an integer uniform to the shader program.
+        /// @param name 
+        /// @param value 
+        void uploadInt(const char* name, int value) const {
+            GLint location = glGetUniformLocation(programID, name);
+            if (location != -1) {
+                glUniform1i(location, value);
+            } else {
+                spdlog::warn("Uniform '{}' not found in shader program.", name);
+            }
+        }
+
+        /// @brief Uploads a 4x4 matrix uniform to the shader program.
+        /// @param name The name of the uniform variable in the shader.
+        /// @param matrix The matrix to upload.
         void uploadGLMMatrix(const char* name, const glm::mat4& matrix) const {
             GLint location = glGetUniformLocation(programID, name);
             if (location != -1) {
