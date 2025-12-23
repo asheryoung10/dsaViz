@@ -13,7 +13,7 @@ using namespace msdfgen;
 namespace dsaViz {
 
 void RenderText::setup(float size) {
-    spdlog::info("Creating atlas.");
+    spdlog::trace("Creating atlas.");
     if (!generateAtlas("../assets/palatinolinotype_roman.ttf", size)) {
         spdlog::error("Failed to generate MSDF atlas");
         return;
@@ -21,7 +21,7 @@ void RenderText::setup(float size) {
 
 
     msdfShaderProgram.loadFromSource(vertexShaderSource, fragmentShaderSource);
-    spdlog::info("Created program");
+    spdlog::trace("Created program");
 
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
@@ -41,15 +41,42 @@ void RenderText::setup(float size) {
 }
 
 
-void RenderText::render(const std::string& text, float startX, float startY, float scale) {
+void RenderText::render(const std::string& text, float startX, float startY, float scale, bool camera, glm::vec4 color) {
     msdfShaderProgram.bind();
     textureAtlas.bind(GL_TEXTURE0);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     msdfShaderProgram.setInt("uTexture", 0);
-    msdfShaderProgram.setVec4("textColor", 1.0f, 1.0f, 1.0f, 1.0f);
-    glm::mat4 projection = context->camera->getViewProjectionMatrix();
+    msdfShaderProgram.setVec4("textColor", color);
+    glm::mat4 projection;
+    if(camera) {
+        projection = context->camera->getViewProjectionMatrix();
+    } else {
+        int width  = context->window.width;
+        int height = context->window.height;
+
+        float aspect = static_cast<float>(width) / static_cast<float>(height);
+
+        // Maintain aspect ratio by expanding X or Y depending on window shape
+        float viewLeft, viewRight, viewBottom, viewTop;
+
+        if (aspect >= 1.0f) {
+            // Wide window → expand X
+            viewLeft  = -aspect;
+            viewRight =  aspect;
+            viewBottom = -1.0f;
+            viewTop    =  1.0f;
+        } else {
+            // Tall window → expand Y
+            viewLeft  = -1.0f;
+            viewRight =  1.0f;
+            viewBottom = -1.0f / aspect;
+            viewTop    =  1.0f / aspect;
+}
+
+projection = glm::ortho(viewLeft, viewRight, viewBottom, viewTop);
+    }
     msdfShaderProgram.setMat4("uTransform", projection);
 
     glBindVertexArray(vao);
@@ -182,7 +209,7 @@ bool RenderText::generateAtlas(const char *fontFilename, float size) {
         }
         msdfgen::deinitializeFreetype(ft);
     }
-    spdlog::info("Texture atlas created for {} with fontsize {} with dimensions ({},{})", 
+    spdlog::trace("Texture atlas created for {} with fontsize {} with dimensions ({},{})", 
         fontFilename, size, textureAtlas.width(), textureAtlas.height());
     return true;
 }

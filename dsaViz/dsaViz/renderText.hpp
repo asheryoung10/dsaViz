@@ -24,21 +24,25 @@ public:
 
     void setup(float size);
 
-    void render() {
-        render("Default Text\n!@#$%^&*()", -1.0f, 1.0f, 0.1f);
+    void render(bool camera) {
+        render("Default Text\n!@#$%^&*()", -1.0f, 1.0f, 0.1f, camera);
     }
 
     #include <format>
     template<typename... Args>
-    void renderFmt(float x, float y, float scale,
+    void renderFmt(float x, float y, float scale, bool camera, glm::vec4 color,
                 std::format_string<Args...> fmt,
                 Args&&... args)
     {
         std::string s = std::format(fmt, std::forward<Args>(args)...);
-        render(s.c_str(), x, y, scale);
+        render(s.c_str(), x, y, scale, camera, color);
     }
 
-    void render(const std::string& text, float startX, float startY, float scale);
+    void render(const std::string& text, float startX, float startY, float scale, bool camera) {
+        render(text, startX, startY, scale, camera, glm::vec4(1.0f));
+    }
+
+    void render(const std::string& text, float startX, float startY, float scale, bool camera, glm::vec4 color);
 
     bool generateAtlas(const char* fontFilename, float size);
 

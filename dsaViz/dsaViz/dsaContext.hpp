@@ -44,6 +44,7 @@ namespace dsaViz {
         InputState input;
         InputSystem* inputSystem;
         RenderText* renderText;
+        RenderText* uiText;
         Camera* camera;
     };
 

@@ -31,7 +31,8 @@ void frameIteration(dsaViz::DSAContext* ctx) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     ctx->renderText->setup(glfwGetTime());
-    ctx->renderText->render();
+    ctx->renderText->render(true);
+    ctx->uiText->renderFmt(-1.0, 1.0, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "Font MSDF Size: {:.2f}", glfwGetTime());
     
     
 
@@ -124,6 +125,8 @@ int main()
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     dsaViz::RenderText renderText(&ctx);
     ctx.renderText = &renderText;
+    dsaViz::RenderText uiText(&ctx);
+    ctx.uiText = &uiText;
     spdlog::info("Text rendering setup.");
 
     dsaViz::Camera camera;
