@@ -13,6 +13,32 @@ namespace dsaViz {
         glfwSetMouseButtonCallback(window, mouseButtonCallback);
         glfwSetCursorPosCallback(window, cursorPosCallback);
         glfwSetScrollCallback(window, scrollCallback);
+        glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+        glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+        setMouseCapture(ctx, true);
+    }
+
+    void InputSystem::setMouseCapture(const DSAContext& ctx, bool enable) {
+        // Assuming 'ctx.window' is your GLFWwindow* or you have a getter like ctx.getWindow()
+        GLFWwindow* window = ctx.window.handle; 
+
+        if (enable) {
+            // Hides cursor and captures it (unlimited movement)
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+            
+            // Try to enable Raw Mouse Motion (disables OS acceleration) for better FPS feel
+            if (glfwRawMouseMotionSupported()) {
+                glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
+            }
+        } else {
+            // Restores normal cursor behavior
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+            
+            // Disable raw motion when in UI mode
+            if (glfwRawMouseMotionSupported()) {
+                glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_FALSE);
+            }
+        }
     }
 
     void InputSystem::beginFrame(DSAContext& ctx) {

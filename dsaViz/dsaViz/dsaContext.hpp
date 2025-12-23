@@ -37,12 +37,14 @@ namespace dsaViz {
 
     class RenderText;
     class InputSystem;
+    class Camera;
     struct DSAContext {
         WindowState window;
         TimeState time;
         InputState input;
         InputSystem* inputSystem;
         RenderText* renderText;
+        Camera* camera;
     };
 
 }

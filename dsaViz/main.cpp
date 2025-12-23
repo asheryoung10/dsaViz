@@ -3,6 +3,7 @@
 #include <dsaViz/input.hpp>
 #include <dsaViz/dsaContext.hpp>
 #include <dsaViz/renderText.hpp>
+#include <dsaViz/camera.hpp>
 
 #include <GLFW/glfw3.h>
 
@@ -22,12 +23,17 @@ void frameIteration(dsaViz::DSAContext* ctx) {
     ctx->inputSystem->beginFrame(*ctx);     // swap buffers
     glfwPollEvents();
 
+    ctx->camera->update(*ctx);
+
 
     // ---- Render ----
     glViewport(0, 0, ctx->window.width, ctx->window.height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    ctx->renderText->setup(glfwGetTime());
     ctx->renderText->render();
+    
+    
 
     glfwSwapBuffers(ctx->window.handle);
 }
@@ -79,6 +85,7 @@ int main()
     }
     spdlog::info("Created window.");
 
+
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
 
@@ -118,6 +125,9 @@ int main()
     dsaViz::RenderText renderText(&ctx);
     ctx.renderText = &renderText;
     spdlog::info("Text rendering setup.");
+
+    dsaViz::Camera camera;
+    ctx.camera = &camera;
 
     // ------------------------------------------------------------
     // Main loop

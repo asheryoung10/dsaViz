@@ -1,4 +1,5 @@
 #include <dsaViz/renderText.hpp>
+#include <dsaViz/camera.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <msdf-atlas-gen/msdf-atlas-gen.h>
@@ -48,7 +49,7 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
 
     msdfShaderProgram.setInt("uTexture", 0);
     msdfShaderProgram.setVec4("textColor", 1.0f, 1.0f, 1.0f, 1.0f);
-    glm::mat4 projection = glm::mat4(1.0f);
+    glm::mat4 projection = context->camera->getViewProjectionMatrix();
     msdfShaderProgram.setMat4("uTransform", projection);
 
     glBindVertexArray(vao);
@@ -108,7 +109,8 @@ bool RenderText::generateAtlas(const char *fontFilename, float size) {
             FontMetrics metrics;
             getFontMetrics(metrics, font);
             float normalizationFactor = metrics.emSize;
-            newLineVerticalShift = metrics.lineHeight;
+            newLineVerticalShift = (metrics.ascenderY - metrics.descenderY)/normalizationFactor;
+
             // Load a set of character glyphs:
             // The second argument can be ignored unless you mix different font sizes in one atlas.
             // In the last argument, you can specify a charset other than ASCII.

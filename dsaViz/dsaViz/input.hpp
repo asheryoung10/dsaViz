@@ -7,6 +7,8 @@ namespace dsaViz {
     public:
         InputSystem() = default;
 
+        void setMouseCapture(const DSAContext& ctx, bool enable);
+
         // Must be called once after window creation
         void initialize(DSAContext& ctx);
 

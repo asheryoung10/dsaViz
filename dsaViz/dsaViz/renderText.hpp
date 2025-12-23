@@ -50,8 +50,8 @@ private:
     GLuint vao = 0;
     GLuint vbo = 0;
 
-const char* vertexShaderSource = R"(
-    #version 330 core
+const char* vertexShaderSource = 
+R"(#version 330 core
     layout(location = 0) in vec2 aPos;
     layout(location = 1) in vec2 aTexCoord;
     uniform mat4 uTransform;
@@ -64,8 +64,8 @@ const char* vertexShaderSource = R"(
     }
 )";
 
-const char* fragmentShaderSource = R"(
-    #version 330 core
+const char* fragmentShaderSource = 
+R"(#version 330 core
     in vec2 vTexCoord;
     out vec4 FragColor;
     uniform sampler2D uTexture;
