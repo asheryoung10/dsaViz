@@ -22,6 +22,12 @@ void frameIteration(dsaViz::DSAContext* ctx) {
     // ---- Input ----
     ctx->inputSystem->beginFrame(*ctx);     // swap buffers
     glfwPollEvents();
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F1)) ctx->camera->setOrientation(glm::vec3(0), glm::quat(1,0,0,0));
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F2)) ctx->camera->setMode(dsaViz::CameraMode::FPS);
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F3)) ctx->camera->setMode(dsaViz::CameraMode::FreeFly);
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F4)) ctx->camera->setMode(dsaViz::CameraMode::AxisAligned);
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_LEFT)) ctx->window.uiScale -= 0.1f;
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_RIGHT)) ctx->window.uiScale += 0.1f;
 
     ctx->camera->update(*ctx);
 
@@ -33,6 +39,8 @@ void frameIteration(dsaViz::DSAContext* ctx) {
     ctx->renderText->setup(glfwGetTime());
     ctx->renderText->render(true);
     ctx->uiText->renderFmt(-1.0, 1.0, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "Font MSDF Size: {:.2f}", glfwGetTime());
+    ctx->uiText->renderFmt(-1.0, 1.0 - 0.1 * ctx->window.uiScale, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "UI Scale: {}", ctx->window.uiScale);
+    ctx->uiText->render(ctx->camera->toString(), -1.0f, 1.0 - 0.2 * ctx->window.uiScale, 0.1f, false, glm::vec4(0, 1.0f, 0, 1.0f));
     
     
 

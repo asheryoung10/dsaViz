@@ -12,7 +12,7 @@ namespace dsaViz {
         GLFWwindow* handle = nullptr;
         int width = 0;
         int height = 0;
-        float dpiScale = 1.0f; // optional, future-proof
+        float uiScale = 1.0f; // optional, future-proof
     };
 
     struct InputState {

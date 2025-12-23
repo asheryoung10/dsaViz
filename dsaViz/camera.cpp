@@ -4,6 +4,7 @@
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/quaternion.hpp>
+#include <spdlog/fmt/fmt.h>
 
 
 namespace dsaViz {
@@ -63,6 +64,28 @@ namespace dsaViz {
         viewMatrix = glm::inverse(glm::translate(glm::mat4(1.0f), position) * rotMat);
     }
 
+
+    std::string Camera::toString() const {
+        return fmt::format(
+            "Camera {{\n"
+            "  mode: {},\n"
+            "  projection: {},\n"
+            "  position: ({:.3f}, {:.3f}, {:.3f}),\n"
+            "  rotation (quat): ({:.3f}, {:.3f}, {:.3f}, {:.3f}),\n"
+            "  yaw: {:.3f}, pitch: {:.3f},\n"
+            "  fovY: {:.3f}, aspect: {:.3f},\n"
+            "  near: {:.4f}, far: {:.1f}\n"
+            "}}",
+            static_cast<int>(mode),
+            static_cast<int>(projectionType),
+            position.x, position.y, position.z,
+            rotation.w, rotation.x, rotation.y, rotation.z,
+            yaw, pitch,
+            fovY, aspect,
+            nearPlane, farPlane
+        );
+    }
+
     const glm::mat4& Camera::getViewMatrix() const { return viewMatrix; }
     const glm::mat4& Camera::getProjectionMatrix() const { return projectionMatrix; }
     glm::mat4 Camera::getViewProjectionMatrix() const { return projectionMatrix * viewMatrix; }
@@ -71,6 +94,7 @@ namespace dsaViz {
     const glm::quat& Camera::getRotation() const { return rotation; }
     void Camera::setPosition(const glm::vec3& pos) { position = pos; }
     void Camera::setRotation(const glm::quat& rot) { rotation = rot; }
+    void Camera::setOrientation(const glm::vec3& pos, const glm::quat& rot) {position = pos; rotation = rot;}
 
     glm::vec3 Camera::getForward() const { return rotation * glm::vec3(0,0,-1); }
     glm::vec3 Camera::getRight() const { return rotation * glm::vec3(1,0,0); }

@@ -53,6 +53,7 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
     if(camera) {
         projection = context->camera->getViewProjectionMatrix();
     } else {
+        scale *= context->window.uiScale;
         int width  = context->window.width;
         int height = context->window.height;
 
@@ -67,12 +68,14 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
             viewRight =  aspect;
             viewBottom = -1.0f;
             viewTop    =  1.0f;
+            startX *= aspect;
         } else {
             // Tall window → expand Y
             viewLeft  = -1.0f;
             viewRight =  1.0f;
             viewBottom = -1.0f / aspect;
             viewTop    =  1.0f / aspect;
+            startY /= aspect;
 }
 
 projection = glm::ortho(viewLeft, viewRight, viewBottom, viewTop);

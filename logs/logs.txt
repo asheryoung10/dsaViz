@@ -1,8 +1,8 @@
-[2025-12-23 13:29:22.559] [info] [:] Logging initialized.
-[2025-12-23 13:29:22.704] [info] [:] Created window.
-[2025-12-23 13:29:22.705] [info] [:] Created dsaViz context.
-[2025-12-23 13:29:22.706] [info] [:] Setup input system.
-[2025-12-23 13:29:23.654] [info] [:] Text rendering setup.
-[2025-12-23 13:29:23.654] [info] [:] Starting main loop.
-[2025-12-23 13:30:01.893] [info] [:] Exited main loop.
-[2025-12-23 13:30:01.993] [info] [:] Clean shutdown complete.
+[2025-12-23 14:14:35.155] [info] [:] Logging initialized.
+[2025-12-23 14:14:35.310] [info] [:] Created window.
+[2025-12-23 14:14:35.311] [info] [:] Created dsaViz context.
+[2025-12-23 14:14:35.312] [info] [:] Setup input system.
+[2025-12-23 14:14:36.248] [info] [:] Text rendering setup.
+[2025-12-23 14:14:36.248] [info] [:] Starting main loop.
+[2025-12-23 14:15:20.065] [info] [:] Exited main loop.
+[2025-12-23 14:15:20.147] [info] [:] Clean shutdown complete.

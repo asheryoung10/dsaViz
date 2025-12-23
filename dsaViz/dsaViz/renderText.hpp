@@ -25,7 +25,7 @@ public:
     void setup(float size);
 
     void render(bool camera) {
-        render("Default Text\n!@#$%^&*()", -1.0f, 1.0f, 0.1f, camera);
+        render("Default Text\n!@#$%^&*()", 0.0f, 0.0f, 0.1f, camera);
     }
 
     #include <format>

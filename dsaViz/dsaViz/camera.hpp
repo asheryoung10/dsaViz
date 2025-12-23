@@ -42,6 +42,9 @@ namespace dsaViz {
         // Optional: set position or rotation directly
         void setPosition(const glm::vec3& pos);
         void setRotation(const glm::quat& rot);
+        void setOrientation(const glm::vec3& pos, const glm::quat& rot);
+
+        std::string toString() const;
 
     private:
         void updateFPS(const DSAContext& ctx, float deltaTime);
