@@ -96,8 +96,8 @@ namespace dsaViz {
     }
 
     void ShaderProgram::setVec4(const std::string& name, float x, float y, float z, float w) {
-    glUniform4f(getUniformLocation(name), x, y, z, w);
-}
+        glUniform4f(getUniformLocation(name), x, y, z, w);
+    }
 
     void ShaderProgram::setMat4(const std::string& name, const glm::mat4& m) {
         glUniformMatrix4fv(

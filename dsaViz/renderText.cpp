@@ -12,12 +12,15 @@ using namespace msdfgen;
 namespace dsaViz {
 
 void RenderText::setup(float size) {
+    spdlog::info("Creating atlas.");
     if (!generateAtlas("../assets/palatinolinotype_roman.ttf", size)) {
         spdlog::error("Failed to generate MSDF atlas");
         return;
     }
 
+
     msdfShaderProgram.loadFromSource(vertexShaderSource, fragmentShaderSource);
+    spdlog::info("Created program");
 
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
@@ -45,17 +48,7 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
 
     msdfShaderProgram.setInt("uTexture", 0);
     msdfShaderProgram.setVec4("textColor", 1.0f, 1.0f, 1.0f, 1.0f);
-    int framebufferWidth = 1000;
-    int framebufferHeight = 1000;
-    float aspectRatio = 1.0f;
-    glm::mat4 projection;
-    if(framebufferWidth > framebufferHeight) {
-        aspectRatio = static_cast<float>(framebufferWidth) / static_cast<float>(framebufferHeight);
-        projection = glm::ortho(-aspectRatio, aspectRatio, -1.0f, 1.0f, -1.0f, 1.0f);
-    }else {
-        aspectRatio = static_cast<float>(framebufferHeight) / static_cast<float>(framebufferWidth);
-        projection = glm::ortho(-1.0f, 1.0f, -aspectRatio, aspectRatio, -1.0f, 1.0f);
-    }
+    glm::mat4 projection = glm::mat4(1.0f);
     msdfShaderProgram.setMat4("uTransform", projection);
 
     glBindVertexArray(vao);
@@ -187,6 +180,8 @@ bool RenderText::generateAtlas(const char *fontFilename, float size) {
         }
         msdfgen::deinitializeFreetype(ft);
     }
+    spdlog::info("Texture atlas created for {} with fontsize {} with dimensions ({},{})", 
+        fontFilename, size, textureAtlas.width(), textureAtlas.height());
     return true;
 }
 

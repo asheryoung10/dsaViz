@@ -35,9 +35,14 @@ namespace dsaViz {
         double scrollY = 0.0;
     };
 
+    class RenderText;
+    class InputSystem;
     struct DSAContext {
         WindowState window;
         TimeState time;
         InputState input;
+        InputSystem* inputSystem;
+        RenderText* renderText;
     };
+
 }

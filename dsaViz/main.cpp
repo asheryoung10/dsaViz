@@ -9,6 +9,37 @@
 void glfw_error_callback(int error, const char* description)
 {
     spdlog::error("GLFW error {}: {}", error, description);
+
+}
+
+void frameIteration(dsaViz::DSAContext* ctx) {
+    // ---- Time ----
+    double newTime = glfwGetTime();
+    ctx->time.delta = newTime - ctx->time.now;
+    ctx->time.now   = newTime;
+
+    // ---- Input ----
+    ctx->inputSystem->beginFrame(*ctx);     // swap buffers
+    glfwPollEvents();
+
+
+    // ---- Render ----
+    glViewport(0, 0, ctx->window.width, ctx->window.height);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    ctx->renderText->render();
+
+    glfwSwapBuffers(ctx->window.handle);
+}
+void glfw_window_resize_callback(GLFWwindow* window, int width, int height) {
+    dsaViz::DSAContext* context = (dsaViz::DSAContext*) glfwGetWindowUserPointer(window);
+    if(!context) {
+        spdlog::warn("glfwGetWindowUserPointer(window) not valid.");
+        return;
+    }
+    context->window.width = width;
+    context->window.height = height;
+    frameIteration(context);
 }
 
 int main()
@@ -46,6 +77,7 @@ int main()
         glfwTerminate();
         return -1;
     }
+    spdlog::info("Created window.");
 
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
@@ -68,41 +100,31 @@ int main()
     );
 
     ctx.time.now = glfwGetTime();
+    spdlog::info("Created dsaViz context.");
 
     // ------------------------------------------------------------
     // Input system init (registers callbacks)
     // ------------------------------------------------------------
     dsaViz::InputSystem input;
     input.initialize(ctx);
+    glfwSetWindowSizeCallback(window, glfw_window_resize_callback);
+    ctx.inputSystem = &input;
+    spdlog::info("Setup input system.");
 
     // ------------------------------------------------------------
     // App / State
     // ------------------------------------------------------------
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-    dsaViz::RenderText renderText;
-    renderText.setup();
+    dsaViz::RenderText renderText(&ctx);
+    ctx.renderText = &renderText;
+    spdlog::info("Text rendering setup.");
 
     // ------------------------------------------------------------
     // Main loop
     // ------------------------------------------------------------
+    spdlog::info("Starting main loop.");
     while (!glfwWindowShouldClose(window)) {
-        // ---- Time ----
-        double newTime = glfwGetTime();
-        ctx.time.delta = newTime - ctx.time.now;
-        ctx.time.now   = newTime;
-
-        // ---- Input ----
-        input.beginFrame(ctx);     // swap buffers
-        glfwPollEvents();
-
-
-        // ---- Render ----
-        glViewport(0, 0, ctx.window.width, ctx.window.height);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        renderText.render();
-
-        glfwSwapBuffers(window);
+        frameIteration(&ctx);
     }
 
     spdlog::info("Exited main loop.");
@@ -116,3 +138,5 @@ int main()
     spdlog::info("Clean shutdown complete.");
     return 0;
 }
+
+

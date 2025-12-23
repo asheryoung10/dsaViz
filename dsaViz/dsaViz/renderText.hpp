@@ -1,4 +1,6 @@
 #pragma once
+#include <glad/gl.h>
+#include <dsaViz/dsaContext.hpp>
 #include <dsaViz/shaderProgram.hpp>
 #include <dsaViz/texture.hpp>
 #include <spdlog/spdlog.h>
@@ -10,17 +12,20 @@ namespace dsaViz {
 
 class RenderText{
 public:
-    RenderText() = default;
-    ~RenderText() = default;
 
-    void setup() {
-        setup(64.0f);
-    };
+    RenderText(DSAContext* context, float fontSize) {
+        this->context = context;
+        setup(fontSize);
+    }
+
+    RenderText(DSAContext* context) : RenderText(context, 256.0f) {}
+
+    ~RenderText() = default;
 
     void setup(float size);
 
     void render() {
-        render("Default Text\n!@#$%^&*()", 0.0f, 0.0f, 0.1f);
+        render("Default Text\n!@#$%^&*()", -1.0f, 1.0f, 0.1f);
     }
 
     #include <format>
@@ -38,6 +43,7 @@ public:
     bool generateAtlas(const char* fontFilename, float size);
 
 private:
+    DSAContext* context;
     Texture textureAtlas;
     ShaderProgram msdfShaderProgram;
 

@@ -1,3 +1,11 @@
-[2025-12-23 11:43:18.605] [info] [:] Logging initialized.
-[2025-12-23 11:43:24.568] [info] [:] Exited main loop.
-[2025-12-23 11:43:24.663] [info] [:] Clean shutdown complete.
+[2025-12-23 12:19:53.381] [info] [:] Logging initialized.
+[2025-12-23 12:19:53.517] [info] [:] Created window.
+[2025-12-23 12:19:53.517] [info] [:] Created dsaViz context.
+[2025-12-23 12:19:53.517] [info] [:] Setup input system.
+[2025-12-23 12:19:53.518] [info] [:] Creating atlas.
+[2025-12-23 12:19:53.987] [info] [:] Texture atlas created for ../assets/palatinolinotype_roman.ttf with fontsize 256 with dimensions (1475,1475)
+[2025-12-23 12:19:53.991] [info] [:] Created program
+[2025-12-23 12:19:53.991] [info] [:] Text rendering setup.
+[2025-12-23 12:19:53.991] [info] [:] Starting main loop.
+[2025-12-23 12:20:04.321] [info] [:] Exited main loop.
+[2025-12-23 12:20:04.404] [info] [:] Clean shutdown complete.
