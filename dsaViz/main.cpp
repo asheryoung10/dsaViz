@@ -36,11 +36,11 @@ void frameIteration(dsaViz::DSAContext* ctx) {
     glViewport(0, 0, ctx->window.width, ctx->window.height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    ctx->renderText->setup(glfwGetTime());
     ctx->renderText->render(true);
-    ctx->uiText->renderFmt(-1.0, 1.0, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "Font MSDF Size: {:.2f}", glfwGetTime());
+    ctx->uiText->renderFmt(-1.0, 1.0, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "Current Time {:.2f}", glfwGetTime());
     ctx->uiText->renderFmt(-1.0, 1.0 - 0.1 * ctx->window.uiScale, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "UI Scale: {}", ctx->window.uiScale);
-    ctx->uiText->render(ctx->camera->toString(), -1.0f, 1.0 - 0.2 * ctx->window.uiScale, 0.1f, false, glm::vec4(0, 1.0f, 0, 1.0f));
+    ctx->uiText->renderFmt(-1.0, 1.0 - 0.2 * ctx->window.uiScale, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "FPS: {}", 1.0f / ctx->time.delta);
+    ctx->uiText->render(ctx->camera->toString(), -1.0f, 1.0 - 0.3 * ctx->window.uiScale, 0.1f, false, glm::vec4(0, 1.0f, 0, 1.0f));
     
     
 
@@ -96,7 +96,7 @@ int main()
 
 
     glfwMakeContextCurrent(window);
-    glfwSwapInterval(1);
+    glfwSwapInterval(0);
 
     if (!gladLoadGL(glfwGetProcAddress)) {
         spdlog::critical("Failed to initialize OpenGL.");
@@ -131,9 +131,9 @@ int main()
     // App / State
     // ------------------------------------------------------------
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-    dsaViz::RenderText renderText(&ctx);
+    dsaViz::RenderText renderText(&ctx, 64, "../assets/palatinolinotype_roman.ttf");
     ctx.renderText = &renderText;
-    dsaViz::RenderText uiText(&ctx);
+    dsaViz::RenderText uiText(&ctx, 64);
     ctx.uiText = &uiText;
     spdlog::info("Text rendering setup.");
 

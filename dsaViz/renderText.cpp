@@ -12,9 +12,9 @@ using namespace msdfgen;
 
 namespace dsaViz {
 
-void RenderText::setup(float size) {
+void RenderText::setup(float size, const char* fontFile) {
     spdlog::trace("Creating atlas.");
-    if (!generateAtlas("../assets/palatinolinotype_roman.ttf", size)) {
+    if (!generateAtlas(fontFile, size)) {
         spdlog::error("Failed to generate MSDF atlas");
         return;
     }
@@ -147,7 +147,7 @@ bool RenderText::generateAtlas(const char *fontFilename, float size) {
             // To load specific glyph indices, use loadGlyphs instead.
             fontGeometry.loadCharset(font, 1.0, Charset::ASCII);
             // Apply MSDF edge coloring. See edge-coloring.h for other coloring strategies.
-            const double maxCornerAngle = 3.0;
+            const double maxCornerAngle = 5.0;
             for (GlyphGeometry &glyph : glyphs)
                 glyph.edgeColoring(&msdfgen::edgeColoringInkTrap, maxCornerAngle, 0);
             // TightAtlasPacker class computes the layout of the atlas.

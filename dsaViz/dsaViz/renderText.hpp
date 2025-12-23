@@ -13,16 +13,20 @@ namespace dsaViz {
 class RenderText{
 public:
 
-    RenderText(DSAContext* context, float fontSize) {
+    RenderText(DSAContext* context, float fontSize) : RenderText(context, fontSize, "../assets/JetBrainsMono-Bold.ttf") {
+
+    }
+
+    RenderText(DSAContext* context, float fontSize, const char* fontFile) {
         this->context = context;
-        setup(fontSize);
+        setup(fontSize, fontFile);
     }
 
     RenderText(DSAContext* context) : RenderText(context, 256.0f) {}
 
     ~RenderText() = default;
 
-    void setup(float size);
+    void setup(float size, const char* fontFile);
 
     void render(bool camera) {
         render("Default Text\n!@#$%^&*()", 0.0f, 0.0f, 0.1f, camera);
@@ -70,25 +74,31 @@ R"(#version 330 core
 
 const char* fragmentShaderSource = 
 R"(#version 330 core
-    in vec2 vTexCoord;
-    out vec4 FragColor;
-    uniform sampler2D uTexture;
-    uniform vec4 textColor; // color of the text
+in vec2 vTexCoord;
+out vec4 FragColor;
 
-    float median(float r, float g, float b) {
-        return max(min(r,g), min(max(r,g), b));
-    }
+uniform sampler2D uTexture;
+uniform vec4 textColor;
 
-    void main() {
-        vec3 sample = texture(uTexture, vTexCoord).rgb;
-        float sd = median(sample.r, sample.g, sample.b);
+float median(float r, float g, float b) {
+    return max(min(r, g), min(max(r, g), b));
+}
 
-        // Anti-aliased alpha from MSDF
-        float pxRange = 0.02; // adjust for edge softness
-        float alpha = smoothstep(0.5 - pxRange, 0.5 + pxRange, sd);
+void main() {
+    vec3 msdf = texture(uTexture, vTexCoord).rgb;
+    float sd = median(msdf.r, msdf.g, msdf.b);
 
-        FragColor = vec4(textColor.rgb, alpha); // correct alpha from MSDF
-    }
+    // This is the important part:
+    // sd is a normalized signed distance, 0.5 is the edge.
+    // We need (sd - 0.5) to know how far from the edge we are.
+    float pxRange = 4.0; // your MSDF "range" in pixels
+
+    float w = fwidth(sd);                           // derivative in screen space
+    float dist = (sd - 0.5) * pxRange / w;          // signed distance in pixel units
+    float alpha = clamp(dist + 0.5, 0.0, 1.0);      // remap to [0,1]
+
+    FragColor = vec4(textColor.rgb, alpha);
+}
 )";
 
 
