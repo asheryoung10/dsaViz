@@ -5,8 +5,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(dsaViz
     dsaViz/main.cpp
+    dsaViz/input.cpp
+    dsaViz/shaderProgram.cpp
+    dsaViz/texture.cpp
     dsaViz/renderText.cpp
-    dsaViz/glfw_dark_mode.cpp
+
     external/src/gl.c
 )
 
@@ -15,7 +18,7 @@ include(cmake/FetchDeps.cmake)
 
 # Put ./dsaViz in the include path.
 target_include_directories(dsaViz PRIVATE
-    ./
+    ./dsaViz
     ./external/include
 )
 

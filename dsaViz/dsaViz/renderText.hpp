@@ -1,5 +1,4 @@
 #pragma once
-#include <dsaViz/renderState.hpp>
 #include <dsaViz/shaderProgram.hpp>
 #include <dsaViz/texture.hpp>
 #include <spdlog/spdlog.h>
@@ -9,23 +8,22 @@
 
 namespace dsaViz {
 
-class RenderText : public RenderState {
+class RenderText{
 public:
-    RenderText(GLFWwindow* windowHandle) : vao(0), vbo(0), windowHandle(windowHandle) {};
-    ~RenderText() override = default;
+    RenderText() = default;
+    ~RenderText() = default;
 
-    /// @brief Sets up the render state by generating an MSDF atlas.
-    void setup() override {
+    void setup() {
         setup(64.0f);
     };
 
     void setup(float size);
-    /// @brief Renders the text using the generated atlas.
-    void render() override {
-        render(textToRender, 0.0f, 0.0f, 0.1f);
-    }
-    #include <format>
 
+    void render() {
+        render("Default Text\n!@#$%^&*()", 0.0f, 0.0f, 0.1f);
+    }
+
+    #include <format>
     template<typename... Args>
     void renderFmt(float x, float y, float scale,
                 std::format_string<Args...> fmt,
@@ -37,12 +35,9 @@ public:
 
     void render(const std::string& text, float startX, float startY, float scale);
 
-    /// @brief Loads a font and generates an MSDF atlas.
     bool generateAtlas(const char* fontFilename, float size);
 
 private:
-    float textRenderScale;
-    GLFWwindow* windowHandle;
     Texture textureAtlas;
     ShaderProgram msdfShaderProgram;
 
@@ -103,7 +98,6 @@ const char* fragmentShaderSource = R"(
     float newLineVerticalShift;
 
     std::vector<GlyphInfo> glyphs;
-    std::string textToRender = "This is dsaViz rendering MSDF text!\n!@#$%^&*()_+1234567890";
 };
 
-} // namespace dsaViz
+}

@@ -1,9 +1,5 @@
 #include <dsaViz/renderText.hpp>
-
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image_write.h>
-#include <stb_image.h>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include <msdf-atlas-gen/msdf-atlas-gen.h>
 #include <msdf-atlas-gen/AtlasGenerator.h>
@@ -21,7 +17,7 @@ void RenderText::setup(float size) {
         return;
     }
 
-    msdfShaderProgram.createFromSource(vertexShaderSource, fragmentShaderSource);
+    msdfShaderProgram.loadFromSource(vertexShaderSource, fragmentShaderSource);
 
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
@@ -42,15 +38,15 @@ void RenderText::setup(float size) {
 
 
 void RenderText::render(const std::string& text, float startX, float startY, float scale) {
-    msdfShaderProgram.use();
+    msdfShaderProgram.bind();
     textureAtlas.bind(GL_TEXTURE0);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    msdfShaderProgram.uploadInt("uTexture", 0);
-    msdfShaderProgram.uploadColor("textColor", 1.0f, 1.0f, 1.0f, 1.0f);
-    int framebufferWidth, framebufferHeight;
-    glfwGetFramebufferSize(windowHandle, &framebufferWidth, &framebufferHeight);
+    msdfShaderProgram.setInt("uTexture", 0);
+    msdfShaderProgram.setVec4("textColor", 1.0f, 1.0f, 1.0f, 1.0f);
+    int framebufferWidth = 1000;
+    int framebufferHeight = 1000;
     float aspectRatio = 1.0f;
     glm::mat4 projection;
     if(framebufferWidth > framebufferHeight) {
@@ -60,7 +56,7 @@ void RenderText::render(const std::string& text, float startX, float startY, flo
         aspectRatio = static_cast<float>(framebufferHeight) / static_cast<float>(framebufferWidth);
         projection = glm::ortho(-1.0f, 1.0f, -aspectRatio, aspectRatio, -1.0f, 1.0f);
     }
-    msdfShaderProgram.uploadGLMMatrix("uTransform", projection);
+    msdfShaderProgram.setMat4("uTransform", projection);
 
     glBindVertexArray(vao);
 
@@ -161,7 +157,7 @@ bool RenderText::generateAtlas(const char *fontFilename, float size) {
             // The atlas bitmap can now be retrieved via atlasStorage as a BitmapConstRef.
             // The glyphs array (or fontGeometry) contains positioning data for typesetting text.
             BitmapConstRef<byte, 3> bitmapRef = generator.atlasStorage();
-            textureAtlas.createFromData(bitmapRef.width, bitmapRef.height, bitmapRef.pixels);
+            textureAtlas.createFromMemory(bitmapRef.width, bitmapRef.height, TextureFormat::RGB8, bitmapRef.pixels);
 
             glyphMetrics.resize(glyphs.size());
             for (size_t i = 0; i < glyphs.size(); ++i) {
