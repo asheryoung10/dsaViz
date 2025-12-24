@@ -12,6 +12,8 @@ namespace dsaViz {
         GLFWwindow* handle = nullptr;
         int width = 0;
         int height = 0;
+        int framebufferWidth = 0;
+        int framebufferHeight = 0;
         float uiScale = 0.5f; // optional, future-proof
         bool vsync = true;
         bool mouseCaptured = true;

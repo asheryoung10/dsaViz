@@ -16,7 +16,9 @@ namespace dsaViz {
           rotation(1,0,0,0),
           yaw(0.0f),
           pitch(0.0f),
+          roll(0.0f),
           moveSpeed(5.0f),
+          fineSpeed(0.1f),
           mouseSpeed(0.002f)
     {
         fovY = glm::radians(60.0f);
@@ -72,7 +74,7 @@ namespace dsaViz {
             "  projection: {},\n"
             "  position: ({:.3f}, {:.3f}, {:.3f}),\n"
             "  rotation (quat): ({:.3f}, {:.3f}, {:.3f}, {:.3f}),\n"
-            "  yaw: {:.3f}, pitch: {:.3f},\n"
+            "  yaw: {:.3f}, pitch: {:.3f}, roll: {:.3f},\n"
             "  fovY: {:.3f}, aspect: {:.3f},\n"
             "  near: {:.4f}, far: {:.1f}\n"
             "}}",
@@ -80,7 +82,7 @@ namespace dsaViz {
             static_cast<int>(projectionType),
             position.x, position.y, position.z,
             rotation.w, rotation.x, rotation.y, rotation.z,
-            yaw, pitch,
+            yaw, pitch, roll,
             fovY, aspect,
             nearPlane, farPlane
         );
@@ -113,7 +115,7 @@ namespace dsaViz {
         if (ctx.input.keys[GLFW_KEY_SPACE]) dir += getUp();
 
         float speed = moveSpeed;
-        if(ctx.input.keys[GLFW_KEY_LEFT_CONTROL]) speed /= 100.0f;
+        if(ctx.input.keys[GLFW_KEY_LEFT_CONTROL]) speed = fineSpeed;
 
         if (glm::length(dir) > 0.001f)
             position += glm::normalize(dir) * speed * dt;
@@ -121,6 +123,7 @@ namespace dsaViz {
         // Mouse look
         yaw   += static_cast<float>(ctx.input.mouseX - ctx.input.prevMouseX) * mouseSpeed;
         pitch += static_cast<float>(ctx.input.mouseY - ctx.input.prevMouseY) * mouseSpeed;
+        roll = 0.0;
 
         // Limit pitch to avoid gimbal
         if(pitch > glm::half_pi<float>() - 0.01f) pitch = glm::half_pi<float>() - 0.01f;
@@ -138,35 +141,52 @@ namespace dsaViz {
         if (ctx.input.keys[GLFW_KEY_S]) dir -= getForward();
         if (ctx.input.keys[GLFW_KEY_A]) dir -= getRight();
         if (ctx.input.keys[GLFW_KEY_D]) dir += getRight();
-        if (ctx.input.keys[GLFW_KEY_Q]) dir -= getUp();
-        if (ctx.input.keys[GLFW_KEY_E]) dir += getUp();
+        if (ctx.input.keys[GLFW_KEY_LEFT_SHIFT]) dir -= getUp();
+        if (ctx.input.keys[GLFW_KEY_SPACE]) dir += getUp();
+        float speed = moveSpeed;
+        if(ctx.input.keys[GLFW_KEY_LEFT_CONTROL]) speed = fineSpeed;
 
         if (glm::length(dir) > 0.001f)
-            position += glm::normalize(dir) * moveSpeed * dt;
+            position += glm::normalize(dir) * speed * dt;
 
         // Mouse rotation
-        yaw   += static_cast<float>(ctx.input.mouseX - ctx.input.prevMouseX) * mouseSpeed;
-        pitch += static_cast<float>(ctx.input.mouseY - ctx.input.prevMouseY) * mouseSpeed;
-
-        rotation = glm::quat(glm::vec3(-pitch, -yaw, 0.0f));
-    }
+        float yaw   = static_cast<float>(ctx.input.mouseX - ctx.input.prevMouseX) * mouseSpeed;
+        float pitch = static_cast<float>(ctx.input.mouseY - ctx.input.prevMouseY) * mouseSpeed;
+        float roll = 0;
+        if(ctx.input.keys[GLFW_KEY_Q]) roll += mouseSpeed * dt * 1000;
+        if(ctx.input.keys[GLFW_KEY_E]) roll -= mouseSpeed * dt * 1000;
+        if(ctx.input.keys[GLFW_KEY_LEFT_CONTROL]) roll /= 2;
+        rotation = glm::normalize(rotation * glm::quat(glm::vec3(-pitch, -yaw, roll)));
+        glm::vec3 euler = glm::eulerAngles(rotation);
+        // GLM returns XYZ = pitch, yaw, roll
+        this->yaw   = euler.y;
+        this->pitch = euler.x;
+        this->roll  = euler.z;
+} 
+       
 
     // ------------------------------------------------------------
     // Axis-aligned movement: no rotation
     void Camera::updateAxisAligned(const DSAContext& ctx, float dt) {
         glm::vec3 dir(0.0f);
 
-        if (ctx.input.keys[GLFW_KEY_W]) dir += glm::vec3(0,0,-1);
-        if (ctx.input.keys[GLFW_KEY_S]) dir += glm::vec3(0,0,1);
-        if (ctx.input.keys[GLFW_KEY_A]) dir += glm::vec3(-1,0,0);
-        if (ctx.input.keys[GLFW_KEY_D]) dir += glm::vec3(1,0,0);
-        if (ctx.input.keys[GLFW_KEY_Q]) dir += glm::vec3(0,-1,0);
-        if (ctx.input.keys[GLFW_KEY_E]) dir += glm::vec3(0,1,0);
-
+        if (ctx.input.keys[GLFW_KEY_W]) dir += getForward();
+        if (ctx.input.keys[GLFW_KEY_S]) dir -= getForward();
+        if (ctx.input.keys[GLFW_KEY_A]) dir -= getRight();
+        if (ctx.input.keys[GLFW_KEY_D]) dir += getRight();
+        if (ctx.input.keys[GLFW_KEY_LEFT_SHIFT]) dir -= getUp();
+        if (ctx.input.keys[GLFW_KEY_SPACE]) dir += getUp();
+        float speed = moveSpeed;
+        if(ctx.input.keys[GLFW_KEY_LEFT_CONTROL]) speed = fineSpeed;
+        
         if (glm::length(dir) > 0.001f)
-            position += glm::normalize(dir) * moveSpeed * dt;
+            position += glm::normalize(dir) * speed * dt;
+        
+        float mouseSpeed = this->mouseSpeed / (ctx.input.keys[GLFW_KEY_LEFT_CONTROL] ? 2 : 1);
+        if(ctx.input.keys[GLFW_KEY_Q] && ctx.input.keys[GLFW_KEY_E]) roll = 0;
+        else if(ctx.input.keys[GLFW_KEY_Q]) roll += mouseSpeed * dt * 1000;
+        else if(ctx.input.keys[GLFW_KEY_E]) roll -= mouseSpeed * dt * 1000;
 
-        rotation = glm::quat(1,0,0,0); // no rotation
+        rotation = glm::angleAxis(roll, glm::vec3(0,0,1));
     }
-
 }

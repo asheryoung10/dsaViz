@@ -74,9 +74,11 @@ namespace dsaViz {
         // Internal: yaw/pitch for mouse rotation
         float yaw;   // around Y axis
         float pitch; // around X axis
+        float roll;
 
         // Settings
         float moveSpeed;     // units per second
+        float fineSpeed;
         float mouseSpeed;    // radians per pixel
     };
 }

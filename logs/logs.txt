@@ -1,0 +1,8 @@
+[2025-12-23 21:26:15.753] [info] [:] Logging initialized.
+[2025-12-23 21:26:15.891] [info] [:] Created window.
+[2025-12-23 21:26:15.892] [info] [:] Created dsaViz context.
+[2025-12-23 21:26:15.894] [info] [:] Setup input system.
+[2025-12-23 21:26:16.028] [info] [:] Text rendering setup.
+[2025-12-23 21:26:16.029] [info] [:] Starting main loop.
+[2025-12-23 21:28:35.832] [info] [:] Exited main loop.
+[2025-12-23 21:28:35.928] [info] [:] Clean shutdown complete.
