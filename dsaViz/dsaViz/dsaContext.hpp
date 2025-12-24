@@ -13,6 +13,8 @@ namespace dsaViz {
         int width = 0;
         int height = 0;
         float uiScale = 0.5f; // optional, future-proof
+        bool vsync = true;
+        bool mouseCaptured = true;
     };
 
     struct InputState {

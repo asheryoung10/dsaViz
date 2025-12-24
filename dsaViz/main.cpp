@@ -22,10 +22,55 @@ void frameIteration(dsaViz::DSAContext* ctx) {
     // ---- Input ----
     ctx->inputSystem->beginFrame(*ctx);     // swap buffers
     glfwPollEvents();
+
+
     if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F1)) ctx->camera->setOrientation(glm::vec3(0), glm::quat(1,0,0,0));
     if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F2)) ctx->camera->setMode(dsaViz::CameraMode::FPS);
     if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F3)) ctx->camera->setMode(dsaViz::CameraMode::FreeFly);
     if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F4)) ctx->camera->setMode(dsaViz::CameraMode::AxisAligned);
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F5)) {
+        if(ctx->window.vsync) {
+            glfwSwapInterval(0);
+            ctx->window.vsync = false;
+        } else {
+            glfwSwapInterval(1);
+            ctx->window.vsync = true;
+        }
+    }
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_ESCAPE)) {
+        bool newCaptureState = !ctx->window.mouseCaptured;
+        ctx->inputSystem->setMouseCapture(*ctx, newCaptureState);
+        ctx->window.mouseCaptured = newCaptureState;
+    }
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F11)) {
+        GLFWwindow* window = ctx->window.handle;
+        if(glfwGetWindowMonitor(window)) {
+            // Currently fullscreen, switch to windowed
+            glfwSetWindowMonitor(
+                window,
+                nullptr,
+                100, 100,
+                ctx->window.width,
+                ctx->window.height,
+                GLFW_DONT_CARE
+            );
+        } else {
+            // Currently windowed, switch to fullscreen
+            GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+            const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+            glfwSetWindowMonitor(
+                window,
+                monitor,
+                0, 0,
+                mode->width,
+                mode->height,
+                mode->refreshRate
+            );
+        }
+    }
+    if(ctx->inputSystem->keyDown(*ctx, GLFW_KEY_F12)) glfwSetWindowShouldClose(ctx->window.handle, GLFW_TRUE);
+
+    
     if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_LEFT)) ctx->window.uiScale -= 0.1f;
     if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_RIGHT)) ctx->window.uiScale += 0.1f;
 
@@ -40,7 +85,10 @@ void frameIteration(dsaViz::DSAContext* ctx) {
     ctx->uiText->renderFmt(-1.0, 1.0, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "Current Time {:.2f}", glfwGetTime());
     ctx->uiText->renderFmt(-1.0, 1.0 - 0.1 * ctx->window.uiScale, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "UI Scale: {}", ctx->window.uiScale);
     ctx->uiText->renderFmt(-1.0, 1.0 - 0.2 * ctx->window.uiScale, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "FPS: {}", 1.0f / ctx->time.delta);
-    ctx->uiText->render(ctx->camera->toString(), -1.0f, 1.0 - 0.3 * ctx->window.uiScale, 0.1f, false, glm::vec4(0, 1.0f, 0, 1.0f));
+    ctx->uiText->renderFmt(-1.0, 1.0 - 0.3 * ctx->window.uiScale, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "VSync: {}", ctx->window.vsync ? "ON" : "OFF");
+    ctx->uiText->renderFmt(-1.0, 1.0 - 0.4 * ctx->window.uiScale, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "Fullscreen: {}", glfwGetWindowMonitor(ctx->window.handle) ? "ON" : "OFF");
+    ctx->uiText->renderFmt(-1.0, 1.0 - 0.5 * ctx->window.uiScale, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "Mouse Capture: {}", ctx->window.mouseCaptured ? "ON" : "OFF");
+    ctx->uiText->render(ctx->camera->toString(), -1.0f, 1.0 - 0.6 * ctx->window.uiScale, 0.1f, false, glm::vec4(0, 1.0f, 0, 1.0f));
     
     
 
@@ -97,7 +145,7 @@ int main()
 
 
     glfwMakeContextCurrent(window);
-    glfwSwapInterval(0);
+    glfwSwapInterval(1);
 
     if (!gladLoadGL(glfwGetProcAddress)) {
         spdlog::critical("Failed to initialize OpenGL.");
