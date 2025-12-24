@@ -30,6 +30,7 @@ namespace dsaViz {
 
         // Update camera state from input + deltaTime
         void update(const DSAContext& ctx);
+        void updateAspectRatio(int width, int height);
 
         // Get view / projection matrices
         const glm::mat4& getViewMatrix() const;

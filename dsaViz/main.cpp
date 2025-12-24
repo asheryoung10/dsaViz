@@ -5,6 +5,8 @@
 #include <dsaViz/renderText.hpp>
 #include <dsaViz/camera.hpp>
 #include <dsaViz/audioEngine.hpp>
+#include <dsaViz/renderCircle.hpp>
+#include <dsaViz/random.hpp>
 
 #include <GLFW/glfw3.h>
 
@@ -85,7 +87,15 @@ void frameIteration(dsaViz::DSAContext* ctx) {
     glViewport(0, 0, ctx->window.width, ctx->window.height);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    ctx->renderText->render(true);
+    ctx->renderCircle->render(glm::vec2(0,0), 0, glm::vec2(1), glm::vec4(0.4, 0.9, 0.4, 1), true);
+    ctx->renderCircle->render(glm::vec2(0,0), 0, glm::vec2(0.99), glm::vec4(1.0, 1.0, 1.0, 1), true);
+    ctx->renderText->render("First\nText", -0.5, 0.5, 0.25, true, glm::vec4(0.5, 0.7, 0.7, 1));
+
+    for(int i = 0; i < 10000; i++) {
+        ctx->renderCircle->render(ctx->random->vec2(1, 3), 0, ctx->random->vec2(0.9, 1), glm::vec4(ctx->random->floatRange(0, 1), 1, 1, 1), true);
+    }
+    
+
     ctx->uiText->renderFmt(-1.0, 1.0, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "Current Time {:.2f}", glfwGetTime());
     ctx->uiText->renderFmt(-1.0, 1.0 - 0.1 * ctx->window.uiScale, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "UI Scale: {}", ctx->window.uiScale);
     ctx->uiText->renderFmt(-1.0, 1.0 - 0.2 * ctx->window.uiScale, 0.1, false, glm::vec4(0, 1.0f, 0, 1.0f), "FPS: {}", 1.0f / ctx->time.delta);
@@ -107,6 +117,7 @@ void glfw_framebuffer_resize_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0,width, height);
     context->window.width = width;
     context->window.height = height;
+    context->camera->updateAspectRatio(width, height);
     frameIteration(context);
 }
 
@@ -184,17 +195,24 @@ int main()
     // App / State
     // ------------------------------------------------------------
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glEnable(GL_DEPTH_TEST);
     dsaViz::RenderText renderText(&ctx, 64, "../assets/palatinolinotype_roman.ttf");
     ctx.renderText = &renderText;
     dsaViz::RenderText uiText(&ctx, 64);
     ctx.uiText = &uiText;
     spdlog::info("Text rendering setup.");
 
+    dsaViz::RenderCircle renderCircle(&ctx);
+    ctx.renderCircle = &renderCircle;
+
     dsaViz::Camera camera;
     ctx.camera = &camera;
 
     dsaViz::AudioEngine engine;
     ctx.audioEngine = &engine;
+
+    dsaViz::Random random;
+    ctx.random = &random;
 
     // ------------------------------------------------------------
     // Main loop

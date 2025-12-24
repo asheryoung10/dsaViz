@@ -35,6 +35,19 @@ namespace dsaViz {
 
     void Camera::setMode(DSAContext &ctx, CameraMode m) {
         mode = m;
+        switch(mode) {
+            case(CameraMode::FPS):
+            case(CameraMode::FreeFly):
+                setPerspective(fovY, aspect, nearPlane, farPlane);
+            break;
+            case(CameraMode::AxisAligned):
+                yaw = 0;
+                pitch = 0;
+                roll = 0;
+                setOrthographic(orthoLeft, orthoRight, orthoBottom, orthoTop, nearPlane, farPlane);
+            break;
+        }
+        updateAspectRatio(ctx.window.width, ctx.window.height);
         ctx.audioEngine->playFile("../assets/cameraControlSound.mp3");
     }
 
@@ -45,6 +58,42 @@ namespace dsaViz {
         nearPlane = near_;
         farPlane = far_;
         projectionMatrix = glm::perspective(fovY, aspect, nearPlane, farPlane);
+    }
+
+    void Camera::updateAspectRatio(int width, int height) {
+        float aspect = static_cast<float>(width) / static_cast<float>(height);
+
+        // Maintain aspect ratio by expanding X or Y depending on window shape
+        float viewLeft, viewRight, viewBottom, viewTop;
+
+        if (aspect >= 1.0f) {
+            // Wide window → expand X
+            viewLeft  = -aspect;
+            viewRight =  aspect;
+            viewBottom = -1.0f;
+            viewTop    =  1.0f;
+        } else {
+            // Tall window → expand Y
+            viewLeft  = -1.0f;
+            viewRight =  1.0f;
+            viewBottom = -1.0f / aspect;
+            viewTop    =  1.0f / aspect;
+            aspect = 1 / aspect;
+        }
+
+        switch(mode) {
+            case(CameraMode::FPS):
+            case(CameraMode::FreeFly):
+                setPerspective(fovY, aspect, nearPlane, farPlane);
+            break;
+            case(CameraMode::AxisAligned):
+                yaw = 0;
+                pitch = 0;
+                roll = 0;
+                setOrthographic(viewLeft, viewRight, viewBottom, viewTop, nearPlane, farPlane);
+            break;
+        }
+
     }
 
     void Camera::setOrthographic(float left, float right, float bottom, float top, float near_, float far_) {
@@ -130,10 +179,11 @@ namespace dsaViz {
             position += glm::normalize(dir) * speed * dt;
 
         // Mouse look
-        yaw   += static_cast<float>(ctx.input.mouseX - ctx.input.prevMouseX) * mouseSpeed;
-        pitch += static_cast<float>(ctx.input.mouseY - ctx.input.prevMouseY) * mouseSpeed;
+        if(ctx.window.mouseCaptured) {
+            yaw   += static_cast<float>(ctx.input.mouseX - ctx.input.prevMouseX) * mouseSpeed;
+            pitch += static_cast<float>(ctx.input.mouseY - ctx.input.prevMouseY) * mouseSpeed;
+        }
         roll = 0.0;
-
         // Limit pitch to avoid gimbal
         if(pitch > glm::half_pi<float>() - 0.01f) pitch = glm::half_pi<float>() - 0.01f;
         if(pitch < -glm::half_pi<float>() + 0.01f) pitch = -glm::half_pi<float>() + 0.01f;
@@ -165,6 +215,10 @@ namespace dsaViz {
         if(ctx.input.keys[GLFW_KEY_Q]) roll += mouseSpeed * dt * 1000;
         if(ctx.input.keys[GLFW_KEY_E]) roll -= mouseSpeed * dt * 1000;
         if(ctx.input.keys[GLFW_KEY_LEFT_CONTROL]) roll /= 2;
+        if(!ctx.window.mouseCaptured) {
+            pitch = 0;
+            yaw = 0;
+        }
         rotation = glm::normalize(rotation * glm::quat(glm::vec3(-pitch, -yaw, roll)));
         glm::vec3 euler = glm::eulerAngles(rotation);
         // GLM returns XYZ = pitch, yaw, roll

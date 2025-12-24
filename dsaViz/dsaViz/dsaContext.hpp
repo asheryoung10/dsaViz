@@ -40,9 +40,11 @@ namespace dsaViz {
     };
 
     class RenderText;
+    class RenderCircle;
     class InputSystem;
     class Camera;
     class AudioEngine;
+    class Random;
     struct DSAContext {
         WindowState window;
         TimeState time;
@@ -50,8 +52,10 @@ namespace dsaViz {
         InputSystem* inputSystem;
         RenderText* renderText;
         RenderText* uiText;
+        RenderCircle* renderCircle;
         Camera* camera;
         AudioEngine* audioEngine;
+        Random* random;
     };
 
 }

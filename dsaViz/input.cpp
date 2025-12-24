@@ -8,6 +8,9 @@ namespace dsaViz {
 
         // Store context pointer for callbacks
         glfwSetWindowUserPointer(window, &ctx);
+        glfwGetCursorPos(window, &ctx.input.prevMouseX, &ctx.input.prevMouseY);
+        ctx.input.mouseX = ctx.input.prevMouseX;
+        ctx.input.mouseY = ctx.input.prevMouseY;
 
         glfwSetKeyCallback(window, keyCallback);
         glfwSetMouseButtonCallback(window, mouseButtonCallback);

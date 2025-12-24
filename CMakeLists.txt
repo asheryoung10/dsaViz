@@ -9,6 +9,7 @@ add_executable(dsaViz
     dsaViz/shaderProgram.cpp
     dsaViz/texture.cpp
     dsaViz/renderText.cpp
+    dsaViz/renderCircle.cpp
     dsaViz/camera.cpp
     dsaViz/audioEngine.cpp
     external/src/gl.c
