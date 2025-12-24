@@ -4,6 +4,7 @@
 #include <dsaViz/dsaContext.hpp>
 #include <dsaViz/renderText.hpp>
 #include <dsaViz/camera.hpp>
+#include <dsaViz/audioEngine.hpp>
 
 #include <GLFW/glfw3.h>
 
@@ -24,10 +25,13 @@ void frameIteration(dsaViz::DSAContext* ctx) {
     glfwPollEvents();
 
 
-    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F1)) ctx->camera->setOrientation(glm::vec3(0), glm::quat(1,0,0,0));
-    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F2)) ctx->camera->setMode(dsaViz::CameraMode::FPS);
-    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F3)) ctx->camera->setMode(dsaViz::CameraMode::FreeFly);
-    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F4)) ctx->camera->setMode(dsaViz::CameraMode::AxisAligned);
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F1)) {
+        ctx->camera->setOrientation(glm::vec3(0, 0, 1), glm::quat(1,0,0,0));
+        ctx->audioEngine->playFile("../assets/subtleClick.mp3");
+    }
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F2)) ctx->camera->setMode(*ctx, dsaViz::CameraMode::FPS);
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F3)) ctx->camera->setMode(*ctx, dsaViz::CameraMode::FreeFly);
+    if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F4)) ctx->camera->setMode(*ctx, dsaViz::CameraMode::AxisAligned);
     if(ctx->inputSystem->keyPressed(*ctx, GLFW_KEY_F5)) {
         if(ctx->window.vsync) {
             glfwSwapInterval(0);
@@ -188,6 +192,9 @@ int main()
 
     dsaViz::Camera camera;
     ctx.camera = &camera;
+
+    dsaViz::AudioEngine engine;
+    ctx.audioEngine = &engine;
 
     // ------------------------------------------------------------
     // Main loop

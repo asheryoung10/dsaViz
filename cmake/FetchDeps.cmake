@@ -46,12 +46,11 @@ target_compile_definitions(asio_lib INTERFACE ASIO_STANDALONE)
 FetchContent_Declare(
     miniaudio
     GIT_REPOSITORY https://github.com/mackron/miniaudio.git
-    GIT_TAG 0.11.21
+    GIT_TAG 0.11.23
 )
 FetchContent_MakeAvailable(miniaudio)
 add_library(miniaudio_lib INTERFACE)
 target_include_directories(miniaudio_lib INTERFACE ${miniaudio_SOURCE_DIR})
-target_compile_definitions(miniaudio_lib INTERFACE MINIAUDIO_IMPLEMENTATION)
 
 # fetch stb for image reading/writing.
 FetchContent_Declare(

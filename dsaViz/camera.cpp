@@ -5,6 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <spdlog/fmt/fmt.h>
+#include <dsaViz/audioEngine.hpp>
 
 
 namespace dsaViz {
@@ -32,8 +33,9 @@ namespace dsaViz {
         setPerspective(fovY, aspect, nearPlane, farPlane);
     }
 
-    void Camera::setMode(CameraMode m) {
+    void Camera::setMode(DSAContext &ctx, CameraMode m) {
         mode = m;
+        ctx.audioEngine->playFile("../assets/cameraControlSound.mp3");
     }
 
     void Camera::setPerspective(float fovY_, float aspect_, float near_, float far_) {
@@ -95,8 +97,15 @@ namespace dsaViz {
     const glm::vec3& Camera::getPosition() const { return position; }
     const glm::quat& Camera::getRotation() const { return rotation; }
     void Camera::setPosition(const glm::vec3& pos) { position = pos; }
-    void Camera::setRotation(const glm::quat& rot) { rotation = rot; }
-    void Camera::setOrientation(const glm::vec3& pos, const glm::quat& rot) {position = pos; rotation = rot;}
+    void Camera::setRotation(const glm::quat& rot) { 
+        rotation = rot;
+        glm::vec3 euler = glm::eulerAngles(rotation);
+        // GLM returns XYZ = pitch, yaw, roll
+        this->yaw   = euler.y;
+        this->pitch = euler.x;
+        this->roll  = euler.z; 
+    }
+    void Camera::setOrientation(const glm::vec3& pos, const glm::quat& rot) {setPosition(pos); setRotation(rot); }
 
     glm::vec3 Camera::getForward() const { return rotation * glm::vec3(0,0,-1); }
     glm::vec3 Camera::getRight() const { return rotation * glm::vec3(1,0,0); }

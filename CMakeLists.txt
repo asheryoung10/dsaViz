@@ -10,7 +10,7 @@ add_executable(dsaViz
     dsaViz/texture.cpp
     dsaViz/renderText.cpp
     dsaViz/camera.cpp
-
+    dsaViz/audioEngine.cpp
     external/src/gl.c
 )
 

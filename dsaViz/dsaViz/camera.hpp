@@ -22,7 +22,7 @@ namespace dsaViz {
     public:
         Camera();
 
-        void setMode(CameraMode mode);
+        void setMode(DSAContext &ctx, CameraMode mode);
 
         // Set projection
         void setPerspective(float fovY, float aspect, float nearPlane, float farPlane);
