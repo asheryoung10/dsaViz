@@ -46,12 +46,13 @@ void frameIteration(dsaViz::DSAContext* ctx) {
 
     glfwSwapBuffers(ctx->window.handle);
 }
-void glfw_window_resize_callback(GLFWwindow* window, int width, int height) {
+void glfw_framebuffer_resize_callback(GLFWwindow* window, int width, int height) {
     dsaViz::DSAContext* context = (dsaViz::DSAContext*) glfwGetWindowUserPointer(window);
     if(!context) {
         spdlog::warn("glfwGetWindowUserPointer(window) not valid.");
         return;
     }
+    glViewport(0, 0,width, height);
     context->window.width = width;
     context->window.height = height;
     frameIteration(context);
@@ -123,7 +124,7 @@ int main()
     // ------------------------------------------------------------
     dsaViz::InputSystem input;
     input.initialize(ctx);
-    glfwSetWindowSizeCallback(window, glfw_window_resize_callback);
+    glfwSetFramebufferSizeCallback(window, glfw_framebuffer_resize_callback);
     ctx.inputSystem = &input;
     spdlog::info("Setup input system.");
 

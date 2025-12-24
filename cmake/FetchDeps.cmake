@@ -72,7 +72,7 @@ set(FT_DISABLE_HARFBUZZ ON CACHE BOOL "" FORCE)
 FetchContent_Declare(
     freetype
     GIT_REPOSITORY https://github.com/freetype/freetype.git
-    GIT_TAG VER-2-13-2
+    GIT_TAG VER-2-14-1
 )
 FetchContent_MakeAvailable(freetype)
 
