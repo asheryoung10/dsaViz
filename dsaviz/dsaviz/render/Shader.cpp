@@ -63,7 +63,7 @@ bool Shader::setupShader(const std::string &vertexShader,
     glGetProgramiv(id, GL_INFO_LOG_LENGTH, &logLength);
 
     std::string log(logLength, '\0');
-    glGetProgramInfoLog(id, logLength, nullptr, log.data());
+    glGetProgramInfoLog(id, logLength, nullptr, &log[0]);
 
     spdlog::critical("Shader program linking failed:\n{}", log);
     glDeleteProgram(id);
@@ -146,7 +146,7 @@ void Shader::compileShader(const char *shaderSource,
     glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &logLength);
 
     std::string log(logLength, '\0');
-    glGetShaderInfoLog(shader, logLength, nullptr, log.data());
+    glGetShaderInfoLog(shader, logLength, nullptr, &log[0]);
 
     spdlog::critical("{} shader compilation failed:\n{}",
                      isVertexShader ? "Vertex" : "Fragment", log);

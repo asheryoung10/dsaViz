@@ -102,7 +102,7 @@ App::App() {
       window, true); // Second param install_callback=true will install GLFW
                      // callbacks and chain to existing ones.
   ImGui_ImplOpenGL3_Init();
-  io.Fonts->AddFontFromFileTTF("../assets/palatinolinotype_roman.ttf", 34.0f);
+  io.Fonts->AddFontFromFileTTF("../assets/JetBrainsMono-Bold.ttf", 34.0f);
 
   glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
   glEnable(GL_DEPTH_TEST);
