@@ -1,0 +1,740 @@
+[
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -DSPDLOG_COMPILED_LIB -IC:/Users/asher/Desktop/experiment/./dsaViz -IC:/Users/asher/Desktop/experiment/./external/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/fmt-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/spdlog-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -IC:/Users/asher/Desktop/experiment/build/_deps/stb_lib-src -O3 -DNDEBUG -o CMakeFiles\\dsaViz.dir\\dsaViz\\main.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\dsaViz\\main.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\dsaViz\\main.cpp",
+  "output": "CMakeFiles\\dsaViz.dir\\dsaViz\\main.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -DSPDLOG_COMPILED_LIB -IC:/Users/asher/Desktop/experiment/./dsaViz -IC:/Users/asher/Desktop/experiment/./external/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/fmt-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/spdlog-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -IC:/Users/asher/Desktop/experiment/build/_deps/stb_lib-src -O3 -DNDEBUG -o CMakeFiles\\dsaViz.dir\\dsaViz\\Texture.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\dsaViz\\Texture.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\dsaViz\\Texture.cpp",
+  "output": "CMakeFiles\\dsaViz.dir\\dsaViz\\Texture.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -DSPDLOG_COMPILED_LIB -IC:/Users/asher/Desktop/experiment/./dsaViz -IC:/Users/asher/Desktop/experiment/./external/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/fmt-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/spdlog-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -IC:/Users/asher/Desktop/experiment/build/_deps/stb_lib-src -O3 -DNDEBUG -o CMakeFiles\\dsaViz.dir\\dsaViz\\TextRenderer.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\dsaViz\\TextRenderer.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\dsaViz\\TextRenderer.cpp",
+  "output": "CMakeFiles\\dsaViz.dir\\dsaViz\\TextRenderer.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -DSPDLOG_COMPILED_LIB -IC:/Users/asher/Desktop/experiment/./dsaViz -IC:/Users/asher/Desktop/experiment/./external/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/fmt-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/spdlog-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -IC:/Users/asher/Desktop/experiment/build/_deps/stb_lib-src -O3 -DNDEBUG -o CMakeFiles\\dsaViz.dir\\external\\gl.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\external\\gl.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\external\\gl.c",
+  "output": "CMakeFiles\\dsaViz.dir\\external\\gl.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\autofit\\autofit.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\autofit\\autofit.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\autofit\\autofit.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\autofit\\autofit.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftbase.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftbase.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftbase.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftbase.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftbbox.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftbbox.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftbbox.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftbbox.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftbdf.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftbdf.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftbdf.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftbdf.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftbitmap.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftbitmap.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftbitmap.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftbitmap.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftcid.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftcid.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftcid.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftcid.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftfstype.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftfstype.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftfstype.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftfstype.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftgasp.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftgasp.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftgasp.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftgasp.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftglyph.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftglyph.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftglyph.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftglyph.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftgxval.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftgxval.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftgxval.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftgxval.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftinit.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftinit.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftinit.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftinit.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftmm.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftmm.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftmm.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftmm.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftotval.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftotval.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftotval.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftotval.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftpatent.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftpatent.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftpatent.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftpatent.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftpfr.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftpfr.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftpfr.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftpfr.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftstroke.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftstroke.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftstroke.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftstroke.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftsynth.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftsynth.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftsynth.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftsynth.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\fttype1.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\fttype1.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\fttype1.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\fttype1.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftwinfnt.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftwinfnt.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftwinfnt.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftwinfnt.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\bdf\\bdf.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\bdf\\bdf.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\bdf\\bdf.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\bdf\\bdf.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\bzip2\\ftbzip2.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\bzip2\\ftbzip2.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\bzip2\\ftbzip2.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\bzip2\\ftbzip2.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\cache\\ftcache.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\cache\\ftcache.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\cache\\ftcache.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\cache\\ftcache.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\cff\\cff.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\cff\\cff.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\cff\\cff.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\cff\\cff.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\cid\\type1cid.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\cid\\type1cid.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\cid\\type1cid.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\cid\\type1cid.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\gzip\\ftgzip.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\gzip\\ftgzip.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\gzip\\ftgzip.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\gzip\\ftgzip.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\lzw\\ftlzw.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\lzw\\ftlzw.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\lzw\\ftlzw.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\lzw\\ftlzw.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\pcf\\pcf.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\pcf\\pcf.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\pcf\\pcf.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\pcf\\pcf.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\pfr\\pfr.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\pfr\\pfr.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\pfr\\pfr.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\pfr\\pfr.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\psaux\\psaux.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\psaux\\psaux.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\psaux\\psaux.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\psaux\\psaux.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\pshinter\\pshinter.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\pshinter\\pshinter.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\pshinter\\pshinter.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\pshinter\\pshinter.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\psnames\\psnames.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\psnames\\psnames.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\psnames\\psnames.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\psnames\\psnames.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\raster\\raster.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\raster\\raster.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\raster\\raster.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\raster\\raster.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\sdf\\sdf.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\sdf\\sdf.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\sdf\\sdf.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\sdf\\sdf.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\sfnt\\sfnt.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\sfnt\\sfnt.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\sfnt\\sfnt.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\sfnt\\sfnt.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\smooth\\smooth.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\smooth\\smooth.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\smooth\\smooth.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\smooth\\smooth.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\svg\\svg.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\svg\\svg.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\svg\\svg.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\svg\\svg.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\truetype\\truetype.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\truetype\\truetype.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\truetype\\truetype.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\truetype\\truetype.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\type1\\type1.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\type1\\type1.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\type1\\type1.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\type1\\type1.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\type42\\type42.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\type42\\type42.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\type42\\type42.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\type42\\type42.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\winfonts\\winfnt.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\winfonts\\winfnt.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\winfonts\\winfnt.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\winfonts\\winfnt.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\builds\\windows\\ftsystem.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\builds\\windows\\ftsystem.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\builds\\windows\\ftsystem.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\builds\\windows\\ftsystem.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config -O3 -DNDEBUG -o _deps\\freetype-build\\CMakeFiles\\freetype.dir\\builds\\windows\\ftdebug.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\builds\\windows\\ftdebug.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\builds\\windows\\ftdebug.c",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\builds\\windows\\ftdebug.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\windres.exe -O coff -DFT2_BUILD_LIBRARY -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -I C:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -I C:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -I C:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include/freetype/config C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftver.rc _deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftver.rc.obj",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\freetype-src\\src\\base\\ftver.rc",
+  "output": "_deps\\freetype-build\\CMakeFiles\\freetype.dir\\src\\base\\ftver.rc.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\Charset.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\Charset.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\Charset.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\Charset.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\FontGeometry.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\FontGeometry.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\FontGeometry.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\FontGeometry.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\GlyphGeometry.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\GlyphGeometry.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\GlyphGeometry.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\GlyphGeometry.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\GridAtlasPacker.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\GridAtlasPacker.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\GridAtlasPacker.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\GridAtlasPacker.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\Padding.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\Padding.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\Padding.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\Padding.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\RectanglePacker.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\RectanglePacker.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\RectanglePacker.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\RectanglePacker.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\TightAtlasPacker.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\TightAtlasPacker.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\TightAtlasPacker.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\TightAtlasPacker.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\Workload.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\Workload.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\Workload.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\Workload.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\artery-font-export.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\artery-font-export.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\artery-font-export.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\artery-font-export.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\bitmap-blit.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\bitmap-blit.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\bitmap-blit.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\bitmap-blit.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\charset-parser.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\charset-parser.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\charset-parser.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\charset-parser.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\csv-export.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\csv-export.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\csv-export.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\csv-export.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\glyph-generators.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\glyph-generators.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\glyph-generators.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\glyph-generators.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\image-encode.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\image-encode.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\image-encode.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\image-encode.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\json-export.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\json-export.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\json-export.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\json-export.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\main.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\main.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\main.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\main.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\shadron-preview-generator.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\shadron-preview-generator.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\shadron-preview-generator.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\shadron-preview-generator.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\size-selectors.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\size-selectors.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\size-selectors.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\size-selectors.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXTENSIONS -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -DMSDF_ATLAS_COPYRIGHT_YEAR=2025 -DMSDF_ATLAS_NO_ARTERY_FONT -DMSDF_ATLAS_PUBLIC=\"\" -DMSDF_ATLAS_VERSION=1.3.0 -DMSDF_ATLAS_VERSION_MAJOR=1 -DMSDF_ATLAS_VERSION_MINOR=3 -DMSDF_ATLAS_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\utf8.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\utf8.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdf-atlas-gen\\utf8.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\CMakeFiles\\msdf-atlas-gen.dir\\msdf-atlas-gen\\utf8.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\Contour.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\Contour.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\Contour.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\Contour.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\DistanceMapping.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\DistanceMapping.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\DistanceMapping.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\DistanceMapping.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\EdgeHolder.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\EdgeHolder.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\EdgeHolder.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\EdgeHolder.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\MSDFErrorCorrection.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\MSDFErrorCorrection.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\MSDFErrorCorrection.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\MSDFErrorCorrection.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\Projection.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\Projection.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\Projection.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\Projection.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\Scanline.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\Scanline.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\Scanline.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\Scanline.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\Shape.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\Shape.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\Shape.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\Shape.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\contour-combiners.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\contour-combiners.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\contour-combiners.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\contour-combiners.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\edge-coloring.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\edge-coloring.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\edge-coloring.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\edge-coloring.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\edge-segments.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\edge-segments.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\edge-segments.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\edge-segments.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\edge-selectors.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\edge-selectors.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\edge-selectors.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\edge-selectors.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\equation-solver.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\equation-solver.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\equation-solver.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\equation-solver.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\export-svg.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\export-svg.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\export-svg.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\export-svg.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\msdf-error-correction.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\msdf-error-correction.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\msdf-error-correction.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\msdf-error-correction.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\msdfgen.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\msdfgen.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\msdfgen.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\msdfgen.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\rasterization.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\rasterization.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\rasterization.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\rasterization.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\render-sdf.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\render-sdf.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\render-sdf.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\render-sdf.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\save-bmp.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\save-bmp.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\save-bmp.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\save-bmp.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\save-fl32.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\save-fl32.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\save-fl32.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\save-fl32.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\save-rgba.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\save-rgba.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\save-rgba.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\save-rgba.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\save-tiff.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\save-tiff.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\save-tiff.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\save-tiff.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\sdf-error-estimation.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\sdf-error-estimation.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\sdf-error-estimation.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\sdf-error-estimation.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\shape-description.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\shape-description.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\core\\shape-description.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-core.dir\\core\\shape-description.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen/include -isystem C:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -isystem C:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-ext.dir\\ext\\import-font.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\ext\\import-font.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\ext\\import-font.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-ext.dir\\ext\\import-font.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen/include -isystem C:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -isystem C:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-ext.dir\\ext\\import-svg.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\ext\\import-svg.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\ext\\import-svg.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-ext.dir\\ext\\import-svg.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen/include -isystem C:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -isystem C:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-ext.dir\\ext\\resolve-shape-geometry.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\ext\\resolve-shape-geometry.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\ext\\resolve-shape-geometry.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-ext.dir\\ext\\resolve-shape-geometry.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DMSDFGEN_COPYRIGHT_YEAR=2025 -DMSDFGEN_DISABLE_PNG -DMSDFGEN_DISABLE_SVG -DMSDFGEN_EXT_PUBLIC=\"\" -DMSDFGEN_PUBLIC=\"\" -DMSDFGEN_USE_CPP11 -DMSDFGEN_VERSION=1.12.0 -DMSDFGEN_VERSION_MAJOR=1 -DMSDFGEN_VERSION_MINOR=12 -DMSDFGEN_VERSION_REVISION=0 -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen -IC:/Users/asher/Desktop/experiment/build/_deps/msdf_atlas_gen-src/msdfgen/include -isystem C:/Users/asher/Desktop/experiment/build/_deps/freetype-build/include -isystem C:/Users/asher/Desktop/experiment/build/_deps/freetype-src/include -O3 -DNDEBUG -o _deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-ext.dir\\ext\\save-png.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\ext\\save-png.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\msdf_atlas_gen-src\\msdfgen\\ext\\save-png.cpp",
+  "output": "_deps\\msdf_atlas_gen-build\\msdfgen\\CMakeFiles\\msdfgen-ext.dir\\ext\\save-png.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\context.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\context.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\context.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\context.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\init.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\init.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\init.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\init.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\input.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\input.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\input.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\input.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\monitor.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\monitor.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\monitor.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\monitor.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\platform.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\platform.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\platform.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\platform.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\vulkan.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\vulkan.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\vulkan.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\vulkan.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\window.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\window.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\window.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\window.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\egl_context.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\egl_context.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\egl_context.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\egl_context.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\osmesa_context.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\osmesa_context.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\osmesa_context.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\osmesa_context.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\null_init.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\null_init.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\null_init.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\null_init.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\null_monitor.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\null_monitor.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\null_monitor.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\null_monitor.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\null_window.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\null_window.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\null_window.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\null_window.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\null_joystick.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\null_joystick.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\null_joystick.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\null_joystick.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_module.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_module.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_module.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_module.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_time.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_time.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_time.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_time.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_thread.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_thread.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_thread.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_thread.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_init.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_init.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_init.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_init.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_joystick.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_joystick.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_joystick.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_joystick.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_monitor.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_monitor.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_monitor.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_monitor.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_window.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_window.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\win32_window.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\win32_window.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\cc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/include -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-src/src -IC:/Users/asher/Desktop/experiment/build/_deps/glfw-build/src -O3 -DNDEBUG -std=c99 -Wall -o _deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\wgl_context.c.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\wgl_context.c",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\glfw-src\\src\\wgl_context.c",
+  "output": "_deps\\glfw-build\\src\\CMakeFiles\\glfw.dir\\wgl_context.c.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -IC:/Users/asher/Desktop/experiment/build/_deps/fmt-src/include -O3 -DNDEBUG -o _deps\\fmt-build\\CMakeFiles\\fmt.dir\\src\\format.cc.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\fmt-src\\src\\format.cc",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\fmt-src\\src\\format.cc",
+  "output": "_deps\\fmt-build\\CMakeFiles\\fmt.dir\\src\\format.cc.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -IC:/Users/asher/Desktop/experiment/build/_deps/fmt-src/include -O3 -DNDEBUG -o _deps\\fmt-build\\CMakeFiles\\fmt.dir\\src\\os.cc.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\fmt-src\\src\\os.cc",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\fmt-src\\src\\os.cc",
+  "output": "_deps\\fmt-build\\CMakeFiles\\fmt.dir\\src\\os.cc.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -IC:/Users/asher/Desktop/experiment/build/_deps/spdlog-src/include -O3 -DNDEBUG -std=c++11 -o _deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\spdlog.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\spdlog.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\spdlog.cpp",
+  "output": "_deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\spdlog.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -IC:/Users/asher/Desktop/experiment/build/_deps/spdlog-src/include -O3 -DNDEBUG -std=c++11 -o _deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\stdout_sinks.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\stdout_sinks.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\stdout_sinks.cpp",
+  "output": "_deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\stdout_sinks.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -IC:/Users/asher/Desktop/experiment/build/_deps/spdlog-src/include -O3 -DNDEBUG -std=c++11 -o _deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\color_sinks.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\color_sinks.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\color_sinks.cpp",
+  "output": "_deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\color_sinks.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -IC:/Users/asher/Desktop/experiment/build/_deps/spdlog-src/include -O3 -DNDEBUG -std=c++11 -o _deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\file_sinks.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\file_sinks.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\file_sinks.cpp",
+  "output": "_deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\file_sinks.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -IC:/Users/asher/Desktop/experiment/build/_deps/spdlog-src/include -O3 -DNDEBUG -std=c++11 -o _deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\async.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\async.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\async.cpp",
+  "output": "_deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\async.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -IC:/Users/asher/Desktop/experiment/build/_deps/spdlog-src/include -O3 -DNDEBUG -std=c++11 -o _deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\cfg.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\cfg.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\cfg.cpp",
+  "output": "_deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\cfg.cpp.obj"
+},
+{
+  "directory": "C:/Users/asher/Desktop/experiment/build",
+  "command": "C:\\msys64\\clangarm64\\bin\\c++.exe -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -IC:/Users/asher/Desktop/experiment/build/_deps/spdlog-src/include -O3 -DNDEBUG -std=c++11 -o _deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\bundled_fmtlib_format.cpp.obj -c C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\bundled_fmtlib_format.cpp",
+  "file": "C:\\Users\\asher\\Desktop\\experiment\\build\\_deps\\spdlog-src\\src\\bundled_fmtlib_format.cpp",
+  "output": "_deps\\spdlog-build\\CMakeFiles\\spdlog.dir\\src\\bundled_fmtlib_format.cpp.obj"
+}
+]
