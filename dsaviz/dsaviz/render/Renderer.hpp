@@ -1,6 +1,7 @@
 #pragma once
 #include <dsaviz/render/RenderCommand.hpp>
 #include <dsaviz/render/CircleRenderer.hpp>
+#include <dsaviz/render/SquareRenderer.hpp>
 #include <dsaviz/core/Camera.hpp>
 
 namespace dsaviz {
@@ -15,7 +16,7 @@ private:
   std::vector<RenderCommand> opaqueCommands;
   std::vector<RenderCommand> transparentCommands;
   CircleRenderer circleRenderer;
-  //SquareRenderer squareRenderer;
+  SquareRenderer squareRenderer;
   //TexturedQuadsRenderer texturedQuadsRenderer;
 };
 } // namespace dsaviz

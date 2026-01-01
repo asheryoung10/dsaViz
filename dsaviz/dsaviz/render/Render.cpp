@@ -1,3 +1,4 @@
+#include "SquareRenderer.hpp"
 #include <dsaviz/render/Renderer.hpp>
 #include <spdlog/spdlog.h>
 
@@ -14,7 +15,7 @@ void Renderer::submit(const RenderCommand command) {
 void Renderer::initialize(Camera* camera) {
   this->camera = camera;
   circleRenderer.initialize(64, 0.05f);
-  //squareRenderer.initialize();
+  squareRenderer.initialize(5, 0.01, 0.05f);
   //texturedQuadsRenderer.initialize();
 }
 void Renderer::flush() {
@@ -25,7 +26,7 @@ void Renderer::flush() {
             break;
 
         case RenderCommandType::Square:
-            // squareRenderer.draw(command);
+            squareRenderer.render(camera->getViewProjectionMatrix() * command.transform, command.color);
             break;
 
         default:

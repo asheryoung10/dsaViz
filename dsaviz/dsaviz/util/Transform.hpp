@@ -28,6 +28,7 @@ public:
   void setPosition(const glm::vec3 &position);
   void setRotation(const glm::quat &rotation);
   void setScale(const glm::vec3 &scale);
+  void lookAt(const glm::vec3 &target, const glm::vec3 &up = glm::vec3(0, 1, 0));
 
   void rotate(float angleRadians, const glm::vec3 &axis);
 

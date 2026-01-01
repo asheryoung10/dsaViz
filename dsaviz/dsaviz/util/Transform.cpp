@@ -1,3 +1,4 @@
+#include "Transform.hpp"
 #include <dsaviz/util/Transform.hpp>
 
 namespace dsaviz {
@@ -72,6 +73,12 @@ glm::vec3 Transform::getUp() const {
 }
 glm::vec3 Transform::getDown() const {
   return getLocalDirection(glm::vec3(0, -1, 0));
+}
+
+void Transform::lookAt(const glm::vec3 &target, const glm::vec3 &up) {
+  glm::mat4 lookAtMatrix = glm::lookAt(position, target, up);
+  glm::quat newRotation = glm::quat_cast(glm::inverse(lookAtMatrix));
+  setRotation(newRotation);
 }
 
 } // namespace dsaviz
