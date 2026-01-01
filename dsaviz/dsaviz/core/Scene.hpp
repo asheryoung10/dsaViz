@@ -2,6 +2,7 @@
 #include <dsaviz/render/Renderer.hpp>
 #include <dsaviz/core/VizContext.hpp>
 #include <dsaviz/core/VizObject.hpp>
+#include <memory>
 
 namespace dsaviz {
     class Scene {
