@@ -36,5 +36,6 @@ namespace dsaviz {
         int windowHeight;
         bool mouseCaptured = true;
         bool vsyncEnabled = true;
+        float uiScale = 1.0f;
     };
 }

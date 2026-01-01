@@ -13,7 +13,7 @@ void App::glfwErrorCallback(int error, const char *description) {
 }
 
 void App::glfwFramebufferResizeCallback(GLFWwindow *window, int width,
-                                      int height) {
+                                        int height) {
   VizContext *context = (VizContext *)glfwGetWindowUserPointer(window);
   if (!context) {
     spdlog::warn("glfwGetWindowUserPointer(window) not valid.");
@@ -28,6 +28,53 @@ void App::glfwFramebufferResizeCallback(GLFWwindow *window, int width,
   context->framebufferHeight = framebufferHeight;
   context->camera->updateAspectRatio(framebufferWidth, framebufferHeight);
   context->app->iterate();
+}
+
+void SetupModernImGuiStyle() {
+  ImGuiStyle &style = ImGui::GetStyle();
+
+  // Layout
+  style.WindowPadding = ImVec2(14, 14);
+  style.FramePadding = ImVec2(10, 6);
+  style.ItemSpacing = ImVec2(12, 8);
+  style.ScrollbarSize = 12.0f;
+  style.GrabMinSize = 10.0f;
+
+  // Rounding
+  style.WindowRounding = 8.0f;
+  style.FrameRounding = 6.0f;
+  style.ScrollbarRounding = 6.0f;
+  style.GrabRounding = 6.0f;
+  style.TabRounding = 6.0f;
+
+  // Borders
+  style.WindowBorderSize = 1.0f;
+  style.FrameBorderSize = 0.0f;
+
+  // Colors (dark modern)
+  ImVec4 *c = style.Colors;
+  c[ImGuiCol_WindowBg] = ImVec4(0.10f, 0.105f, 0.11f, 0.96f);
+  c[ImGuiCol_Border] = ImVec4(0.20f, 0.20f, 0.23f, 0.60f);
+
+  c[ImGuiCol_Text] = ImVec4(0.95f, 0.96f, 0.98f, 1.00f);
+  c[ImGuiCol_TextDisabled] = ImVec4(0.50f, 0.50f, 0.55f, 1.00f);
+
+  c[ImGuiCol_FrameBg] = ImVec4(0.18f, 0.18f, 0.20f, 1.00f);
+  c[ImGuiCol_FrameBgHovered] = ImVec4(0.24f, 0.24f, 0.28f, 1.00f);
+  c[ImGuiCol_FrameBgActive] = ImVec4(0.30f, 0.30f, 0.35f, 1.00f);
+
+  c[ImGuiCol_Button] = ImVec4(0.22f, 0.23f, 0.27f, 1.00f);
+  c[ImGuiCol_ButtonHovered] = ImVec4(0.30f, 0.32f, 0.38f, 1.00f);
+  c[ImGuiCol_ButtonActive] = ImVec4(0.18f, 0.60f, 0.90f, 1.00f);
+
+  c[ImGuiCol_Header] = ImVec4(0.22f, 0.23f, 0.27f, 1.00f);
+  c[ImGuiCol_HeaderHovered] = ImVec4(0.30f, 0.32f, 0.38f, 1.00f);
+  c[ImGuiCol_HeaderActive] = ImVec4(0.18f, 0.60f, 0.90f, 1.00f);
+
+  c[ImGuiCol_SliderGrab] = ImVec4(0.18f, 0.60f, 0.90f, 1.00f);
+  c[ImGuiCol_SliderGrabActive] = ImVec4(0.15f, 0.65f, 0.95f, 1.00f);
+
+  c[ImGuiCol_CheckMark] = ImVec4(0.18f, 0.60f, 0.90f, 1.00f);
 }
 
 App::App() {
@@ -74,7 +121,8 @@ App::App() {
   glfwGetWindowSize(window, &width, &height);
   context.windowWidth = width;
   context.windowHeight = height;
-  glfwGetFramebufferSize(window, &context.framebufferWidth, &context.framebufferHeight);
+  glfwGetFramebufferSize(window, &context.framebufferWidth,
+                         &context.framebufferHeight);
   context.framebufferWidth = context.framebufferWidth;
   context.framebufferHeight = context.framebufferHeight;
   context.window = window;
@@ -103,6 +151,7 @@ App::App() {
                      // callbacks and chain to existing ones.
   ImGui_ImplOpenGL3_Init();
   io.Fonts->AddFontFromFileTTF("../assets/JetBrainsMono-Bold.ttf", 34.0f);
+  SetupModernImGuiStyle();
 
   glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
   glEnable(GL_DEPTH_TEST);
@@ -121,6 +170,7 @@ void App::iterate() {
   // Poll events
   input.beginFrame(context);
   glfwPollEvents();
+  ImGui::GetIO().FontGlobalScale = context.uiScale;
   frameTimeTracker.update();
 
   // Start ImGui frame
@@ -148,39 +198,81 @@ void App::iterate() {
   // Swap buffers
   glfwSwapBuffers(context.window);
 }
-
 void App::appUI() {
-  ImGui::Begin("Hello, world!");
-  ImGui::Text("This is some useful text.");
-  const glm::vec3& camPos = camera.getPosition();
-  glm::vec3 camForward = camera.getForward();
-  glm::vec3 camUp = camera.getUp();
-  ImGui::Text("Camera Position: (%.2f, %.2f, %.2f)", camPos.x, camPos.y, camPos.z);
-  ImGui::Text("Camera Forward: (%.2f, %.2f, %.2f)", camForward.x, camForward.y, camForward.z);
-  ImGui::Text("Camera Up: (%.2f, %.2f, %.2f)", camUp.x, camUp.y, camUp.z);
-  ImGui::Text("Application average %.3f ms/frame (%.1f FPS)",
-              1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-  if(input.keyPressed(context, GLFW_KEY_ESCAPE)) {
-    spdlog::info("Escape key pressed, toggling mouse capture.");
-    input.setMouseCapture(context, !context.mouseCaptured);
+  ImGuiViewport *vp = ImGui::GetMainViewport();
+
+  ImVec2 panelPos(vp->WorkPos.x + 16.0f, vp->WorkPos.y + 16.0f);
+
+  ImGui::SetNextWindowPos(panelPos, ImGuiCond_Always);
+
+  ImGuiWindowFlags flags = ImGuiWindowFlags_NoMove |
+                           ImGuiWindowFlags_AlwaysAutoResize |
+                           ImGuiWindowFlags_NoSavedSettings;
+
+  ImGui::Begin("Info", nullptr, flags);
+
+  // ── Header ─────────────────────────────
+  ImGui::Text("Application");
+  ImGui::Separator();
+
+  ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
+  ImGui::Text("Frame: %.3f ms", 1000.0f / ImGui::GetIO().Framerate);
+
+  ImGui::Spacing();
+
+  // ── Camera Info ────────────────────────
+  if (ImGui::CollapsingHeader("Camera", ImGuiTreeNodeFlags_DefaultOpen)) {
+    const glm::vec3 &p = camera.getPosition();
+    const glm::vec3 f = camera.getForward();
+    const glm::vec3 u = camera.getUp();
+
+    ImGui::Text("Position");
+    ImGui::DragFloat3("##CameraPosition", (float *)&p, 0.1f);
+
+    ImGui::Text("Forward");
+    ImGui::DragFloat3("##forward", (float *)&f, 0.0f, 0.0f, 0.0f, "%.2f");
+
+    ImGui::Text("Up");
+    ImGui::DragFloat3("##up", (float *)&u, 0.0f, 0.0f, 0.0f, "%.2f");
+
+    ImGui::Text("Camera Speed");
+    ImGui::SliderFloat("##CameraSpeed", &camera.moveSpeed, 0.1f, 50.0f);
   }
-  ImGui::Text("Mouse Captured: %s", context.mouseCaptured ? "Yes" : "No");
-  if(ImGui::Button("FPS Camera")) {
-    camera.setMode(context, CameraMode::FPS);
+
+  // ── Camera Modes ───────────────────────
+  if (ImGui::CollapsingHeader("Camera Mode", ImGuiTreeNodeFlags_DefaultOpen)) {
+    if (ImGui::Button("FPS"))
+      camera.setMode(context, CameraMode::FPS);
+    ImGui::SameLine();
+    if (ImGui::Button("FreeFly"))
+      camera.setMode(context, CameraMode::FreeFly);
+    ImGui::SameLine();
+    if (ImGui::Button("Axis"))
+      camera.setMode(context, CameraMode::AxisAligned);
+
+    if (ImGui::Button("Reset Camera")) {
+      camera.setPosition(glm::vec3(0, 0, 5));
+      camera.setRotation(glm::quat(glm::vec3(0)));
+    }
   }
-if(ImGui::Button("FreeFly Camera")) {
-    camera.setMode(context, CameraMode::FreeFly);
+
+  // ── System ─────────────────────────────
+  if (ImGui::CollapsingHeader("System", ImGuiTreeNodeFlags_DefaultOpen)) {
+    if (ImGui::Checkbox("VSync", &context.vsyncEnabled))
+      glfwSwapInterval(context.vsyncEnabled ? 1 : 0);
+
+    ImGui::Text("Mouse Captured: %s", context.mouseCaptured ? "Yes" : "No");
+
+    if (input.keyPressed(context, GLFW_KEY_ESCAPE)) {
+      input.setMouseCapture(context, !context.mouseCaptured);
+      spdlog::info("Escape pressed → toggling mouse capture");
+    }
+    if (ImGui::CollapsingHeader("UI", ImGuiTreeNodeFlags_DefaultOpen)) {
+      ImGui::Text("UI Scale");
+      ImGui::SliderFloat("##UIScale", &context.uiScale, 0.25f, 1.5f, "%.2fx");
+    }
   }
- if(ImGui::Button("Axis-Aligned Camera")) {
-    camera.setMode(context, CameraMode::AxisAligned);
-  } 
-  if(ImGui::Button("Reset Camera")) {
-    camera.setPosition(glm::vec3(0,0,5));
-    camera.setRotation(glm::quat(glm::vec3(0,0,0)));
-  }
-  if(ImGui::Checkbox("Vsync", &context.vsyncEnabled)) {
-    glfwSwapInterval(context.vsyncEnabled ? 1 : 0);
-  }
+
   ImGui::End();
 }
 

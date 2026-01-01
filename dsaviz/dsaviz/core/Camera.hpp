@@ -52,6 +52,7 @@ namespace dsaviz {
 
         std::string toString() const;
 
+        float moveSpeed;     // units per second
     private:
         void updateFPS(const VizContext& ctx, float deltaTime);
         void updateFreeFly(const VizContext& ctx, float deltaTime);
@@ -76,7 +77,6 @@ namespace dsaviz {
         float roll;
         float orthoViewSize;
         // Settings
-        float moveSpeed;     // units per second
         float fineSpeed;
         float mouseSpeed;    // radians per pixel
     };
