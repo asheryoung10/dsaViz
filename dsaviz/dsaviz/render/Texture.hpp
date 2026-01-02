@@ -39,8 +39,6 @@ public:
 
     void release();
     void swap(Texture& other) noexcept;
-
-private:
     bool createFromFile(const std::string& textureFilepath, bool flipVertically);
     bool createFromMemory(const unsigned char* pixelData, int width,
                           int height, TextureFormat format);

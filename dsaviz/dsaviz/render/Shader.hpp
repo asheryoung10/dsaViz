@@ -27,7 +27,7 @@ namespace dsaviz {
         void uploadMat4(const std::string& variableName, const glm::mat4& matrix);
 
         private:
-        unsigned int id;
+        unsigned int id = 0;
         void compileShader(const char* shaderSource, bool isVertexShader);
     };
 }

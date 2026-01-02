@@ -14,7 +14,7 @@ namespace dsaviz {
         glm::vec3 color;
 
         // Below is only for textured quads. (Used for text rendering)
-        Texture* glyphAtlas = nullptr;
-        std::vector<float>* glyphQuadData = nullptr; // x, y, u, v, width, height per quad, shared transform.
+        const Texture* glyphAtlas = nullptr;
+        const std::vector<float>* glyphQuadData = nullptr; // x, y, u, v, width, height per quad, shared transform.
     };
 }

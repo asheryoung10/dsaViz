@@ -135,7 +135,13 @@ App::App() {
   context.frameTimeTracker = &frameTimeTracker;
   frameTimeTracker.initialize();
   glfwSetFramebufferSizeCallback(window, glfwFramebufferResizeCallback);
+
+  font.setFont("../assets/palatinolinotype_roman.ttf", 64.0f);
+  context.font = &font;
+
   renderer.initialize(&camera);
+
+  context.random = &random;
 
   IMGUI_CHECKVERSION();
   ImGui::CreateContext();
@@ -157,6 +163,7 @@ App::App() {
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  scene.initialize(context);
 }
 
 int App::run() {
@@ -198,8 +205,10 @@ void App::iterate() {
   // Swap buffers
   glfwSwapBuffers(context.window);
 }
+
 void App::appUI() {
   ImGuiViewport *vp = ImGui::GetMainViewport();
+
 
   ImVec2 panelPos(vp->WorkPos.x + 16.0f, vp->WorkPos.y + 16.0f);
 
@@ -211,7 +220,6 @@ void App::appUI() {
 
   ImGui::Begin("Info", nullptr, flags);
 
-  // ── Header ─────────────────────────────
   ImGui::Text("Application");
   ImGui::Separator();
 
@@ -220,7 +228,6 @@ void App::appUI() {
 
   ImGui::Spacing();
 
-  // ── Camera Info ────────────────────────
   if (ImGui::CollapsingHeader("Camera", ImGuiTreeNodeFlags_DefaultOpen)) {
     const glm::vec3 &p = camera.getPosition();
     const glm::vec3 f = camera.getForward();
@@ -265,7 +272,6 @@ void App::appUI() {
 
     if (input.keyPressed(context, GLFW_KEY_ESCAPE)) {
       input.setMouseCapture(context, !context.mouseCaptured);
-      spdlog::info("Escape pressed → toggling mouse capture");
     }
     if (ImGui::CollapsingHeader("UI", ImGuiTreeNodeFlags_DefaultOpen)) {
       ImGui::Text("UI Scale");

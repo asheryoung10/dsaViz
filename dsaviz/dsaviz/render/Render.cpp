@@ -1,4 +1,7 @@
+#include "RenderCommand.hpp"
 #include "SquareRenderer.hpp"
+#include "TextRenderer.hpp"
+#include "Texture.hpp"
 #include <dsaviz/render/Renderer.hpp>
 #include <spdlog/spdlog.h>
 
@@ -12,29 +15,44 @@ void Renderer::submit(const RenderCommand command) {
   }
 }
 
-void Renderer::initialize(Camera* camera) {
+void Renderer::initialize(Camera *camera) {
   this->camera = camera;
   circleRenderer.initialize(64, 0.05f);
   squareRenderer.initialize(5, 0.01, 0.05f);
-  //texturedQuadsRenderer.initialize();
+  textRenderer.initialize();
 }
 void Renderer::flush() {
-    for (const RenderCommand& command : opaqueCommands) {
-        switch (command.type) {
-        case RenderCommandType::Circle:
-            circleRenderer.render(camera->getViewProjectionMatrix() * command.transform, command.color);
-            break;
+  for (const RenderCommand &command : opaqueCommands) {
+    switch (command.type) {
+    case RenderCommandType::Circle:
+      circleRenderer.render(
+          camera->getViewProjectionMatrix() * command.transform, command.color);
+      break;
 
-        case RenderCommandType::Square:
-            squareRenderer.render(camera->getViewProjectionMatrix() * command.transform, command.color);
-            break;
+    case RenderCommandType::Square:
+      squareRenderer.render(
+          camera->getViewProjectionMatrix() * command.transform, command.color);
+      break;
 
-        default:
-            break;
-        }
+    default:
+      break;
     }
+  }
 
-    opaqueCommands.clear();
-    transparentCommands.clear();
+  for (const RenderCommand &command : transparentCommands) {
+
+    switch (command.type) {
+    case RenderCommandType::Text:
+      textRenderer.render(camera->getViewProjectionMatrix() * command.transform,
+                          command.color, command.glyphQuadData,
+                          command.glyphAtlas);
+      break;
+    default:
+      break;
+    }
+  }
+
+  opaqueCommands.clear();
+  transparentCommands.clear();
 }
 }; // namespace dsaviz

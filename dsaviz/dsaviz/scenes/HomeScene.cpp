@@ -2,33 +2,37 @@
 #include <imgui.h>
 #include <dsaviz/objects/CircleObject.hpp>
 #include <dsaviz/objects/SquareObject.hpp>
+#include <dsaviz/objects/TextObject.hpp>
 #include <dsaviz/util/FrameTimeTracker.hpp>
+#include <dsaviz/util/Random.hpp>
+
 
 namespace dsaviz {
-HomeScene::HomeScene() {
+void HomeScene::initialize(VizContext& context) {
   constexpr int numCircles = 1000;
   for (int i = 0; i < numCircles; i++) {
     std::unique_ptr<SquareObject> circle = std::make_unique<SquareObject>();
-    circle->transform.setPosition(glm::vec3(i%100, i/100, rand() % 10));
-
-    circle->color = {static_cast<float>(rand() % 100) / 100.0f,
-                     static_cast<float>(rand() % 100) / 100.0f,
-                     static_cast<float>(rand() % 100) / 100.0f};
+    circle->transform.setPosition(glm::vec3(i%100, i/100, context.random->floatRange(0,10)));
+    circle->color = context.random->color();
     vizObjects.push_back(std::move(circle));
   }
 for (int i = 0; i < numCircles; i++) {
     std::unique_ptr<CircleObject> circle = std::make_unique<CircleObject>();
-    circle->transform.setPosition(glm::vec3(i%100, i/100, rand() % 10));
+    circle->transform.setPosition(glm::vec3(i%100, i/100, context.random->floatRange(0,10)));
 
-    circle->color = {static_cast<float>(rand() % 100) / 100.0f,
-                     static_cast<float>(rand() % 100) / 100.0f,
-                     static_cast<float>(rand() % 100) / 100.0f};
-    vizObjects.push_back(std::move(circle));
+    circle->color =  context.random->color();
+       vizObjects.push_back(std::move(circle));
   }
   std::unique_ptr<SquareObject> square = std::make_unique<SquareObject>();
   square->transform.setPosition(glm::vec3(0, 0, 0));
   square->color = {1.0f, 0.0f, 0.0f};
   vizObjects.push_back(std::move(square));
+
+  std::unique_ptr<TextObject>  text = std::make_unique<TextObject>("This is some textGA:LSKFJH, 1234.", *context.font);
+  text->transform.setPosition(glm::vec3(0,0,0.3));
+  text->transform.setScale(glm::vec3(1));
+  text->color = {1.0, 1.0f, 1.0f};
+  vizObjects.push_back(std::move(text));
 }
 void sceneUI(VizContext& context)
 {
@@ -74,7 +78,8 @@ void HomeScene::update(VizContext &context) {
           static_cast<float>(context.frameTimeTracker->getCurrentFrameTime()),
       glm::vec3(0, 0, 1));
   for( auto& obj : vizObjects) {
-    obj->transform.lookAt(context.camera->getPosition());
+      ;
+    //obj->transform.lookAt(context.camera->getPosition());
   }
   sceneUI(context);
 }

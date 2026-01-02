@@ -7,6 +7,8 @@
 #include <dsaviz/scenes/HomeScene.hpp>
 #include <dsaviz/util/FrameTimeTracker.hpp>
 #include <dsaviz/core/Camera.hpp>
+#include <dsaviz/text/Font.hpp>
+#include <dsaviz/util/Random.hpp>
 
 namespace dsaviz {
 class App {
@@ -25,6 +27,8 @@ private:
   HomeScene scene;
   VizContext context;
   FrameTimeTracker frameTimeTracker;
+  Font font;
+  Random random;
   bool shouldRun = true;
     static void glfwErrorCallback(int error, const char* description);
     static void glfwFramebufferResizeCallback(GLFWwindow* window, int width, int height);

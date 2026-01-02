@@ -7,6 +7,8 @@ namespace dsaviz {
     class Audio;
     class Camera;
     class FrameTimeTracker;
+    class Font;
+    class Random;
     struct InputState {
         bool keys[GLFW_KEY_LAST + 1] = {};
         bool prevKeys[GLFW_KEY_LAST + 1] = {};
@@ -29,6 +31,8 @@ namespace dsaviz {
         Audio* audio;
         Camera* camera;
         FrameTimeTracker* frameTimeTracker;
+        Font* font;
+        Random* random;
         GLFWwindow* window;
         int framebufferWidth;
         int framebufferHeight;

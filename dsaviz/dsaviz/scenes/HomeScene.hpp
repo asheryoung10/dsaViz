@@ -4,7 +4,7 @@
 namespace dsaviz {
     class HomeScene : public Scene {
         public:
-        HomeScene();
+        void initialize(VizContext& context);
         void update(VizContext& context) override;
     };
 

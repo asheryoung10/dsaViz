@@ -2,6 +2,7 @@
 #include <dsaviz/render/RenderCommand.hpp>
 #include <dsaviz/render/CircleRenderer.hpp>
 #include <dsaviz/render/SquareRenderer.hpp>
+#include <dsaviz/render/TextRenderer.hpp>
 #include <dsaviz/core/Camera.hpp>
 
 namespace dsaviz {
@@ -17,6 +18,6 @@ private:
   std::vector<RenderCommand> transparentCommands;
   CircleRenderer circleRenderer;
   SquareRenderer squareRenderer;
-  //TexturedQuadsRenderer texturedQuadsRenderer;
+  TextRenderer textRenderer;
 };
 } // namespace dsaviz
