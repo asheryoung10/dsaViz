@@ -19,7 +19,6 @@ void TextObject::setText(const std::string &text, const Font &font) {
   for(int i = 1; i < widths.size(); i++) {
     if(largestWidth < widths[i]) largestWidth = widths[i];
   }
-  spdlog::info(widths.size());
   float originY;
   switch (verticalTextOrigin) {
   case (VerticalTextOrigin::Baseline):

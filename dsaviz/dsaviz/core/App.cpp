@@ -5,7 +5,7 @@
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
-#include <dsaviz/scenes/HomeScene.hpp>
+#include <dsaviz/scenes/SelectionSortScene.hpp>
 #include <dsaviz/scenes/MainScene.hpp>
 
 namespace dsaviz {
@@ -166,7 +166,7 @@ App::App() {
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-  scenes.push_back(std::make_unique<HomeScene>());
+  scenes.push_back(std::make_unique<SelectionSortScene>());
   scenes.push_back(std::make_unique<MainScene>());
   sceneIndex = 0;
 }
@@ -267,7 +267,9 @@ void App::appUI() {
       camera.setRotation(glm::quat(glm::vec3(0)));
     }
   }
-
+  if (input.keyPressed(context, GLFW_KEY_ESCAPE)) {
+      input.setMouseCapture(context, !context.mouseCaptured);
+    }
   // ── System ─────────────────────────────
   if (ImGui::CollapsingHeader("System", ImGuiTreeNodeFlags_DefaultOpen)) {
     if (ImGui::Checkbox("VSync", &context.vsyncEnabled))
@@ -275,9 +277,7 @@ void App::appUI() {
 
     ImGui::Text("Mouse Captured: %s", context.mouseCaptured ? "Yes" : "No");
 
-    if (input.keyPressed(context, GLFW_KEY_ESCAPE)) {
-      input.setMouseCapture(context, !context.mouseCaptured);
-    }
+    
     if (ImGui::CollapsingHeader("UI", ImGuiTreeNodeFlags_DefaultOpen)) {
       ImGui::Text("UI Scale");
       ImGui::SliderFloat("##UIScale", &context.uiScale, 0.25f, 1.5f, "%.2fx");

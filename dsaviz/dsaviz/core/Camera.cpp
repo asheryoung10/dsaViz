@@ -9,7 +9,7 @@ namespace dsaviz {
     Camera::Camera()
         : mode(CameraMode::FPS),
           projectionType(ProjectionType::Perspective),
-          position(0.0f),
+          position(0.0f, 0.0f, 15.0f),
           rotation(1,0,0,0),
           yaw(0.0f),
           pitch(0.0f),
