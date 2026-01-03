@@ -5,11 +5,13 @@
 #include <memory>
 
 namespace dsaviz {
-    class Scene {
-        public:
-        virtual void update(VizContext& context) = 0;
-        void render(Renderer &renderer);
-        protected:
-        std::vector<std::unique_ptr<VizObject>> vizObjects;
-    };
-}
+class Scene {
+public:
+  virtual void update(VizContext &context) = 0;
+  virtual void render(Renderer &renderer) = 0;
+  std::string getName() {return name;}
+  virtual ~Scene() = default;
+  protected:
+  std::string name;
+};
+} // namespace dsaviz

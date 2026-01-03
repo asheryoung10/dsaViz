@@ -5,6 +5,8 @@
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
+#include <dsaviz/scenes/HomeScene.hpp>
+#include <dsaviz/scenes/MainScene.hpp>
 
 namespace dsaviz {
 
@@ -163,7 +165,10 @@ App::App() {
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  scene.initialize(context);
+
+  scenes.push_back(std::make_unique<HomeScene>());
+  scenes.push_back(std::make_unique<MainScene>());
+  sceneIndex = 0;
 }
 
 int App::run() {
@@ -190,13 +195,14 @@ void App::iterate() {
   camera.update(context);
 
   // Update scene
-  scene.update(context);
+  scenes[sceneIndex]->update(context);
 
   // Render scene
-  scene.render(renderer);
+  scenes[sceneIndex]->render(renderer);
   renderer.flush();
 
   appUI();
+  sceneSwitchUI();
 
   // Render ImGui
   ImGui::Render();
@@ -208,7 +214,6 @@ void App::iterate() {
 
 void App::appUI() {
   ImGuiViewport *vp = ImGui::GetMainViewport();
-
 
   ImVec2 panelPos(vp->WorkPos.x + 16.0f, vp->WorkPos.y + 16.0f);
 
@@ -282,12 +287,47 @@ void App::appUI() {
   ImGui::End();
 }
 
-App::~App() {
-  ImGui_ImplOpenGL3_Shutdown();
-  ImGui_ImplGlfw_Shutdown();
-  ImGui::DestroyContext();
+void App::sceneSwitchUI() 
+  {
+    ImGuiViewport *vp = ImGui::GetMainViewport();
 
-  glfwDestroyWindow(context.window);
-  glfwTerminate();
-}
+    ImVec2 panelPos(vp->WorkPos.x + vp->WorkSize.x * 0.5f,
+                    vp->WorkPos.y + 16.0f);
+
+    ImGui::SetNextWindowPos(panelPos, ImGuiCond_Always, ImVec2(0.5f, 0.0f));
+
+    ImGuiWindowFlags flags =
+        ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove |
+        ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings |
+        ImGuiWindowFlags_NoFocusOnAppearing;
+    ImGui::Begin("SceneSwitchUI", nullptr, flags);
+
+    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 6));
+    if (ImGui::Button("<")) { /* start scene */
+      sceneIndex++;
+      sceneIndex %= scenes.size();
+      audio.playFile("../assets/subtleClick.mp3");
+    }
+    ImGui::SameLine();
+    ImGui::Text("%s", scenes[sceneIndex]->getName().c_str());
+    ImGui::SameLine();
+    if (ImGui::Button(">")) { /* pause scene */
+      audio.playFile("../assets/subtleClick.mp3");
+      sceneIndex--;
+      sceneIndex %= scenes.size();
+    }
+
+    ImGui::PopStyleVar();
+
+    ImGui::End();
+  }
+
+  App::~App() {
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+
+    glfwDestroyWindow(context.window);
+    glfwTerminate();
+  }
 } // namespace dsaviz

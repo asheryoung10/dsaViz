@@ -6,10 +6,10 @@
 
 namespace dsaviz {
 
-class HomeScene : public Scene {
+class MainScene : public Scene {
 public:
-    HomeScene() {
-        name = "Home";
+    MainScene() {
+        name = "Main";
     }
     void update(VizContext& context) override;
     void render(Renderer& render) override;
