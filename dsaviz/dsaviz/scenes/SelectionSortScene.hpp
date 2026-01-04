@@ -16,16 +16,27 @@ public:
 private:
     enum class State{
         Setup,
+        Reset,
         Play,
         Pause,
-        Step
+        StepForward,
+        StepBackward
     };
     State state = State::Setup;
+    struct Animation{
+        float duration;
+        float elapsedTime;
+        int targetIndex;
+        std::vector<glm::vec3> positions;
+    };
+    std::vector<Animation> animations;
     std::vector<std::unique_ptr<ValueSquareObject>> values;
+    float speed = 1;
 
 
     void drawSceneUI();
     void drawSetupUI(VizContext& context);
     void resizeValues(int newSize, VizContext& context);
+    bool handleAnimation(Animation& animation, VizContext &context);
 };
 } // namespace dsaviz

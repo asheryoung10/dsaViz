@@ -3,6 +3,7 @@
 #include <dsaviz/objects/CircleObject.hpp>
 #include <dsaviz/util/Random.hpp>
 #include <spdlog/spdlog.h>
+#include <dsaviz/util/FrameTimeTracker.hpp>
 
 #include <algorithm>
 #include <vector>
@@ -10,7 +11,7 @@
 
 namespace dsaviz {
 void SelectionSortScene::drawSceneUI() {
-ImGuiViewport *vp = ImGui::GetMainViewport();
+  ImGuiViewport *vp = ImGui::GetMainViewport();
 
   ImVec2 panelPos(vp->WorkPos.x + vp->WorkSize.x * 0.5f,
                   vp->WorkPos.y + vp->WorkSize.y - 16.0f);
@@ -23,20 +24,37 @@ ImGuiViewport *vp = ImGui::GetMainViewport();
       ImGuiWindowFlags_NoFocusOnAppearing;
   ImGui::Begin("SelectionSortControlUI", nullptr, flags);
 
-      if (ImGui::Button("Reset")) {
-        state = State::Setup;
-    }
-    ImGui::SameLine();
-    ImGui::SameLine();
-    if (ImGui::Button(">")) { /* pause scene */
-    }
-
+  if (ImGui::Button("Setup")) {
+    state = State::Setup;
+  }
+  ImGui::SameLine();
+  if (ImGui::Button("Reset")) {
+    state = State::Setup;
+  }
+  ImGui::SameLine();
+  if (ImGui::Button("Play")) {
+    state = State::Play;
+  }
+  ImGui::SameLine();
+  if (ImGui::Button("Pause")) {
+    state = State::Pause;
+  }
+  ImGui::SameLine();
+  if (ImGui::Button("<")) {
+    state = State::StepBackward;
+  }
+  ImGui::SameLine();
+  if (ImGui::Button(">")) { /* pause scene */
+    state = State::StepForward;
+  }
+  ImGui::SameLine();
+  ImGui::SliderFloat("Speed", &speed, 0.25, 3);
 
   ImGui::End();
 }
 
 void SelectionSortScene::drawSetupUI(VizContext &context) {
-  if(values.size() < 5) {
+  if (values.size() < 5) {
     resizeValues(5, context);
   }
   ImGuiViewport *vp = ImGui::GetMainViewport();
@@ -55,21 +73,25 @@ void SelectionSortScene::drawSetupUI(VizContext &context) {
   ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 6));
   int elementCount = values.size();
   ImGui::SliderInt("Element Count", &elementCount, 5, 50);
-   if(elementCount != values.size()) {
-  resizeValues(elementCount, context);
+  if (elementCount != values.size()) {
+    resizeValues(elementCount, context);
   }
-
 
   if (ImGui::Button("Done")) {
     state = State::Pause;
+    std::vector<glm::vec3> positions = {glm::vec3(0, 0, 0), glm::vec3(0, 1, 0),
+                         glm::vec3(1, 1, 0), glm::vec3(1, 1, 1)};
+    Animation animation = {5,
+                           0, 0, positions};
+                          animations.push_back(animation);
   }
 
   ImGui::PopStyleVar();
 
   ImGui::End();
 }
-void SelectionSortScene::resizeValues(int newSize, VizContext& context) {
-     while (newSize > values.size()) {
+void SelectionSortScene::resizeValues(int newSize, VizContext &context) {
+  while (newSize > values.size()) {
     std::unique_ptr addition = std::make_unique<ValueSquareObject>(
         context.random->intRange(0, 100), context);
     addition->transform.setPosition(glm::vec3(values.size(), 0, 0));
@@ -79,17 +101,16 @@ void SelectionSortScene::resizeValues(int newSize, VizContext& context) {
     values.resize(newSize);
   }
 
-  float origin = -float(values.size()) /2 + 0.5f ;
-  for(int i = 0; i < values.size(); i++) {
-    auto& valueObject = values[i];
-    int intValue = context.random->intRange(0,values.size());
-    float value =  intValue / float(values.size());
+  float origin = -float(values.size()) / 2 + 0.5f;
+  for (int i = 0; i < values.size(); i++) {
+    auto &valueObject = values[i];
+    int intValue = context.random->intRange(0, values.size());
+    float value = intValue / float(values.size());
     valueObject->setValue(intValue);
 
-    valueObject->color = Color::fromHSV(1,1,value);
+    valueObject->color = Color::fromHSV(1, 1, value);
     valueObject->transform.setPosition(glm::vec3(origin + i, 0, 0));
   }
-
 }
 void SelectionSortScene::update(VizContext &context) {
   if (state == State::Setup) {
@@ -97,9 +118,58 @@ void SelectionSortScene::update(VizContext &context) {
     return;
   }
   drawSceneUI();
+
+  if(state == State::Pause) return;
+
+  for (int i = 0; i < animations.size(); i++) {
+    if(handleAnimation(animations[i], context)) {
+      animations.erase(animations.begin() + i);
+      i--;
+    }
+  }
+
+  // for(int i = 0; i < values.size(); i++) {
+  //   int smallest = values[i]->getValue();
+  //   int smallestIndex = i;
+  //   for(int j = i+1; j < values.size(); j++) {
+  //     if(values[j]->getValue() < smallest) {
+  //       smallest = values[j]->getValue();
+  //       smallestIndex= j;
+  //     }
+  //   }
+  //   std::unique_ptr<ValueSquareObject> temp = std::move(values[i]);
+  //   values[i] = std::move(values[smallestIndex]);
+  //   values[smallestIndex] = std::move(temp);
+  // }
+
+  // float origin = -float(values.size())/2 + 0.5;
+  // for(int i = 0; i < values.size(); i++) {
+  //   values[i]->transform.setPosition(glm::vec3(origin + i, 0, 0));
+  // }
 }
+bool SelectionSortScene::handleAnimation(Animation &animation,
+                                         VizContext &context) {
+                                          auto easeInOut = [](float t) -> float {
+                                            if(t < 0.0f) return 0.0f;
+                                            if(t > 1.0f) return 1.0f;
+                                            return t  * t * (3.0f - 2.0f * t);
+                                          };
+                                          animation.elapsedTime += context.frameTimeTracker->getCurrentFrameTime() * speed;
+                                          float progress = animation.elapsedTime / animation.duration;
+                                          if(animation.positions.size() == 0) return true;
+                                          if(progress >=1 ) return true;
+                                          float individualLerpProgress = 1 / (float(animation.positions.size()-1));
+                                          int currentIndex = int(progress / individualLerpProgress);
+                                          float currentProgress = (progress - (individualLerpProgress*currentIndex))/individualLerpProgress;
+                                          currentProgress = easeInOut(currentProgress);
+                                          glm::vec3 newPos = glm::mix(animation.positions[currentIndex], animation.positions[currentIndex+1], currentProgress);
+                                          spdlog::info("{}", currentIndex);
+                                          values[animation.targetIndex]->transform.setPosition(newPos);
+            
+                                          return false;
+                                         }
 void SelectionSortScene::render(Renderer &render) {
-  for (auto& value : values) {
+  for (auto &value : values) {
     value->submit(render);
   }
 }

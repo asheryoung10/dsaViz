@@ -20,9 +20,14 @@ public:
     double now = glfwGetTime();
     currentDelta = now - lastTime;
     lastTime = now;
+    currentTime = now;
 
     history[index] = currentDelta;
     index = (index + 1) % HistoryCount;
+  }
+
+  double getCurrentTime() const {
+    return currentTime;
   }
 
   // Most recent frame time (seconds)
@@ -52,6 +57,7 @@ private:
   double history[HistoryCount] = {};
   int index = 0;
 
+  double currentTime = 0.0;
   double lastTime = 0.0;
   double currentDelta = 0.0;
 };
