@@ -17,10 +17,11 @@ private:
     enum class State{
         Setup,
         Reset,
-        Play,
+        StepBackward,
+        Reverse,
         Pause,
+        Play,
         StepForward,
-        StepBackward
     };
     State state = State::Setup;
     struct Animation{
@@ -29,12 +30,36 @@ private:
         int targetIndex;
         std::vector<glm::vec3> positions;
     };
-    std::vector<Animation> animations;
     std::vector<std::unique_ptr<ValueSquareObject>> values;
+;
+    enum class SelectionSortTask {
+        FindingMin,
+        Swapping
+    };
+    struct SelectionSortState {
+        SelectionSortTask task = SelectionSortTask::FindingMin;
+        int currentMin = 0;
+        int minIndex = 0;
+        int i = 0;
+        int j = 0;
+    };
+    struct SelectionSortStep {
+        std::vector<ValueSquareObject*> values;
+        std::vector<Animation> animations;
+        std::vector<Color> fillColors;
+        std::vector<Color> outlineColors;
+        std::vector<Color> textColors;
+        float stepDuration;
+        SelectionSortState selectionSortState;
+    };
+    std::vector<SelectionSortStep> steps;
+    int stepIndex;
     float speed = 1;
 
 
     void drawSceneUI();
+    void initializeStep();
+    void generateNextStep();
     void drawSetupUI(VizContext& context);
     void resizeValues(int newSize, VizContext& context);
     bool handleAnimation(Animation& animation, VizContext &context);

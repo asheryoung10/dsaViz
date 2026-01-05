@@ -95,6 +95,8 @@ void TextRenderer::render(const glm::mat4 &transform,
 
     if (!quadData || quadData->empty() || !fontAtlas)
         return;
+    
+    glDisable(GL_DEPTH_TEST);
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(
@@ -114,6 +116,7 @@ void TextRenderer::render(const glm::mat4 &transform,
     glBindVertexArray(vao);
     glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(quadData->size() / 4));
     glBindVertexArray(0);
+    glEnable(GL_DEPTH_TEST);
 }
 
 } // namespace dsaviz

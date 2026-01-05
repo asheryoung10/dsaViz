@@ -79,15 +79,15 @@ void SquareRenderer::initialize(int segmentsPerCorner, float cornerRadius, float
 }
 
 void SquareRenderer::render(const glm::mat4 &transform,
-                            const glm::vec3 &color) {
+                            const glm::vec3 &color, const glm::vec3& outlineColor) {
   shader.bind();
   shader.uploadMat4("uTransform", transform);
   shader.uploadVec3("uColor", color);
   glBindVertexArray(vao);
   glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
-  shader.uploadVec3("uColor",
-                    glm::vec3(0.0f, 0.0f, 0.0f)); // Outline color (black)
   glBindVertexArray(outlineVao);
+  spdlog::info("{} {} {}", outlineColor.x, outlineColor.y, outlineColor.z);
+  shader.uploadVec3("uColor", outlineColor);
   glDrawArrays(GL_TRIANGLE_STRIP, 0, outlineVertexCount);
   glBindVertexArray(0);
 }

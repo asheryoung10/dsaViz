@@ -5,7 +5,8 @@ namespace dsaviz {
         renderer.submit(RenderCommand{
             RenderCommandType::Circle,
             transform.getMatrix(),
-            Color::toVec3(color)
+            Color::toVec3(color),
+            Color::toVec3(outlineColor)
         });
     }
 }

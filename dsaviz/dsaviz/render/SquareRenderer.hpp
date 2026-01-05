@@ -8,7 +8,7 @@ namespace dsaviz {
 class SquareRenderer {
 public:
     void initialize(int segmentsPerCorner, float cornerRadius, float outlineRadius);
-    void render(const glm::mat4& transform, const glm::vec3& color);
+    void render(const glm::mat4& transform, const glm::vec3& color, const glm::vec3& outlineColor);
 
 private:
     unsigned int vao = 0;

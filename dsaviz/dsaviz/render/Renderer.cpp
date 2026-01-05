@@ -26,12 +26,12 @@ void Renderer::flush() {
     switch (command.type) {
     case RenderCommandType::Circle:
       circleRenderer.render(
-          camera->getViewProjectionMatrix() * command.transform, command.color);
+          camera->getViewProjectionMatrix() * command.transform, command.color, command.outlineColor);
       break;
 
     case RenderCommandType::Square:
       squareRenderer.render(
-          camera->getViewProjectionMatrix() * command.transform, command.color);
+          camera->getViewProjectionMatrix() * command.transform, command.color, command.outlineColor);
       break;
 
     default:

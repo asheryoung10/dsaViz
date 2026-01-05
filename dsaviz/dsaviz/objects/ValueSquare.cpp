@@ -14,8 +14,13 @@ ValueSquareObject::ValueSquareObject(int value, VizContext &context)
 
 void ValueSquareObject::submit(Renderer &renderer) {
   squareObject.color = this->color;
+  squareObject.outlineColor = this->outlineColor;
   squareObject.submit(renderer);
   textObject.submit(renderer);
+}
+
+void ValueSquareObject::setTextColor(Color color) {
+  textObject.color = color;
 }
 
 int ValueSquareObject::getValue() const { return value; }

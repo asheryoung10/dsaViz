@@ -31,13 +31,6 @@ void SelectionSortScene::drawSceneUI() {
   ImGui::SameLine();
   if (ImGui::Button("<")) {
     state = State::StepBackward;
-    if(stepIndex == 0) {
-      state = State::Pause;
-    }
-    if(stepIndex > 0) {
-      stepIndex--;
-      initializeStep();
-    }
   }
   ImGui::SameLine();
   if (ImGui::Button("Pause")) {
@@ -46,35 +39,21 @@ void SelectionSortScene::drawSceneUI() {
   ImGui::SameLine();
   if (ImGui::Button(">")) {
     state = State::StepForward;
- if(stepIndex < steps.size() - 1) {
-    stepIndex++;
-    initializeStep();
   }
-
-  if(stepIndex == steps.size() - 1) {
-    generateNextStep();
-    stepIndex = steps.size() - 1;
-  
-  }
-}
   ImGui::SameLine();
   if (ImGui::Button(">>")) {
     state = State::Play;
   }
   ImGui::SliderFloat("Speed", &speed, 0.25, 3);
-  if(ImGui::SliderInt("Progress", &stepIndex, 0, steps.size() - 1)) {
-    initializeStep();
-    state = State::Pause;
-  }
+  int progress;
+  ImGui::SliderInt("Progress", &progress, 0, steps.size() - 1);
   
   if (ImGui::Button("Setup")) {
     state = State::Setup;
   }
   ImGui::SameLine();
   if (ImGui::Button("Reset")) {
-    state = State::Reset;
-    stepIndex = 0;
-    initializeStep();
+    state = State::Setup;
   }
   ImGui::SameLine();
 
@@ -100,7 +79,7 @@ void SelectionSortScene::drawSetupUI(VizContext &context) {
 
   ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 6));
   int elementCount = values.size();
-  ImGui::SliderInt("Element Count", &elementCount, 5, 1000);
+  ImGui::SliderInt("Element Count", &elementCount, 5, 50);
   if (elementCount != values.size()) {
     resizeValues(elementCount, context);
   }
@@ -128,15 +107,10 @@ void SelectionSortScene::drawSetupUI(VizContext &context) {
       positions.push_back(position);
       Animation animation {increment * (i+1), 0, i, positions};
       stepAnimations.push_back(animation);
-      fillColor.push_back(values[i]->color);
-      outlineColor.push_back({0,0,0});
-      textColor.push_back({1,1,0});
-
 
     }
     stepIndex = 0;
-    steps.push_back({stepValues, stepAnimations, fillColor, outlineColor, textColor, duration});
-    initializeStep();
+    steps.push_back({stepValues, stepAnimations, duration});
 
   }
 
@@ -144,21 +118,9 @@ void SelectionSortScene::drawSetupUI(VizContext &context) {
 
   ImGui::End();
 }
-void SelectionSortScene::initializeStep() {
-  float origin = -float(steps[stepIndex].values.size())/2 + 0.5;
-  for(int i = 0; i < steps[stepIndex].values.size(); i++) {
-    ValueSquareObject* pointer = steps[stepIndex].values[i];
-    pointer->transform.setPosition(glm::vec3(origin + i, 0, 0));
-    pointer->color = steps[stepIndex].fillColors[i];
-    pointer->outlineColor = steps[stepIndex].outlineColors[i];
-    pointer->setTextColor(steps[stepIndex].textColors[i]);
-
-  }
-  for(int i = 0; i < steps[stepIndex].animations.size(); i++) {
-    steps[stepIndex].animations[i].elapsedTime = 0;
-  }
+void initializeStep() {
+  float origin =  
 }
-
 void SelectionSortScene::resizeValues(int newSize, VizContext &context) {
   while (newSize > values.size()) {
     std::unique_ptr addition = std::make_unique<ValueSquareObject>(
@@ -190,43 +152,15 @@ void SelectionSortScene::update(VizContext &context) {
   }
   drawSceneUI();
 
-  if(state == State::Pause || state == State::Reset) return;
+  if(state == State::Pause) return;
   
-  bool animationComplete = true;
   for(int i = 0; i < steps[stepIndex].animations.size(); i++) {
-    if(!handleAnimation(steps[stepIndex].animations[i], context)) animationComplete = false;
-  }
-  
-  if(!animationComplete) return;
-  if(state == State::StepForward || state == State::StepBackward) {
-    state = State::Pause;
-    return;
-  }
+    if(handleAnimation(steps[stepIndex].animations[i], context)){
+      steps[stepIndex].animations.erase(steps[stepIndex].animations.begin() + i);
+      i--;
+    }
 
-  if(state == State::Reverse && stepIndex == 0) {
-    state = State::Pause;
-    return;
   }
-
-  if(state == State::Reverse && stepIndex > 0) {
-    stepIndex--;
-    initializeStep();
-    return;
-  }
-
-  if(state == State::Play && stepIndex < steps.size() - 1) {
-    stepIndex++;
-    initializeStep();
-    return;
-  }
-
-  if(state == State::Play && stepIndex == steps.size() - 1) {
-    generateNextStep();
-    stepIndex = steps.size() - 1;
-    return;
-  }
-  
-
 
 
   // for(int i = 0; i < values.size(); i++) {
@@ -247,66 +181,6 @@ void SelectionSortScene::update(VizContext &context) {
   // for(int i = 0; i < values.size(); i++) {
   //   values[i]->transform.setPosition(glm::vec3(origin + i, 0, 0));
   // }
-}
-void SelectionSortScene::generateNextStep() {
-
-  stepIndex = steps.size() - 1;
-  SelectionSortStep currentStep = steps[stepIndex];
-  SelectionSortState currentState = steps[stepIndex].selectionSortState;
-  if(currentState.task == SelectionSortTask::FindingMin) {
-    int newMin = currentState.currentMin;
-    int newMinIndex = currentState.minIndex;
-    int newI = currentState.i;    
-    int newJ = currentState.j+1;
-    if(currentState.i == currentState.j) {
-      int newMin = currentStep.values[currentState.i]->getValue();
-      newMinIndex = currentState.i;
-      newJ = currentState.i;
-    }
-    if(currentState.currentMin > currentStep.values[newJ]->getValue()) {
-      newMin = currentStep.values[newJ]->getValue();
-      newMinIndex = newJ;
-    }
-    SelectionSortState newState = {
-      SelectionSortTask::FindingMin,
-      newMin,
-      newMinIndex,
-      newI,
-      newJ
-    };
-    std::vector<ValueSquareObject*> newValues = currentStep.values;
-        std::vector<Animation> newAnimations;
-        std::vector<Color> newFillColors = currentStep.fillColors;
-        std::vector<Color> newOutlineColors = currentStep.outlineColors;
-        std::vector<Color> newTextColors = currentStep.textColors;
-        float stepDuration = 1;
-        std::vector<glm::vec3> newPositions;
-        glm::vec3 currentPosition = currentStep.values[0]->transform.getPosition();
-        newPositions.push_back(currentPosition);
-        newPositions.push_back(currentPosition + glm::vec3(0,1,0));
-        newPositions.push_back(currentPosition);
-
-      spdlog::error("Get here");
-      Animation newAnimation { 
-        stepDuration,
-        0,
-        newJ - 1,
-        newPositions
-      };
-      
-      newAnimations.push_back(newAnimation);
-      steps.push_back({
-        newValues,
-        newAnimations,
-        newFillColors,
-        newOutlineColors,
-        newTextColors,
-        stepDuration,
-        newState
-      });
-      spdlog::error("Get here");
-  }
-  
 }
 bool SelectionSortScene::handleAnimation(Animation &animation,
                                          VizContext &context) {

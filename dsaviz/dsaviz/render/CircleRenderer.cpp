@@ -91,13 +91,13 @@ void CircleRenderer::initialize(int segments, float outlineRadius) {
     spdlog::info("CircleRenderer initialized with {} segments.", segments);
 }
 
-void CircleRenderer::render(const glm::mat4& transform, const glm::vec3& color) {
+void CircleRenderer::render(const glm::mat4& transform, const glm::vec3& color, const glm::vec3& outlineColor) {
     shader.bind();
     shader.uploadMat4("uTransform", transform);
     shader.uploadVec3("uColor", color);
     glBindVertexArray(vao);
     glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
-    shader.uploadVec3("uColor", glm::vec3(0.0f, 0.0f, 0.0f)); // Outline color (black)
+    shader.uploadVec3("uColor", outlineColor); // Outline color (black)
     glBindVertexArray(outlineVao);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, outlineVertexCount);
     glBindVertexArray(0);

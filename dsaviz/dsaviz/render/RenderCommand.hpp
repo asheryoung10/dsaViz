@@ -12,6 +12,7 @@ namespace dsaviz {
         RenderCommandType type;
         glm::mat4 transform;
         glm::vec3 color;
+        glm::vec3 outlineColor;
 
         // Below is only for textured quads. (Used for text rendering)
         const Texture* glyphAtlas = nullptr;

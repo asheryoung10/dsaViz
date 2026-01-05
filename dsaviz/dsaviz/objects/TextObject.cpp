@@ -127,7 +127,7 @@ std::vector<float> TextObject::getRowWidths(const std::string &text) {
 
 void TextObject::submit(Renderer &renderer) {
   renderer.submit(RenderCommand{RenderCommandType::Text, transform.getMatrix(),
-                                Color::toVec3(color), &font->getFontAtlas(),
+                                Color::toVec3(color), Color::toVec3(outlineColor), &font->getFontAtlas(),
                                 &quadData});
 }
 } // namespace dsaviz

@@ -8,6 +8,7 @@ namespace dsaviz {
         public:
         Transform transform;
         Color color;
+        Color outlineColor;
         virtual void submit(Renderer& renderer) = 0;
         virtual ~VizObject() = default;
     };

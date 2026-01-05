@@ -3,6 +3,7 @@
 #include <dsaviz/objects/SquareObject.hpp>
 #include <dsaviz/objects/TextObject.hpp>
 #include <dsaviz/core/VizContext.hpp>
+#include <dsaviz/util/Color.hpp>
 
 namespace dsaviz {
     class ValueSquareObject : public VizObject {
@@ -11,6 +12,7 @@ namespace dsaviz {
         void submit(Renderer& renderer) override;
         void setValue(int value);
         int getValue() const;
+        void setTextColor(Color color);
         private:
         int value;
         // Must come before textobject for correct initialization order.

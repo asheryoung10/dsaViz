@@ -8,7 +8,7 @@ namespace dsaviz {
 class CircleRenderer {
 public:
     void initialize(int segments, float outlineRadius);
-    void render(const glm::mat4& transform, const glm::vec3& color);
+    void render(const glm::mat4& transform, const glm::vec3& color, const glm::vec3& outlineColor);
 
 private:
     unsigned int vao = 0;
