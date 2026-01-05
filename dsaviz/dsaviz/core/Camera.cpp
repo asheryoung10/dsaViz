@@ -1,4 +1,3 @@
-#include "VizContext.hpp"
 #include <dsaviz/core/Camera.hpp>
 #include <fmt/format.h>
 #include <dsaviz/util/FrameTimeTracker.hpp>

@@ -86,7 +86,6 @@ void SquareRenderer::render(const glm::mat4 &transform,
   glBindVertexArray(vao);
   glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
   glBindVertexArray(outlineVao);
-  spdlog::info("{} {} {}", outlineColor.x, outlineColor.y, outlineColor.z);
   shader.uploadVec3("uColor", outlineColor);
   glDrawArrays(GL_TRIANGLE_STRIP, 0, outlineVertexCount);
   glBindVertexArray(0);

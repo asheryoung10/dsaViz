@@ -261,7 +261,7 @@ void SelectionSortScene::generateNextStep() {
     if(currentState.i == currentState.j) {
       int newMin = currentStep.values[currentState.i]->getValue();
       newMinIndex = currentState.i;
-      newJ = currentState.i;
+      newJ = currentState.i + 1;
     }
     if(currentState.currentMin > currentStep.values[newJ]->getValue()) {
       newMin = currentStep.values[newJ]->getValue();
@@ -274,6 +274,7 @@ void SelectionSortScene::generateNextStep() {
       newI,
       newJ
     };
+    spdlog::info(newState.j);
     std::vector<ValueSquareObject*> newValues = currentStep.values;
         std::vector<Animation> newAnimations;
         std::vector<Color> newFillColors = currentStep.fillColors;
@@ -281,16 +282,15 @@ void SelectionSortScene::generateNextStep() {
         std::vector<Color> newTextColors = currentStep.textColors;
         float stepDuration = 1;
         std::vector<glm::vec3> newPositions;
-        glm::vec3 currentPosition = currentStep.values[0]->transform.getPosition();
+        glm::vec3 currentPosition = currentStep.values[newJ]->transform.getPosition();
         newPositions.push_back(currentPosition);
         newPositions.push_back(currentPosition + glm::vec3(0,1,0));
         newPositions.push_back(currentPosition);
 
-      spdlog::error("Get here");
       Animation newAnimation { 
         stepDuration,
         0,
-        newJ - 1,
+        newJ,
         newPositions
       };
       
@@ -304,7 +304,6 @@ void SelectionSortScene::generateNextStep() {
         stepDuration,
         newState
       });
-      spdlog::error("Get here");
   }
   
 }
@@ -320,7 +319,7 @@ bool SelectionSortScene::handleAnimation(Animation &animation,
                                           if(animation.positions.size() == 0) return true;
                                           if(progress >=1 )  {
                                             animation.elapsedTime = animation.duration;
-                                            values[animation.targetIndex]->transform.setPosition(animation.positions[animation.positions.size() - 1]);
+                                            steps[stepIndex].values[animation.targetIndex]->transform.setPosition(animation.positions[animation.positions.size() - 1]);
                                               return true;
                                           }
                                           float individualLerpProgress = 1 / (float(animation.positions.size()-1));
@@ -328,8 +327,7 @@ bool SelectionSortScene::handleAnimation(Animation &animation,
                                           float currentProgress = (progress - (individualLerpProgress*currentIndex))/individualLerpProgress;
                                           currentProgress = easeInOut(currentProgress);
                                           glm::vec3 newPos = glm::mix(animation.positions[currentIndex], animation.positions[currentIndex+1], currentProgress);
-                                          spdlog::info("{}", currentIndex);
-                                          values[animation.targetIndex]->transform.setPosition(newPos);
+                                          steps[stepIndex].values[animation.targetIndex]->transform.setPosition(newPos);
             
                                           return false;
                                          }
