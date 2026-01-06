@@ -61,7 +61,7 @@ void SelectionSortScene::drawSceneUI() {
   if (ImGui::Button(">>")) {
     state = State::Play;
   }
-  ImGui::SliderFloat("Speed", &speed, 0.25, 100);
+  ImGui::SliderFloat("Speed", &speed, 0.25, 25);
   if (ImGui::SliderInt("Progress", &stepIndex, 0, steps.size() - 1)) {
     initializeStep();
     state = State::Pause;
@@ -82,8 +82,9 @@ void SelectionSortScene::drawSceneUI() {
 }
 
 void SelectionSortScene::drawSetupUI(VizContext &context) {
-  if (values.size() < 5) {
-    resizeValues(5, context);
+  if(values.size() < 2) {
+    resizeValues(2, context);
+
   }
   ImGuiViewport *vp = ImGui::GetMainViewport();
 
@@ -100,7 +101,7 @@ void SelectionSortScene::drawSetupUI(VizContext &context) {
 
   ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 6));
   int elementCount = values.size();
-  ImGui::SliderInt("Element Count", &elementCount, 5, 1000);
+  ImGui::SliderInt("Element Count", &elementCount, 2, 40);
   if (elementCount != values.size()) {
     resizeValues(elementCount, context);
   }
@@ -330,9 +331,9 @@ void SelectionSortScene::generateNextStep() {
 
     newAnimations.push_back(newAnimation);
   } else if (newTask == SelectionSortTask::Swapping) {
+    stepDuration = 4;
     int lowIndex = currentState.i;
     int minIndex = currentState.minIndex;
-    stepDuration = 1;
     std::vector<glm::vec3> newPositions;
     glm::vec3 lowPosition =
         currentStep.values[lowIndex]->transform.getPosition();

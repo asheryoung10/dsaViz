@@ -247,7 +247,7 @@ namespace dsaviz {
         else if(ctx.inputState.keys[GLFW_KEY_Q]) roll += mouseSpeed * dt * 1000;
         else if(ctx.inputState.keys[GLFW_KEY_E]) roll -= mouseSpeed * dt * 1000;
         bool changedViewSize = false;
-        float viewScaleSpeed = ctx.inputState.keys[GLFW_KEY_LEFT_SHIFT] ? 2.0 : 1.0;
+        float viewScaleSpeed = ctx.inputState.keys[GLFW_KEY_LEFT_SHIFT] ? 20.0 : 1.0;
         if(ctx.inputState.keys[GLFW_KEY_W]) {
             orthoViewSize -= dt * viewScaleSpeed;
             changedViewSize = true;
