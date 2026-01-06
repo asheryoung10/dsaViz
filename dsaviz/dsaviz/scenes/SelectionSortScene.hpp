@@ -34,10 +34,11 @@ private:
 ;
     enum class SelectionSortTask {
         FindingMin,
-        Swapping
+        Swapping,
+        Done
     };
     struct SelectionSortState {
-        SelectionSortTask task = SelectionSortTask::FindingMin;
+        SelectionSortTask task = SelectionSortTask::Swapping;
         int currentMin = 0;
         int minIndex = 0;
         int i = 0;
@@ -58,6 +59,7 @@ private:
 
 
     void drawSceneUI();
+    void drawStateUI(VizContext& context);
     void initializeStep();
     void generateNextStep();
     void drawSetupUI(VizContext& context);

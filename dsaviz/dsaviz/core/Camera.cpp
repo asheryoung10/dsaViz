@@ -21,8 +21,8 @@ namespace dsaviz {
     {
         fovY = glm::radians(60.0f);
         aspect = 4.0f/3.0f;
-        nearPlane = 0.001f;
-        farPlane = 100.0f;
+        nearPlane = 0.01f;
+        farPlane = 1000.0f;
         orthoLeft = -10.0f; orthoRight = 10.0f;
         orthoBottom = -10.0f; orthoTop = 10.0f;
 
