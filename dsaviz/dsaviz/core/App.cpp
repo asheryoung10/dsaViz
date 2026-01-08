@@ -6,6 +6,7 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 #include <dsaviz/scenes/SelectionSortScene.hpp>
+#include <dsaviz/scenes/InsertionSortScene.hpp>
 #include <dsaviz/scenes/MainScene.hpp>
 
 namespace dsaviz {
@@ -138,7 +139,7 @@ App::App() {
   frameTimeTracker.initialize();
   glfwSetFramebufferSizeCallback(window, glfwFramebufferResizeCallback);
 
-  font.setFont("../assets/palatinolinotype_roman.ttf", 64.0f);
+  font.setFont("../assets/JetBrainsMono-Bold.ttf", 64.0f);
   context.font = &font;
 
   renderer.initialize(&camera);
@@ -167,6 +168,7 @@ App::App() {
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
   scenes.push_back(std::make_unique<SelectionSortScene>());
+  scenes.push_back(std::make_unique<InsertionSortScene>());
   scenes.push_back(std::make_unique<MainScene>());
   sceneIndex = 0;
 }
@@ -304,7 +306,8 @@ void App::sceneSwitchUI()
 
     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(10, 6));
     if (ImGui::Button("<")) { /* start scene */
-      sceneIndex++;
+      sceneIndex--;
+      sceneIndex = sceneIndex < 0 ? scenes.size() - 1: sceneIndex;
       sceneIndex %= scenes.size();
       audio.playFile("../assets/subtleClick.mp3");
     }
@@ -313,7 +316,7 @@ void App::sceneSwitchUI()
     ImGui::SameLine();
     if (ImGui::Button(">")) { /* pause scene */
       audio.playFile("../assets/subtleClick.mp3");
-      sceneIndex--;
+      sceneIndex++;
       sceneIndex %= scenes.size();
     }
 
