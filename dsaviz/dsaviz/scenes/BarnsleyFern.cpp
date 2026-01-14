@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <vector>
 #include <memory>
+#include <dsaviz/util/Color.hpp>
 
 namespace dsaviz {
 
@@ -107,11 +108,24 @@ void BarnsleyFern::drawSceneUI() {
 
         // Accumulate brightness (clamped)
         if (imageData[index] < 255)
-          imageData[index] += 5;
+          imageData[index] += 10;
       }
     }
+    uint8_t* pixData = (uint8_t *)malloc((size_t)(width * height * 3));
+    for(int i = 0; i < width * height; i++) {
+        glm::vec3 col = Color::toVec3(Color::fromHSV(imageData[i]/ 255.0, 1, 1));
+        if(imageData[i] == 0) {
+            col.x = 0;
+            col.y = 0;
+            col.z = 0;
+        }
+        pixData[3*i] = (uint8_t)(col.x * 255.0f);
+        pixData[3*i+1] = (uint8_t)(col.y * 255.0f);
+        pixData[3*i+2] = (uint8_t)(col.z * 255.0f);
 
-    texture.createFromMemory(imageData, width, height, TextureFormat::R8);
+    }
+    texture.createFromMemory(pixData, width, height, TextureFormat::RGB8);
+    free(pixData);
     texture.setNearestFiltering();
   }
 
