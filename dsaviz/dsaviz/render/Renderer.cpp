@@ -8,7 +8,7 @@
 namespace dsaviz {
 void Renderer::submit(const RenderCommand command) {
   if (command.type == RenderCommandType::Circle ||
-      command.type == RenderCommandType::Square) {
+      command.type == RenderCommandType::Square || command.type == RenderCommandType::Texture) {
     opaqueCommands.push_back(command);
   } else {
     transparentCommands.push_back(command);
@@ -20,6 +20,7 @@ void Renderer::initialize(Camera *camera) {
   circleRenderer.initialize(64, 0.05f);
   squareRenderer.initialize(5, 0.01, 0.05f);
   textRenderer.initialize();
+  textureRenderer.initialize();
 }
 void Renderer::flush() {
   for (const RenderCommand &command : opaqueCommands) {
@@ -33,7 +34,10 @@ void Renderer::flush() {
       squareRenderer.render(
           camera->getViewProjectionMatrix() * command.transform, command.color, command.outlineColor);
       break;
-
+    case RenderCommandType::Texture:
+      textureRenderer.render(
+          camera->getViewProjectionMatrix() * command.transform, command.glyphAtlas);
+      break;
     default:
       break;
     }

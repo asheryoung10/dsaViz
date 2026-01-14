@@ -3,6 +3,7 @@
 #include <dsaviz/render/CircleRenderer.hpp>
 #include <dsaviz/render/SquareRenderer.hpp>
 #include <dsaviz/render/TextRenderer.hpp>
+#include <dsaviz/render/TextureRenderer.hpp>
 #include <dsaviz/core/Camera.hpp>
 
 namespace dsaviz {
@@ -19,5 +20,6 @@ private:
   CircleRenderer circleRenderer;
   SquareRenderer squareRenderer;
   TextRenderer textRenderer;
+  TextureRenderer textureRenderer;
 };
 } // namespace dsaviz

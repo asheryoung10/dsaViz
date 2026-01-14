@@ -8,6 +8,7 @@
 #include <dsaviz/scenes/SelectionSortScene.hpp>
 #include <dsaviz/scenes/InsertionSortScene.hpp>
 #include <dsaviz/scenes/MainScene.hpp>
+#include <dsaviz/scenes/BarnsleyFern.hpp>
 
 namespace dsaviz {
 
@@ -81,7 +82,7 @@ void SetupModernImGuiStyle() {
 }
 
 App::App() {
-  setupLogging(spdlog::level::info);
+  setupLogging(spdlog::level::debug);
   glfwSetErrorCallback(glfwErrorCallback);
   if (!glfwInit()) {
     spdlog::critical("Failed to initialize GLFW.");
@@ -170,6 +171,7 @@ App::App() {
   scenes.push_back(std::make_unique<SelectionSortScene>());
   scenes.push_back(std::make_unique<InsertionSortScene>());
   scenes.push_back(std::make_unique<MainScene>());
+  scenes.push_back(std::make_unique<BarnsleyFern>());
   sceneIndex = 0;
 }
 

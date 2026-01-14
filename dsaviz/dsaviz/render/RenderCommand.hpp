@@ -6,7 +6,8 @@ namespace dsaviz {
     enum class RenderCommandType {
         Circle,
         Square,
-        Text
+        Text,
+        Texture
     };
     struct RenderCommand {
         RenderCommandType type;
