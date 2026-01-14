@@ -9,6 +9,31 @@
 
 namespace dsaviz {
 
+  void Texture::setLinearFiltering() const {
+  if (id == 0) {
+    spdlog::warn("Attempted to set filtering on invalid texture.");
+    return;
+  }
+
+  glBindTexture(GL_TEXTURE_2D, id);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void Texture::setNearestFiltering() const {
+  if (id == 0) {
+    spdlog::warn("Attempted to set filtering on invalid texture.");
+    return;
+  }
+
+  glBindTexture(GL_TEXTURE_2D, id);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+  glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+
 static unsigned int toGLInternalFormat(TextureFormat format) {
   switch (format) {
   case TextureFormat::R8:

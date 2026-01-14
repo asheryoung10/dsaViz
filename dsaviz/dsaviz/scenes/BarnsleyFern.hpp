@@ -2,6 +2,7 @@
 #include <dsaviz/core/Scene.hpp>
 #include <dsaviz/objects/ValueSquareObject.hpp>
 #include <dsaviz/render/Texture.hpp>
+#include <stdint.h>
 
 #include <vector>
 
@@ -18,5 +19,10 @@ private:
     void drawSceneUI();
     void drawSetupUI();
     Texture texture;
+    int width = 64;
+    int height = 64;
+    int iterationCount = 10;
+    uint8_t* imageData = nullptr;
+    float prob[4] ={1};
 };
 } // namespace dsaviz

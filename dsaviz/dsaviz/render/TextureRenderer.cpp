@@ -39,14 +39,14 @@ void TextureRenderer::initialize()
     // pos(x,y), uv(u,v)
     const float quadVertices[] = {
         // triangle 1
-        0.0f, 0.0f,  0.0f, 0.0f,
-        1.0f, 0.0f,  1.0f, 0.0f,
-        1.0f, 1.0f,  1.0f, 1.0f,
+        0.0f, 0.0f,  0.0f, 1.0f,
+        1.0f, 0.0f,  1.0f, 1.0f,
+        1.0f, 1.0f,  1.0f, 0.0f,
 
         // triangle 2
-        0.0f, 0.0f,  0.0f, 0.0f,
-        1.0f, 1.0f,  1.0f, 1.0f,
-        0.0f, 1.0f,  0.0f, 1.0f
+        0.0f, 0.0f,  0.0f, 1.0f,
+        1.0f, 1.0f,  1.0f, 0.0f,
+        0.0f, 1.0f,  0.0f, 0.0f
     };
 
     glGenVertexArrays(1, &vao);

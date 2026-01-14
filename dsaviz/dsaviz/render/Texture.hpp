@@ -42,6 +42,8 @@ public:
     bool createFromFile(const std::string& textureFilepath, bool flipVertically);
     bool createFromMemory(const unsigned char* pixelData, int width,
                           int height, TextureFormat format);
+    void setLinearFiltering() const;
+    void setNearestFiltering() const;
 
 private:
     unsigned int id = 0;
