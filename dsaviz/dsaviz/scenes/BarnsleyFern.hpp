@@ -19,9 +19,9 @@ private:
     void drawSceneUI();
     void drawSetupUI();
     Texture texture;
-    int width = 64;
-    int height = 64;
-    int iterationCount = 10;
+    int width = 256;
+    int height = 256;
+    int iterationCount = 100000;
     uint8_t* imageData = nullptr;
     float prob[4] ={1};
 };

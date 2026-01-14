@@ -40,14 +40,29 @@ void BarnsleyFern::drawSceneUI() {
     memcpy(prob, newProb, sizeof(float) * 4);
     changed = true;
   }
+
+  static bool firstTime = true;
+  ImGui::SameLine();
+    if(ImGui::Button("Reset")) {
+        firstTime = true;
+    }
   if (ImGui::SliderInt("Width", &width, 8, 2048)) {
     changed = true;
   }
   if (ImGui::SliderInt("Height", &height, 8, 2048)) {
     changed = true;
   }
-    if (ImGui::SliderInt("Interations", &iterationCount, 10, 80000000)) {
+    if (ImGui::SliderInt("Interations", &iterationCount, 10, 1000000)) {
         changed = true;
+  }
+
+  if(firstTime) {
+    firstTime = false;
+    prob[0] = 0.01;
+    prob[1] = 0.7;
+    prob[2] = 0.15;
+    prob[3] = 0.15;
+    changed  = true;
   }
   if (changed) {
     if (imageData != nullptr)
@@ -62,7 +77,8 @@ void BarnsleyFern::drawSceneUI() {
 
     for (int i = 0; i < iterationCount; ++i) {
       float nextX, nextY;
-      float r = (float)rand() / (float)RAND_MAX;
+      float r = rand() % 100;
+      r /= 100;
       
 
       if (r < prob[0]) {

@@ -18,7 +18,7 @@ void Renderer::submit(const RenderCommand command) {
 void Renderer::initialize(Camera *camera) {
   this->camera = camera;
   circleRenderer.initialize(64, 0.05f);
-  squareRenderer.initialize(5, 0.01, 0.05f);
+  squareRenderer.initialize(16, 0.01, 0.05f);
   textRenderer.initialize();
   textureRenderer.initialize();
 }
